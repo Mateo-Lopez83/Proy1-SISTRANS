@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "proveedores")
+@Table(name = "PROVEEDOR")
 public class Proveedor {
 
     private Integer NIT;
