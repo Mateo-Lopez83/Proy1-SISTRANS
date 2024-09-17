@@ -1,12 +1,14 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "PROVEEDOR")
 public class Proveedor {
 
+    @Id
     private Integer NIT;
     private String nombre;
     private String direccion;
