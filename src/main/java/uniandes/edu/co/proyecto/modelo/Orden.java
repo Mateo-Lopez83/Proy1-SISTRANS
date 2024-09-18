@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +12,8 @@ import jakarta.persistence.Table;
 public class Orden {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Identificador;
+    @Column(name = "ID")
+    private Integer Id;
     private String fechaEntrega;
     private String Estado;
     private Integer sucursalEnvio;
@@ -29,7 +31,7 @@ public class Orden {
     }
 
     public Integer getIdentificador() {
-        return Identificador;
+        return Id;
     }
 
     public String getFechaEntrega() {
@@ -49,7 +51,7 @@ public class Orden {
     }
 
     public void setIdentificador(Integer identificador) {
-        Identificador = identificador;
+        Id = identificador;
     }
 
     public void setFechaEntrega(String fechaEntrega) {
