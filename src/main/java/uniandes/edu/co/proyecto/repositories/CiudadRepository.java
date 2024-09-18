@@ -16,10 +16,10 @@ public interface CiudadRepository extends JpaRepository<Ciudad, Integer>{
     @Query(value = "SELECT * FROM CIUDAD WHERE ID_CIUDAD = :idCiudad", nativeQuery = true)
     Ciudad darCiudad(@Param("idCiudad") long idCiudad);
 
-    //Revisar este query
+    //Query revisado
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO CIUDAD (NOMBRE, ID_CIUDAD) VALUES (:nombre, :idCiudad)", nativeQuery = true)
+    @Query(value = "INSERT INTO CIUDAD (NOMBRE, ID_CIUDAD) VALUES (:nombre, ciudad_sequence.nextVal)", nativeQuery = true)
     void insertarCiudad(@Param("nombre") String nombre);
 
 

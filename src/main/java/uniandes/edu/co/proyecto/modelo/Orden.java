@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 public class Orden {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Identificador;
+    private Integer Id;
     private String fechaEntrega;
     private String Estado;
     private Integer sucursalEnvio;
@@ -29,7 +29,7 @@ public class Orden {
     }
 
     public Integer getIdentificador() {
-        return Identificador;
+        return Id;
     }
 
     public String getFechaEntrega() {
@@ -49,7 +49,7 @@ public class Orden {
     }
 
     public void setIdentificador(Integer identificador) {
-        Identificador = identificador;
+        Id = identificador;
     }
 
     public void setFechaEntrega(String fechaEntrega) {
