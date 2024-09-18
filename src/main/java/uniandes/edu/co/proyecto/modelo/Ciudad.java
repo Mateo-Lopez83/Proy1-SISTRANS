@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.modelo;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Ciudad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "IDCIUDAD")
     private Integer idCiudad;
     private String nombre;
 
