@@ -5,10 +5,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 public class InventarioPK implements Serializable{
     @ManyToOne
-    @JoinColumn(name="CODIGOBARRAS", referencedColumnName = "CODBARRAS")
+    @JoinColumn(name="CODIGOBARRAS", referencedColumnName = "codbarras")
     private Producto producto;
     @ManyToOne
-    @JoinColumn(name = "IDBODEGA", referencedColumnName = "ID")
+    @JoinColumn(name = "IDBODEGA", referencedColumnName = "id")
     private Bodega bodega;
 
     public InventarioPK(Bodega bodega, Producto producto){
