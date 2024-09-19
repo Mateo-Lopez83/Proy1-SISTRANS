@@ -190,3 +190,6 @@ CREATE TABLE inventarios
  
 DESC bodegas;
 DESC sucursales;
+
+
+INSERT INTO CIUDADES(idciudad, NOMBRE) VALUES(ciudad_sequence.nextVal, 'Pereira')
