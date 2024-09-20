@@ -192,4 +192,11 @@ DESC bodegas;
 DESC sucursales;
 
 
-INSERT INTO CIUDADES(idciudad, NOMBRE) VALUES(ciudad_sequence.nextVal, 'Pereira')
+INSERT INTO CIUDADES(idciudad, NOMBRE) VALUES(ciudad_sequence.nextVal, 'Pereira');
+
+SELECT * FROM SUCURSALES;
+
+INSERT INTO SUCURSALES (idsucursal, nombre, direccion, telefono, ciudad_asociada) VALUES(sucursal_sequence.nextVal, 'Floresta2', 'Cra 7', '1234567890', 1);
+INSERT INTO BODEGAS (id, nombre, tamanio, idsucursal) VALUES (bodega_sequence.nextVal, 'LaBo Dega', 34, 1);
+ALTER TABLE sucursales
+    MODIFY TELEFONO VARCHAR2(10);
