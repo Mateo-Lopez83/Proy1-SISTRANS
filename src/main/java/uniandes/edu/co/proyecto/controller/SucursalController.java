@@ -31,6 +31,7 @@ public class SucursalController {
         return new ResponseEntity<>("Sucursal creada exitosamente", HttpStatus.CREATED);
         }
         catch(Exception e){
+            e.printStackTrace(); 
             return new ResponseEntity<>("Error al crear la sucursal", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         
