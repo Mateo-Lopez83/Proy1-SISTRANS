@@ -20,12 +20,12 @@ public class Sucursal {
     private Integer idSucursal;
     private String nombre;
     private String direccion;
-    private String telefono;
+    private Integer telefono;
     @ManyToOne
     @JoinColumn(name = "ciudad_asociada", referencedColumnName = "IDCIUDAD")
     private Ciudad ciudad_Asociada;
 
-    public Sucursal(String nombre, String direccion, String telefono, Ciudad ciudad_Asociada) {
+    public Sucursal(String nombre, String direccion, Integer telefono, Ciudad ciudad_Asociada) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -47,7 +47,7 @@ public class Sucursal {
         return direccion;
     }
 
-    public String getTelefono() {
+    public Integer getTelefono() {
         return telefono;
     }
 
@@ -67,7 +67,7 @@ public class Sucursal {
         this.direccion = direccion;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
 

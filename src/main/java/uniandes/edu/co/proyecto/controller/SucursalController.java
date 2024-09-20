@@ -25,9 +25,9 @@ public class SucursalController {
     }
 
     @PostMapping("/sucursales/new/save")
-    public ResponseEntity<String> ciudadGuardar(@RequestBody Sucursal sucursal) {
+    public ResponseEntity<String> sucursalGuardar(@RequestBody Sucursal sucursal) {
         try{
-            sucursalRepository.insertarSucursal(sucursal.getNombre(), sucursal.getCiudad_Asociada().getIdCiudad());
+            sucursalRepository.insertarSucursal(sucursal.getNombre(),sucursal.getDireccion(),sucursal.getTelefono(), sucursal.getCiudad_Asociada().getIdCiudad());
         return new ResponseEntity<>("Sucursal creada exitosamente", HttpStatus.CREATED);
         }
         catch(Exception e){
