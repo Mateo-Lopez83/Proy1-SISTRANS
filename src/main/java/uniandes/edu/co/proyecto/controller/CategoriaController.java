@@ -35,10 +35,10 @@ public class CategoriaController {
         }
     }
 
-    @PostMapping("/categorias/update")
+    @PostMapping("/categorias/{id}/update")
     public ResponseEntity<String> categoriaActualizar(@RequestBody Categoria categoria) {
         try{
-            categoriaRepository.actualizarCategoria(categoria.getCodigo(), categoria.getNombre());
+            categoriaRepository.actualizarCategoria(categoria.getCodigo(), categoria.getNombre(), categoria.getdescripcion(), categoria.getCaracteristicas());
         return new ResponseEntity<>("Categoria actualizada exitosamente", HttpStatus.CREATED);
         }
         catch(Exception e){
