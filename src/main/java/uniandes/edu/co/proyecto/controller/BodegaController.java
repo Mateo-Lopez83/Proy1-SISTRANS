@@ -23,7 +23,7 @@ public class BodegaController {
     public Collection<Bodega> bodegas(){
         return bodegaRepository.darBodegas();
     }
-    @PostMapping("/sucursales/new/save")
+    @PostMapping("/bodegas/new/save")
     public ResponseEntity<String> ciudadGuardar(@RequestBody Bodega bodega) {
         try{
             bodegaRepository.insertarBodega(bodega.getNOMBRE(), bodega.getTAMANIO(), bodega.getIdsucursal().getIdSucursal());
