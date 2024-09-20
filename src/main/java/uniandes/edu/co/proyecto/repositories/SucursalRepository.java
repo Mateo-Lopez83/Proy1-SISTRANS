@@ -19,8 +19,8 @@ public interface SucursalRepository extends JpaRepository<Sucursal, Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO SUCURSALES (nombre, idsucursal) VALUES (:nombre, sucursal_sequence.nextVal)", nativeQuery = true)
-    void insertarSucursal(@Param("nombre") String nombre);
+    @Query(value = "INSERT INTO SUCURSALES (nombre, idsucursal, ciudad_asociada) VALUES (:nombre, sucursal_sequence.nextVal, :ciudad_asociada)", nativeQuery = true)
+    void insertarSucursal(@Param("nombre") String nombre, @Param("ciudad_asociada")Integer ciudad_asociada);
 
     @Modifying
     @Transactional

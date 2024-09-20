@@ -16,12 +16,12 @@ public interface BodegaRepository extends JpaRepository<Bodega,Integer>{
     Collection<Bodega> darBodegas();
 
     @Query(value = "SELECT * FROM BODEGAS WHERE ID = :idBodega", nativeQuery = true)
-    Bodega darCiudad(@Param("id") long idBodega);
+    Bodega darBodega(@Param("id") long idBodega);
 
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO BODEGAS (id,nombre,tamanio,idsucursal) VALUES (bodega_sequence.nextVal,:nombre,:tamanio,:idsucursal)", nativeQuery = true)
-    void insertarCiudad(@Param("nombre") String nombre);
+    void insertarBodega(@Param("nombre") String nombre,@Param("tamanio") Integer tamanio,@Param("idsucursal") Integer idsucursal);
 
 
     @Modifying
@@ -31,8 +31,8 @@ public interface BodegaRepository extends JpaRepository<Bodega,Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM CIUDADES WHERE idciudad = :idciudad", nativeQuery = true)
-    void eliminarCiudad(@Param("idciudad") long idciudad);
+    @Query(value = "DELETE FROM BODEGAS WHERE id = :id", nativeQuery = true)
+    void eliminarBodega(@Param("id") long id);
     
     
 } 

@@ -63,6 +63,14 @@ public class Bodega implements Serializable{
     public void setTAMANIO(Integer tAMANIO) {
         tamanio = tAMANIO;
     }
+
+    public Sucursal getIdsucursal() {
+        return idsucursal;
+    }
+
+    public void setIdsucursal(Sucursal idsucursal) {
+        this.idsucursal = idsucursal;
+    }
     
     
     
