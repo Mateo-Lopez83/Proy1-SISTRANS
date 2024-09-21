@@ -22,7 +22,7 @@ public interface ProveedorRepository extends JpaRepository<Proveedor, Integer>{
                         @Param("nombre") String nombre,
                         @Param("direccion") String direccion,
                         @Param("nombrecontacto") String nombrecontacto,
-                        @Param("telcontacto") Integer telcontacto);
+                        @Param("telcontacto") String telcontacto);
 
                         
     
