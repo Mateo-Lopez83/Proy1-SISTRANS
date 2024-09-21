@@ -13,11 +13,11 @@ public class Proveedor {
     private Integer NIT;
     private String nombre;
     private String direccion;
-    @Column(name = "nombrecontacto")
+    //@Column(name = "nombrecontacto")
     private String nombrecontacto;
-    private Integer telcontacto;
+    private String telcontacto;
 
-    public Proveedor(Integer NIT, String nombre, String direccion, String nombreContacto, Integer telefonoContacto) {
+    public Proveedor(Integer NIT, String nombre, String direccion, String nombreContacto, String telefonoContacto) {
         this.NIT = NIT;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -45,7 +45,7 @@ public class Proveedor {
         return nombrecontacto;
     }
 
-    public Integer getTelefonoContacto() {
+    public String getTelefonoContacto() {
         return telcontacto;
     }
 
@@ -65,7 +65,7 @@ public class Proveedor {
         this.nombrecontacto = nombreContacto;
     }
 
-    public void setTelefonoContacto(Integer telefonoContacto) {
+    public void setTelefonoContacto(String telefonoContacto) {
         this.telcontacto = telefonoContacto;
     }
 

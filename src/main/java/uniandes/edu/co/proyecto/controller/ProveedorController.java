@@ -40,6 +40,8 @@ public class ProveedorController {
             return new ResponseEntity<>("Error al crear el proveedor", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    
     
     
 }
