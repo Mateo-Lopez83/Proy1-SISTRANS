@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -12,15 +13,16 @@ public class Proveedor {
     private Integer NIT;
     private String nombre;
     private String direccion;
-    private String nombreContacto;
-    private String telefonoContacto;
+    @Column(name = "nombrecontacto")
+    private String nombrecontacto;
+    private Integer telcontacto;
 
-    public Proveedor(Integer NIT, String nombre, String direccion, String nombreContacto, String telefonoContacto) {
+    public Proveedor(Integer NIT, String nombre, String direccion, String nombreContacto, Integer telefonoContacto) {
         this.NIT = NIT;
         this.nombre = nombre;
         this.direccion = direccion;
-        this.nombreContacto = nombreContacto;
-        this.telefonoContacto = telefonoContacto;
+        this.nombrecontacto = nombreContacto;
+        this.telcontacto = telefonoContacto;
     }
 
     public Proveedor() {
@@ -40,11 +42,11 @@ public class Proveedor {
     }
 
     public String getNombreContacto() {
-        return nombreContacto;
+        return nombrecontacto;
     }
 
-    public String getTelefonoContacto() {
-        return telefonoContacto;
+    public Integer getTelefonoContacto() {
+        return telcontacto;
     }
 
     public void setNIT(Integer nIT) {
@@ -60,11 +62,11 @@ public class Proveedor {
     }
 
     public void setNombreContacto(String nombreContacto) {
-        this.nombreContacto = nombreContacto;
+        this.nombrecontacto = nombreContacto;
     }
 
-    public void setTelefonoContacto(String telefonoContacto) {
-        this.telefonoContacto = telefonoContacto;
+    public void setTelefonoContacto(Integer telefonoContacto) {
+        this.telcontacto = telefonoContacto;
     }
 
     
