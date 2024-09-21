@@ -24,8 +24,15 @@ public interface ProveedorRepository extends JpaRepository<Proveedor, Integer>{
                         @Param("nombrecontacto") String nombrecontacto,
                         @Param("telcontacto") String telcontacto);
 
-                        
-    
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE PROVEEDORES SET nombre = :nombre, direccion= :direccion, nombrecontacto= :nombrecontacto, telcontacto=:telcontacto WHERE nit = :nit", nativeQuery = true)
+    void actualizarProveedor(@Param("nit") Integer nit,
+                            @Param("nombre") String nombre,
+                            @Param("direccion") String direccion,
+                            @Param("nombrecontacto") String nombrecontacto,
+                            @Param("telcontacto") String telcontacto);
+
 } 
     
 
