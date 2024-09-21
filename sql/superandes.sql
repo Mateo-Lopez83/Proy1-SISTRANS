@@ -200,3 +200,11 @@ INSERT INTO SUCURSALES (idsucursal, nombre, direccion, telefono, ciudad_asociada
 INSERT INTO BODEGAS (id, nombre, tamanio, idsucursal) VALUES (bodega_sequence.nextVal, 'LaBo Dega', 34, 1);
 ALTER TABLE sucursales
     MODIFY TELEFONO VARCHAR2(10);
+
+INSERT INTO PROVEEDORES (nit, nombre, direccion, nombrecontacto, telcontacto) VALUES (1234, 'Los pollos hermanos', 'Cra 7', 'Walter', 1234567890);
+SELECT * FROM PROVEEDORES;
+SELECT * FROM PROVEEDORES;
+ALTER TABLE proveedores
+    DROP CONSTRAINT TELEFONO_LENG;
+ALTER TABLE PROVEEDORES
+    MODIFY TELCONTACTO VARCHAR2(10);
