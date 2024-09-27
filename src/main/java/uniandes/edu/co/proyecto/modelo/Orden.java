@@ -12,12 +12,14 @@ public class Orden {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
     private String fechaEntrega;
+    private String fechaCreacion;
     private String Estado;
     private Integer sucursalEnvio;
     private Integer Proveedor;
 
-    public Orden(String fechaEntrega, String Estado, Integer sucursalEnvio, Integer Proveedor) {
+    public Orden(String fechaEntrega, String fechaCreacion, String Estado, Integer sucursalEnvio, Integer Proveedor) {
         this.fechaEntrega = fechaEntrega;
+        this.fechaCreacion = fechaCreacion;
         this.Estado = Estado;
         this.sucursalEnvio = sucursalEnvio;
         this.Proveedor = Proveedor;
@@ -33,6 +35,9 @@ public class Orden {
 
     public String getFechaEntrega() {
         return fechaEntrega;
+    }
+    public String getFechaCreacion() {
+        return fechaCreacion;
     }
 
     public String getEstado() {
@@ -53,6 +58,10 @@ public class Orden {
 
     public void setFechaEntrega(String fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
+    }
+
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
     public void setEstado(String estado) {
