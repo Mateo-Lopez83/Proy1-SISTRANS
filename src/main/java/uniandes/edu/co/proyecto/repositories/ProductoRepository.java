@@ -18,19 +18,19 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     @Query(value = "SELECT * FROM PRODUCTOS", nativeQuery = true)
     Collection<Producto> darProductos();
 
-    @Query(value = "SELECT * FROM PRODUCTOS WHERE ID = :idProducto", nativeQuery = true)
-    Producto darProducto(@Param("idProducto") long idProducto);
+    @Query(value = "SELECT * FROM PRODUCTOS WHERE CODBARRAS = :codBarras", nativeQuery = true)
+    Producto darProducto(@Param("codBarras") long codBarras);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO PRODUCTOS (id, nombre, precioVenta, presentacion, unidadMedida, espEmpacado, fechaExp, categoria) VALUES (producto_sequence.nextVal, :nombre, :precioVenta, :presentacion, :unidadMedida, :espEmpacado, :fechaExp, :categoria)", nativeQuery = true)
+    @Query(value = "INSERT INTO PRODUCTOS (CODBARRAS, NOMBRE, PRECIOVENTA, PRESENTACION, UNIDAD_MEDIDA, ESP_EMPACADO, FECHA_EXP, CATEGORIA) VALUES (codbarras_sequence.nextVal, :nombre, :precioVenta, :presentacion, :unidadMedida, :espEmpacado, CASE WHEN :fechaExp IS NULL THEN NULL ELSE TO_DATE(:fechaExp, 'YYYY-MM-DD') END, :categoria)", nativeQuery = true)
     void insertarProducto(@Param("nombre") String nombre, 
                           @Param("precioVenta") int precioVenta, 
                           @Param("presentacion") String presentacion, 
                           @Param("unidadMedida") String unidadMedida, 
                           @Param("espEmpacado") String espEmpacado, 
                           @Param("fechaExp") String fechaExp, 
-                          @Param("categoria") Categoria categoria);
+                          @Param("categoria") String categoria);
 
     @Modifying
     @Transactional
@@ -46,6 +46,6 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM PRODUCTOS WHERE id = :idProducto", nativeQuery = true)
+    @Query(value = "DELETE FROM PRODUCTOS WHERE CODBARRAS = :idProducto", nativeQuery = true)
     void eliminarProducto(@Param("idProducto") long idProducto);
 }

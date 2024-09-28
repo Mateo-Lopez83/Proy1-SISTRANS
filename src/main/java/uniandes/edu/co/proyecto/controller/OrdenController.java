@@ -47,7 +47,6 @@ public class OrdenController {
             
             productoRepository.insertarOrden(
                 orden.getFechaEntrega(),
-                orden.getFechaCreacion(),
                 orden.getEstado(),
                 orden.getSucursalEnvio(),
                 orden.getProveedor()  
