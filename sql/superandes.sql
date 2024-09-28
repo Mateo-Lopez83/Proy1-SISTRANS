@@ -182,7 +182,7 @@ CREATE TABLE inventarios
         REFERENCES productos(codbarras),
     CONSTRAINT FK_IDBODEGA FOREIGN KEY (idbodega)
         REFERENCES bodegas(id),
-    CONSTRAINT PK_INVENTARIO PRIMARY KEY(codigobarras,idbodega),
+    CONSTRAINT PK_INVENTARIO PRIMARY KEY (codigobarras, idbodega, costo_grupo_producto),
     CONSTRAINT COSTO_PRODCHECK CHECK(costo_grupo_producto>0),
     CONSTRAINT CANTIDAD_OCUPADACHECK CHECK(cantidad_ocupada>=0 AND cantidad_ocupada<capacidad_max),
     CONSTRAINT MIN_RECOMPRACHECK CHECK(minimo_recompra>=0),
@@ -203,6 +203,12 @@ ALTER TABLE sucursales
 
 INSERT INTO PROVEEDORES (nit, nombre, direccion, nombrecontacto, telcontacto) VALUES (1234, 'Los pollos hermanos', 'Cra 7', 'Walter', 1234567890);
 
+TRUNCATE TABLE PRODUCTOS;
+TRUNCATE TABLE inventarios;
+TRUNCATE TABLE ORDEN_PRODUCTO;
+TRUNCATE TABLE RECEPCION_PRODUCTO;
+
+
 
 ALTER TABLE proveedores
     DROP CONSTRAINT TELEFONO_LENG;
@@ -214,3 +220,43 @@ SELECT * FROM SUCURSALES;
 SELECT * FROM BODEGAS;
 SELECT * FROM PROVEEDORES;
 SELECT * FROM CATEGORIAS;
+
+
+SELECT PRODUCTOS.CODBARRAS, PRODUCTOS.NOMBRE,SUM(INVENTARIOS.CANTIDAD_OCUPADA), INVENTARIOS.MINIMO_RECOMPRA,INVENTARIOS.CAPACIDAD_MAX, AVG(INVENTARIOS.COSTO_GRUPO_PRODUCTO) AS AVG_COSTO
+FROM BODEGAS
+INNER JOIN INVENTARIOS ON BODEGAS.ID = INVENTARIOS.IDBODEGA
+INNER JOIN PRODUCTOS ON PRODUCTOS.CODBARRAS = INVENTARIOS.CODIGOBARRAS
+WHERE BODEGAS.ID = 31 
+  AND BODEGAS.IDSUCURSAL = 30
+GROUP BY PRODUCTOS.CODBARRAS, PRODUCTOS.NOMBRE, INVENTARIOS.MINIMO_RECOMPRA, 
+         INVENTARIOS.CAPACIDAD_MAX;
+
+
+
+
+DECLARE
+  v_codigobarras INVENTARIOS.CODIGOBARRAS%TYPE := 1;  
+  v_idbodega INVENTARIOS.IDBODEGA%TYPE := 31;         
+  v_add_quantity NUMBER := 10;                        
+  v_current_occupied INVENTARIOS.CANTIDAD_OCUPADA%TYPE;
+  v_max_capacity INVENTARIOS.CAPACIDAD_MAX%TYPE;
+BEGIN
+  -- Retrieve current values
+  SELECT CANTIDAD_OCUPADA, CAPACIDAD_MAX
+  INTO v_current_occupied, v_max_capacity
+  FROM INVENTARIOS
+  WHERE CODIGOBARRAS = v_codigobarras AND IDBODEGA = v_idbodega;
+
+  -- Check if the new total would exceed the maximum capacity
+  IF v_current_occupied + v_add_quantity <= v_max_capacity THEN
+    -- Perform the update
+    UPDATE INVENTARIOS
+    SET CANTIDAD_OCUPADA = CANTIDAD_OCUPADA + v_add_quantity
+    WHERE CODIGOBARRAS = v_codigobarras AND IDBODEGA = v_idbodega;
+
+    DBMS_OUTPUT.PUT_LINE('Cantidad ocupada updated successfully.');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Error: Exceeds maximum capacity.');
+  END IF;
+END;
+/
