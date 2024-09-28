@@ -62,6 +62,7 @@ public class Producto implements Serializable {
         this.presentacion = presentacion;
         this.unidadMedida = unidadMedida;
         this.espEmpacado = espEmpacado;
+        this.fechaExp = null;
         this.categoria = categoria;
     }
 

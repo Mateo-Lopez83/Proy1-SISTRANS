@@ -21,6 +21,9 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     @Query(value = "SELECT * FROM PRODUCTOS WHERE CODBARRAS = :codBarras", nativeQuery = true)
     Producto darProducto(@Param("codBarras") long codBarras);
 
+    @Query(value = "SELECT * FROM PRODUCTOS WHERE NOMBRE = :nombre", nativeQuery = true)
+    Producto darProductoNom(@Param("nombre") String nombre);
+
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO PRODUCTOS (CODBARRAS, NOMBRE, PRECIOVENTA, PRESENTACION, UNIDAD_MEDIDA, ESP_EMPACADO, FECHA_EXP, CATEGORIA) VALUES (codbarras_sequence.nextVal, :nombre, :precioVenta, :presentacion, :unidadMedida, :espEmpacado, CASE WHEN :fechaExp IS NULL THEN NULL ELSE TO_DATE(:fechaExp, 'YYYY-MM-DD') END, :categoria)", nativeQuery = true)
@@ -30,7 +33,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
                           @Param("unidadMedida") String unidadMedida, 
                           @Param("espEmpacado") String espEmpacado, 
                           @Param("fechaExp") String fechaExp, 
-                          @Param("categoria") String categoria);
+                          @Param("categoria") String categoria); 
 
     @Modifying
     @Transactional

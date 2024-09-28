@@ -3,6 +3,7 @@ package uniandes.edu.co.proyecto.controller;
 import java.util.Collection;
 
 import org.slf4j.LoggerFactory;
+import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +38,6 @@ public class ProductoController {
 
     @Autowired
     private ProductoRepository productoRepository;
-    private CategoriaRepository categoriaRepository;
-
 
     @GetMapping
     public Collection<Producto> obtenerProductos() {
@@ -47,39 +46,40 @@ public class ProductoController {
 
     @GetMapping("/{id}")
     public Producto obtenerProducto(@PathVariable("id") long id) {
-        return productoRepository.darProducto(id);
+        try {
+            return productoRepository.darProducto(id);
+        } catch (Exception e) {
+            logger.error("Error al obtener el producto por id", e);
+            return null;
+        }
+    }
+
+    @GetMapping("/nombre/{nombre}")
+    public Producto obtenerProductoNombre(@PathVariable("nombre") String nombre) {
+        try {
+            return productoRepository.darProductoNom(nombre);
+        } catch (Exception e) {
+            logger.error("Error al obtener el producto por nombre", e);
+            return null;
+        }
     }
 
     @PostMapping("/new/save")
     public ResponseEntity<String> guardarProducto(@RequestBody Producto producto) {
         try {
-            /*
-            // Obtener el ID de la categoría del objeto Producto
-            long categoriaId = producto.getCategoria().getCodigo();
+            String fechaExp = producto.getFechaExp() != null ? producto.getFechaExp().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : null;
 
-            // Buscar la categoría en la base de datos
-            Categoria categ = categoriaRepository.darCategoria(categoriaId);
-
-            if (categ == null) {
-                return new ResponseEntity<>("Categoría no encontrada", HttpStatus.NOT_FOUND);
-            }
             
-            else {   */           
-            // Asignar la categoría al producto
-            
-
-            productoRepository.insertarProducto(
-                producto.getNombre(),
-                producto.getPrecioVenta(),
-                producto.getPresentacion(),
-                producto.getUnidadMedida(),
-                producto.getEspEmpacado(),
-                producto.getFechaExp().toString(), // Convert LocalDate to String
-                producto.getCategoria().getCodigo().toString() // Convert Integer to String
-            );
-            return new ResponseEntity<>("Producto creado exitosamente", HttpStatus.CREATED);
-            
-
+                productoRepository.insertarProducto(
+                    producto.getNombre(),
+                    producto.getPrecioVenta(),
+                    producto.getPresentacion(),
+                    producto.getUnidadMedida(),
+                    producto.getEspEmpacado(),
+                    fechaExp,
+                    producto.getCategoria().getCodigo().toString() // Convert Integer to String
+                );
+                return ResponseEntity.ok("Producto guardado exitosamente");
         } catch (Exception e) {
             return new ResponseEntity<>("Error al crear el producto", HttpStatus.INTERNAL_SERVER_ERROR);
         }
