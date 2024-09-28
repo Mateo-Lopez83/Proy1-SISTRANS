@@ -1,71 +1,83 @@
 package uniandes.edu.DTOs;
 
 public class ProductoInventarioDTO {
-    private Long codigobarras;
-    private String nombre;
-    private Long cantidadOcupada;
+    private String codBarras;
+    private Long idBodega;
+    private Long cantidadTotal;
     private Long minimoRecompra;
     private Long capacidadMax;
-    private Double avgCosto;
+    private Double promedio;
 
     // Constructor
-    public ProductoInventarioDTO(Long codigobarras, String nombre, Long cantidadOcupada, 
-                                  Long minimoRecompra, Long capacidadMax, Double avgCosto) {
-        this.codigobarras = codigobarras;
-        this.nombre = nombre;
-        this.cantidadOcupada = cantidadOcupada;
+    public ProductoInventarioDTO(String codBarras, Long idBodega, Long cantidadTotal, Long minimoRecompra, Long capacidadMax, Double promedio) {
+        this.codBarras = codBarras;
+        this.idBodega = idBodega;
+        this.cantidadTotal = cantidadTotal;
         this.minimoRecompra = minimoRecompra;
         this.capacidadMax = capacidadMax;
-        this.avgCosto = avgCosto;
+        this.promedio = promedio;
     }
 
-    // Getters and Setters (optional, but recommended)
-    public Long getCodigobarras() {
-        return codigobarras;
+    // Getters
+    public String getCodBarras() {
+        return codBarras;
     }
 
-    public void setCodigobarras(Long codigobarras) {
-        this.codigobarras = codigobarras;
+    public Long getIdBodega() {
+        return idBodega;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Long getCantidadOcupada() {
-        return cantidadOcupada;
-    }
-
-    public void setCantidadOcupada(Long cantidadOcupada) {
-        this.cantidadOcupada = cantidadOcupada;
+    public Long getCantidadTotal() {
+        return cantidadTotal;
     }
 
     public Long getMinimoRecompra() {
         return minimoRecompra;
     }
 
-    public void setMinimoRecompra(Long minimoRecompra) {
-        this.minimoRecompra = minimoRecompra;
-    }
-
     public Long getCapacidadMax() {
         return capacidadMax;
+    }
+
+    public Double getPromedio() {
+        return promedio;
+    }
+
+    // Setters
+    public void setCodBarras(String codBarras) {
+        this.codBarras = codBarras;
+    }
+
+    public void setIdBodega(Long idBodega) {
+        this.idBodega = idBodega;
+    }
+
+    public void setCantidadTotal(Long cantidadTotal) {
+        this.cantidadTotal = cantidadTotal;
+    }
+
+    public void setMinimoRecompra(Long minimoRecompra) {
+        this.minimoRecompra = minimoRecompra;
     }
 
     public void setCapacidadMax(Long capacidadMax) {
         this.capacidadMax = capacidadMax;
     }
 
-    public Double getAvgCosto() {
-        return avgCosto;
+    public void setPromedio(Double promedio) {
+        this.promedio = promedio;
     }
 
-    public void setAvgCosto(Double avgCosto) {
-        this.avgCosto = avgCosto;
+    // Optional: toString method for easier debugging
+    @Override
+    public String toString() {
+        return "ProductoInventarioDTO{" +
+                "codBarras='" + codBarras + '\'' +
+                ", idBodega=" + idBodega +
+                ", cantidadTotal=" + cantidadTotal +
+                ", minimoRecompra=" + minimoRecompra +
+                ", capacidadMax=" + capacidadMax +
+                ", promedio=" + promedio +
+                '}';
     }
 }
-

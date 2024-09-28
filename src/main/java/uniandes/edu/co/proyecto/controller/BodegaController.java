@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import uniandes.edu.DTOs.ProductoInventarioDTO;
 import uniandes.edu.co.proyecto.modelo.Bodega;
 import uniandes.edu.co.proyecto.repositories.BodegaRepository;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
