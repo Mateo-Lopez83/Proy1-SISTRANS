@@ -17,6 +17,9 @@ public class InventarioPK implements Serializable{
         this.producto = producto;
     }
 
+    public InventarioPK() {
+    }
+
     public Producto getProducto() {
         return producto;
     }

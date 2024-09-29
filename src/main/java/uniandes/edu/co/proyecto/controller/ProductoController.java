@@ -124,27 +124,6 @@ public class ProductoController {
             return new ResponseEntity<>("Error al eliminar el producto", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    /*
-    @GetMapping("/productos/consulta")
-    public Collection<Producto> sucursalesConProducto(
-            @RequestParam(required = false) Integer idsucursal,
-            @RequestParam(required = false) Integer min,
-            @RequestParam(required = false) Integer max,
-            @RequestParam(required = false) Integer cat,
-            @RequestParam(required = false) String fecha) 
-        {
-            if (idsucursal != null && min != null && max != null && cat != null && fecha != null) {
-                return productoRepository.encontrarProductosPorTODO(idsucursal, min, max, cat, fecha);
-            } else if (idsucursal != null) {
-                return productoRepository.encontrarProductosPorSucursal(idsucursal);
-            } else if (min != null && max!= null) {
-                return productoRepository.encontraProductosPorPrecio(min, max); 
-            }else if (fecha != null) {
-                return productoRepository.encontrarProductosPorFechaMAYOR(fecha); 
-            } else return Collections.emptyList();
-        }
-    */
     
     // Hay 4 casos: rango precio, rango fechas, de una sucursal, de una categoría
     @GetMapping("/consulta")

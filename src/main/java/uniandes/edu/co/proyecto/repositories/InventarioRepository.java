@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
 import uniandes.edu.co.proyecto.modelo.Inventario;
 import uniandes.edu.co.proyecto.modelo.InventarioPK;
 
@@ -33,6 +35,24 @@ public interface InventarioRepository extends JpaRepository<Inventario,Inventari
                "AND INVENTARIOS.capacidad_Max != 0 " +
                "GROUP BY PRODUCTOS.codbarras, PRODUCTOS.nombre, INVENTARIOS.idBodega, INVENTARIOS.capacidad_Max", 
        nativeQuery = true)
-List<Object[]> findOcupacionByCodbarras(@Param("codbarrasList") List<Long> codbarrasList);
+    List<Object[]> findOcupacionByCodbarras(@Param("codbarrasList") List<Long> codbarrasList);
 
+
+    @Query(value = "SELECT i " +
+                   "FROM Inventario i " +
+                   "WHERE i.cantidadOcupada < i.minimoRecompra")
+    List<Inventario> findOcupacionInventario();
+
+
+/*
+    @Query(value = "SELECT PRODUCTOS.CODBARRAS, PRODUCTOS.NOMBRE, " +
+               "INVENTARIOS.CANTIDAD_OCUPADA as Ocupacion, " +
+               "INVENTARIOS.IDBODEGA, BODEGAS.IDSUCURSAL" +
+               "FROM INVENTARIOS i " +
+               "INNER JOIN BODEGAS b ON b.ID = i.IDBODEGA " +
+               "INNER JOIN PRODUCTOS p ON p.CODBARRAS = i.CODIGOBARRAS " +
+               "WHERE i.CANTIDAD_OCUPADA < i.MINIMO_RECOMPRA",
+       nativeQuery = true)
+    List<Inventario> findOcupacionInventario();
+*/
 } 
