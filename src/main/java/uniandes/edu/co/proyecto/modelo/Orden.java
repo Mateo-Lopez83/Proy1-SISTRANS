@@ -5,14 +5,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+import uniandes.edu.co.proyecto.modelo.ProductoExtra;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+import java.util.List;
 
 @Entity
 @Table(name = "ordenes")
 public class Orden {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name = "ID")
     private Integer Id;
 
@@ -30,6 +36,9 @@ public class Orden {
 
     @Column(name = "NIT_PROVEEDOR")
     private Integer Proveedor;
+    
+    @Transient
+    private List<ProductoExtra> productosExtra = new ArrayList<ProductoExtra>();
 
     public Orden(LocalDate fechaEntrega, LocalDate fechaCreacion, 
                 String Estado, Integer sucursalEnvio, 
@@ -92,6 +101,8 @@ public class Orden {
         Proveedor = proveedor;
     }
 
-    
+    public List<ProductoExtra> getProductosExtra() {
+        return productosExtra;
+    }
     
 }
