@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.controller;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import uniandes.edu.co.proyecto.modelo.Inventario;
 import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.repositories.ProductoRepository;
 
+import org.apache.catalina.connector.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +66,6 @@ public class ProductoController {
         try {
             String fechaExp = producto.getFechaExp() != null ? producto.getFechaExp().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : null;
 
-            
                 productoRepository.insertarProducto(
                     producto.getNombre(),
                     producto.getPrecioVenta(),
@@ -124,23 +125,82 @@ public class ProductoController {
         }
     }
 
+    /*
     @GetMapping("/productos/consulta")
     public Collection<Producto> sucursalesConProducto(
             @RequestParam(required = false) Integer idsucursal,
             @RequestParam(required = false) Integer min,
             @RequestParam(required = false) Integer max,
             @RequestParam(required = false) Integer cat,
-            @RequestParam(required = false) String fecha) {
-        
-        if (idsucursal != null && min != null && max != null && cat != null && fecha != null) {
-            return productoRepository.encontrarProductosPorTODO(idsucursal, min, max, cat, fecha);
-        } else if (idsucursal != null) {
-            return productoRepository.encontrarProductosPorSucursal(idsucursal);
-        } else if (min != null && max!= null) {
-            return productoRepository.encontraProductosPorPrecio(min, max); 
-        }else if (fecha != null) {
-            return productoRepository.encontrarProductosPorFechaMAYOR(fecha); 
-        } else return Collections.emptyList();
-    }
+            @RequestParam(required = false) String fecha) 
+        {
+            if (idsucursal != null && min != null && max != null && cat != null && fecha != null) {
+                return productoRepository.encontrarProductosPorTODO(idsucursal, min, max, cat, fecha);
+            } else if (idsucursal != null) {
+                return productoRepository.encontrarProductosPorSucursal(idsucursal);
+            } else if (min != null && max!= null) {
+                return productoRepository.encontraProductosPorPrecio(min, max); 
+            }else if (fecha != null) {
+                return productoRepository.encontrarProductosPorFechaMAYOR(fecha); 
+            } else return Collections.emptyList();
+        }
+    */
+    
+    // Hay 4 casos: rango precio, rango fechas, de una sucursal, de una categoría
+    @GetMapping("/consulta")
+    public Collection<Producto> sucursalesConProducto(@RequestBody List<String> params) {
+        try {
+            if (params == null || params.isEmpty()) {
+                return Collections.emptyList();
+            }
 
+            String tipoConsulta = params.get(0);
+
+            switch (tipoConsulta.toLowerCase()) {
+                case "sucursal":
+                    if (params.size() == 2) {
+                        logger.info("Buscando productos por sucursal");
+                        Integer idsucursal = Integer.valueOf(params.get(1));
+                        return productoRepository.encontrarProductosPorSucursal(idsucursal);
+                    }
+                    break;
+                case "precio":
+                    if (params.size() == 3) {
+                        logger.info("Buscando productos por precio");
+                        Integer min = Integer.valueOf(params.get(1));
+                        Integer max = Integer.valueOf(params.get(2));
+                        return productoRepository.encontraProductosPorPrecio(min, max);
+                    }
+                    break;
+                case "fecha":
+                    if (params.size() == 3) {
+                        logger.info("Buscando productos por fecha");
+                        String fecha = params.get(1);
+                        String operador = params.get(2);
+                        if (operador.equals("mayor")) {
+                            return productoRepository.encontrarProductosPorFechaMAYOR(fecha);
+                        } else if (operador.equals("menor")) {
+                            return productoRepository.encontrarProductosPorFechaMENOR(fecha);
+                        }
+                    }
+                    break;
+                case "categoria":
+                    if (params.size() == 2) {
+                        logger.info("Buscando productos por categoria");
+                        Integer cat = Integer.valueOf(params.get(1));
+                        return productoRepository.encontrarProductosPorCategoria(cat);
+                    }
+                    break;
+                default:
+                    return Collections.emptyList();
+            }
+
+            return Collections.emptyList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+        
 }
+

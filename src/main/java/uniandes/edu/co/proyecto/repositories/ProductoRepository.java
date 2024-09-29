@@ -54,8 +54,8 @@ public interface ProductoRepository extends JpaRepository<Producto,Integer>{
 
 
     @Query(value = "SELECT p.* " +
-               "FROM PRODUCTOS" +
-               "INNER JOIN INVENTARIOS i ON PRODUCTOS.CODBARRAS = i.CODIGOBARRAS " +
+               "FROM PRODUCTOS p " +
+               "INNER JOIN INVENTARIOS i ON i.CODIGOBARRAS = p.CODBARRAS " +
                "INNER JOIN BODEGAS b ON b.ID = i.IDBODEGA " +
                "INNER JOIN SUCURSALES s ON s.IDSUCURSAL = b.IDSUCURSAL " +
                "WHERE s.IDSUCURSAL = :idsucursal", nativeQuery = true)
@@ -63,20 +63,22 @@ public interface ProductoRepository extends JpaRepository<Producto,Integer>{
 
     @Query(value = "SELECT p.* " +
                "FROM PRODUCTOS p " +
-               "WHERE PRODUCTOS.PRECIOVENTA BETWEEN :min AND :max", nativeQuery = true)
-    Collection<Producto> encontraProductosPorPrecio(@Param("min") Integer min,@Param("max") Integer max);
+               "WHERE p.PRECIOVENTA BETWEEN :min AND :max", nativeQuery = true)
+    Collection<Producto> encontraProductosPorPrecio(@Param("min") Integer min, @Param("max") Integer max);
 
     @Query(value = "SELECT p.* " +
                 "FROM PRODUCTOS p " +
-                "WHERE PRODUCTOS.CATEGORIA = :cat", nativeQuery = true)
+                "WHERE p.CATEGORIA = :cat", nativeQuery = true)
     Collection<Producto> encontrarProductosPorCategoria(@Param("cat") Integer cat);
 
     @Query(value = "SELECT p.* " +
-               "WHERE PRODUCTOS.FECHA_EXP > TO_DATE(:fecha, 'DD-MM-YYYY')", nativeQuery = true)
+               "FROM PRODUCTOS p " +
+               "WHERE p.FECHA_EXP > TO_DATE(:fecha, 'YYYY-MM-DD')", nativeQuery = true)
     Collection<Producto> encontrarProductosPorFechaMAYOR(@Param("fecha") String fecha);
 
     @Query(value = "SELECT p.* " +
-               "WHERE PRODUCTOS.FECHA_EXP < TO_DATE(:fecha, 'DD-MM-YYYY')", nativeQuery = true)
+               "FROM PRODUCTOS p " +
+               "WHERE p.FECHA_EXP < TO_DATE(:fecha, 'YYYY-MM-DD')", nativeQuery = true)
     Collection<Producto> encontrarProductosPorFechaMENOR(@Param("fecha") String fecha);
 
     @Query(value = "SELECT p.* " +
