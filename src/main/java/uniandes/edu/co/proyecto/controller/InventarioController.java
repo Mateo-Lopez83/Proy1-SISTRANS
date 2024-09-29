@@ -18,7 +18,7 @@ import uniandes.edu.co.proyecto.repositories.InventarioRepository;
 public class InventarioController {
     @Autowired
     private InventarioRepository inventarioRepository;
-
+/*
     @GetMapping("/inventarios/consulta")
     public ResponseEntity<?> consultaInventario() {
         int bodega = 31; // Hardcoded for testing
@@ -45,5 +45,5 @@ public class InventarioController {
             // Log the exception if needed
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-    }
+    }*/
 }

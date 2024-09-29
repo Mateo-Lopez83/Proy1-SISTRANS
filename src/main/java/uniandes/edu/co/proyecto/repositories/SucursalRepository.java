@@ -31,11 +31,38 @@ public interface SucursalRepository extends JpaRepository<Sucursal, Integer>{
     @Transactional
     @Query(value = "DELETE FROM SUCURSALES WHERE idsucursal = :idsucursal", nativeQuery = true)
     void eliminarSucursal(@Param("idsucursal") long idsucursal);
-    
+
+    @Query(value = "SELECT DISTINCT SUCURSALES.* " +
+               "FROM SUCURSALES " +
+               "INNER JOIN BODEGAS ON BODEGAS.IDSUCURSAL = SUCURSALES.IDSUCURSAL " +
+               "INNER JOIN INVENTARIOS ON INVENTARIOS.IDBODEGA = BODEGAS.ID " +
+               "INNER JOIN PRODUCTOS ON INVENTARIOS.CODIGOBARRAS = PRODUCTOS.CODBARRAS " +
+               "WHERE (PRODUCTOS.CODBARRAS = :CodBarras OR PRODUCTOS.NOMBRE = :nombre) " +
+               "AND INVENTARIOS.CANTIDAD_OCUPADA > 0",
+       nativeQuery = true)
+    Collection<Sucursal> darSucursalesConProducto(@Param("CodBarras") int CodBarras, @Param("nombre") String nombre);
 
 
+    @Query(value = "SELECT DISTINCT SUCURSALES.* " +
+    "FROM SUCURSALES " +
+    "INNER JOIN BODEGAS ON BODEGAS.IDSUCURSAL = SUCURSALES.IDSUCURSAL " +
+    "INNER JOIN INVENTARIOS ON INVENTARIOS.IDBODEGA = BODEGAS.ID " +
+    "INNER JOIN PRODUCTOS ON INVENTARIOS.CODIGOBARRAS = PRODUCTOS.CODBARRAS " +
+    "WHERE PRODUCTOS.CODBARRAS = :CodBarras " +
+    "AND INVENTARIOS.CANTIDAD_OCUPADA > 0",
+    nativeQuery = true)
+    Collection<Sucursal> darSucursalesConProductoIdentificador(@Param("CodBarras") int CodBarras);
 
-    
+
+    @Query(value = "SELECT DISTINCT SUCURSALES.* " +
+    "FROM SUCURSALES " +
+    "INNER JOIN BODEGAS ON BODEGAS.IDSUCURSAL = SUCURSALES.IDSUCURSAL " +
+    "INNER JOIN INVENTARIOS ON INVENTARIOS.IDBODEGA = BODEGAS.ID " +
+    "INNER JOIN PRODUCTOS ON INVENTARIOS.CODIGOBARRAS = PRODUCTOS.CODBARRAS " +
+    "WHERE PRODUCTOS.NOMBRE = :nombre " +
+    "AND INVENTARIOS.CANTIDAD_OCUPADA > 0",
+    nativeQuery = true)
+    Collection<Sucursal> darSucursalesConProductoNombre(@Param("nombre") String nombre);
 
     
 }
