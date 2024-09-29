@@ -12,40 +12,45 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "productos")
+@Table(name = "PRODUCTOS")
 public class Producto implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CODBARRAS")
     private Integer CODBARRAS;
+    @Column(name = "NOMBRE")
     private String nombre;
+    @Column(name = "PRECIOVENTA")
     private int precioVenta;
+    @Column(name = "PRESENTACION")
     private String presentacion;
-    private String unidadMedida;
-    private String espEmpacado;
-    private String fechaExp;
+    @Column(name = "UNIDAD_MEDIDA")
+    private String unidad_Medida;
+    @Column(name = "ESP_EMPACADO")
+    private String esp_Empacado;
+    @Column(name = "FECHA_EXP")
+    private String fecha_Exp;
     @ManyToOne
-    @JoinColumn(name="CATEGORIA", referencedColumnName = "codigo")
+    @JoinColumn(name="CATEGORIAS", referencedColumnName = "CODIGO")
     private Categoria categoria;
 
-    public Producto(String nombre, int precioVenta, String presentacion, String unidadMedida, String espEmpacado,
+    public Producto(String nombre, int precioVenta, String presentacion, String unidadMedida, String esp_Empacado,
             String fechaExp, Categoria categoria) {
         this.nombre = nombre;
         this.precioVenta = precioVenta;
         this.presentacion = presentacion;
-        this.unidadMedida = unidadMedida;
-        this.espEmpacado = espEmpacado;
-        this.fechaExp = fechaExp;
+        this.unidad_Medida = unidadMedida;
+        this.esp_Empacado = esp_Empacado;
+        this.fecha_Exp = fechaExp;
         this.categoria = categoria;
     }
 
     //Si no tiene fecha de expiracion
-    public Producto(String nombre, int precioVenta, String presentacion, String unidadMedida, String espEmpacado, Categoria categoria) {
+    public Producto(String nombre, int precioVenta, String presentacion, String unidadMedida, String esp_Empacado, Categoria categoria) {
         this.nombre = nombre;
         this.precioVenta = precioVenta;
         this.presentacion = presentacion;
-        this.unidadMedida = unidadMedida;
-        this.espEmpacado = espEmpacado;
+        this.unidad_Medida = unidadMedida;
+        this.esp_Empacado = esp_Empacado;
         this.categoria = categoria;
     }
 
@@ -80,27 +85,27 @@ public class Producto implements Serializable{
     }
 
     public String getUnidadMedida() {
-        return unidadMedida;
+        return unidad_Medida;
     }
 
     public void setUnidadMedida(String unidadMedida) {
-        this.unidadMedida = unidadMedida;
+        this.unidad_Medida = unidadMedida;
     }
 
-    public String getEspEmpacado() {
-        return espEmpacado;
+    public String getesp_Empacado() {
+        return esp_Empacado;
     }
 
-    public void setEspEmpacado(String espEmpacado) {
-        this.espEmpacado = espEmpacado;
+    public void setesp_Empacado(String esp_Empacado) {
+        this.esp_Empacado = esp_Empacado;
     }
 
     public String getFechaExp() {
-        return fechaExp;
+        return fecha_Exp;
     }
 
     public void setFechaExp(String fechaExp) {
-        this.fechaExp = fechaExp;
+        this.fecha_Exp = fechaExp;
     }
 
     public Categoria getCategoria() {

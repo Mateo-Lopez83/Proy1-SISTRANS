@@ -45,4 +45,6 @@ public interface ProductoRepository extends JpaRepository<Producto,Integer>{
     Collection<Producto> encontrarProductos();
 
     
+
+    
 }
