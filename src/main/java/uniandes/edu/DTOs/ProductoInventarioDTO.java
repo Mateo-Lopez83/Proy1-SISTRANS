@@ -1,42 +1,47 @@
 package uniandes.edu.DTOs;
 
 public class ProductoInventarioDTO {
-    private String codBarras;
+    private Long CODIGOBARRAS;
+    private String nombre;
     private Long idBodega;
-    private Long cantidadTotal;
-    private Long minimoRecompra;
-    private Long capacidadMax;
+    private Long cantidad_Total;
+    private Long minimo_Recompra;
+    private Long capacidad_Max;
     private Double promedio;
 
     // Constructor
-    public ProductoInventarioDTO(String codBarras, Long idBodega, Long cantidadTotal, Long minimoRecompra, Long capacidadMax, Double promedio) {
-        this.codBarras = codBarras;
+    public ProductoInventarioDTO(Long CODIGOBARRAS,String nombre, Long idBodega, Long cantidad_Total, Long minimo_Recompra, Long capacidad_Max, Double promedio) {
+        this.CODIGOBARRAS = CODIGOBARRAS;
+        this.nombre=nombre;
         this.idBodega = idBodega;
-        this.cantidadTotal = cantidadTotal;
-        this.minimoRecompra = minimoRecompra;
-        this.capacidadMax = capacidadMax;
+        this.cantidad_Total = cantidad_Total;
+        this.minimo_Recompra = minimo_Recompra;
+        this.capacidad_Max = capacidad_Max;
         this.promedio = promedio;
     }
 
     // Getters
-    public String getCodBarras() {
-        return codBarras;
+    public Long getCODIGOBARRAS() {
+        return CODIGOBARRAS;
     }
 
     public Long getIdBodega() {
         return idBodega;
     }
-
-    public Long getCantidadTotal() {
-        return cantidadTotal;
+    public String getNombre() {
+        return nombre;
     }
 
-    public Long getMinimoRecompra() {
-        return minimoRecompra;
+    public Long getcantidad_Total() {
+        return cantidad_Total;
     }
 
-    public Long getCapacidadMax() {
-        return capacidadMax;
+    public Long getminimo_Recompra() {
+        return minimo_Recompra;
+    }
+
+    public Long getcapacidad_Max() {
+        return capacidad_Max;
     }
 
     public Double getPromedio() {
@@ -44,24 +49,24 @@ public class ProductoInventarioDTO {
     }
 
     // Setters
-    public void setCodBarras(String codBarras) {
-        this.codBarras = codBarras;
+    public void setCODIGOBARRAS(Long CODIGOBARRAS) {
+        this.CODIGOBARRAS = CODIGOBARRAS;
     }
 
     public void setIdBodega(Long idBodega) {
         this.idBodega = idBodega;
     }
 
-    public void setCantidadTotal(Long cantidadTotal) {
-        this.cantidadTotal = cantidadTotal;
+    public void setcantidad_Total(Long cantidad_Total) {
+        this.cantidad_Total = cantidad_Total;
     }
 
-    public void setMinimoRecompra(Long minimoRecompra) {
-        this.minimoRecompra = minimoRecompra;
+    public void setminimo_Recompra(Long minimo_Recompra) {
+        this.minimo_Recompra = minimo_Recompra;
     }
 
-    public void setCapacidadMax(Long capacidadMax) {
-        this.capacidadMax = capacidadMax;
+    public void setcapacidad_Max(Long capacidad_Max) {
+        this.capacidad_Max = capacidad_Max;
     }
 
     public void setPromedio(Double promedio) {
@@ -72,11 +77,11 @@ public class ProductoInventarioDTO {
     @Override
     public String toString() {
         return "ProductoInventarioDTO{" +
-                "codBarras='" + codBarras + '\'' +
+                "CODIGOBARRAS='" + CODIGOBARRAS + '\'' +
                 ", idBodega=" + idBodega +
-                ", cantidadTotal=" + cantidadTotal +
-                ", minimoRecompra=" + minimoRecompra +
-                ", capacidadMax=" + capacidadMax +
+                ", cantidad_Total=" + cantidad_Total +
+                ", minimo_Recompra=" + minimo_Recompra +
+                ", capacidad_Max=" + capacidad_Max +
                 ", promedio=" + promedio +
                 '}';
     }
