@@ -109,11 +109,11 @@ public class Producto implements Serializable {
         this.unidadMedida = unidadMedida;
     }
 
-    public String getesp_Empacado() {
+    public String getEspEmpacado() {
         return espEmpacado;
     }
 
-    public void setesp_Empacado(String esp_Empacado) {
+    public void setEspEmpacado(String esp_Empacado) {
         this.espEmpacado = esp_Empacado;
     }
 
