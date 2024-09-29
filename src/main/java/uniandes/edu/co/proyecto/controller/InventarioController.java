@@ -27,21 +27,22 @@ public ResponseEntity<?> consultaInventario(@RequestParam(required = true) Integ
         @RequestParam(required = true) Integer idsucursal) {
 
     try {
-        // Log the parameters
+ 
         System.out.println("Bodega ID: " + bodega);
         System.out.println("Sucursal ID: " + idsucursal);
 
-        // Automatically retrieves an array of BigDecimal within an array of Object
+        // Supremamente intuitivo, si uno pide que se guarde como un Array de Objects, se guarda como un array de Objects[]
         Object[][] productoInfo = inventarioRepository.darInformacionInventarios(bodega, idsucursal);
 
-        List<ProductoInventarioDTO> inventarios = new ArrayList<>(); // Moved outside the loop
+        List<ProductoInventarioDTO> inventarios = new ArrayList<>(); 
         Map<String, Object> response = new HashMap<>();
 
-        // Check if productoInfo is not null and has values
+        
         if (productoInfo != null && productoInfo.length > 0) {
             for (Object[] row : productoInfo) {
-                // Create a DTO instance for each row in the result
+               
                 ProductoInventarioDTO dto = new ProductoInventarioDTO(
+                    //Re sencillo mk
                     ((BigDecimal) row[0]).longValue(), // CODIGOBARRAS
                     ((String) row[1]),                 // NOMBRE
                     ((BigDecimal) row[2]).longValue(), // IDBODEGA
@@ -50,15 +51,15 @@ public ResponseEntity<?> consultaInventario(@RequestParam(required = true) Integ
                     ((BigDecimal) row[5]).longValue(), // CAPACIDAD_MAX
                     ((BigDecimal) row[6]).doubleValue() // PROMEDIO
                 );
-                inventarios.add(dto); // Add each DTO to the same list
+                inventarios.add(dto); 
             }
-            response.put("infoProducto", inventarios); // Add the entire list to the response
+            response.put("infoProducto", inventarios); 
             return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No data found for the given parameters.");
         }
     } catch (Exception e) {
-        e.printStackTrace(); // Log the exception for debugging
+        e.printStackTrace(); 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 }
