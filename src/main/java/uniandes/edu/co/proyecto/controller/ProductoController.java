@@ -42,22 +42,30 @@ public class ProductoController {
     
 
     @GetMapping("/{id}")
-    public Producto obtenerProducto(@PathVariable("id") long id) {
+    public ResponseEntity<?> obtenerProducto(@PathVariable("id") long id) {
         try {
-            return productoRepository.darProducto(id);
+            Producto producto = productoRepository.darProducto(id);
+            if (producto == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el producto con id: " + id);
+            }
+            return ResponseEntity.ok(producto);
         } catch (Exception e) {
             logger.error("Error al obtener el producto por id", e);
-            return null;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener el producto");
         }
     }
 
     @GetMapping("/nombre/{nombre}")
-    public Producto obtenerProductoNombre(@PathVariable("nombre") String nombre) {
+    public ResponseEntity<?> obtenerProductoNombre(@PathVariable("nombre") String nombre) {
         try {
-            return productoRepository.darProductoNom(nombre);
+            Producto producto = productoRepository.darProductoNom(nombre);
+            if (producto == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el producto con nombre: " + nombre);
+            }
+            return ResponseEntity.ok(producto);
         } catch (Exception e) {
             logger.error("Error al obtener el producto por nombre", e);
-            return null;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener el producto");
         }
     }
 
@@ -66,16 +74,20 @@ public class ProductoController {
         try {
             String fechaExp = producto.getFechaExp() != null ? producto.getFechaExp().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : null;
 
-                productoRepository.insertarProducto(
-                    producto.getNombre(),
-                    producto.getPrecioVenta(),
-                    producto.getPresentacion(),
-                    producto.getUnidadMedida(),
-                    producto.getEspEmpacado(),
-                    fechaExp,
-                    producto.getCategoria().getCodigo().toString() // Convert Integer to String
-                );
-                return ResponseEntity.ok("Producto guardado exitosamente");
+            if (productoRepository.darProductoNom(producto.getNombre()) != null) {
+                return new ResponseEntity<>("Ya existe un producto con ese nombre", HttpStatus.CONFLICT);
+            }
+
+            productoRepository.insertarProducto(
+                producto.getNombre(),
+                producto.getPrecioVenta(),
+                producto.getPresentacion(),
+                producto.getUnidadMedida(),
+                producto.getEspEmpacado(),
+                fechaExp,
+                producto.getCategoria().getCodigo().toString() // Convert Integer to String
+            );
+            return ResponseEntity.ok("Producto guardado exitosamente");
         } catch (Exception e) {
             return new ResponseEntity<>("Error al crear el producto", HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -125,60 +137,100 @@ public class ProductoController {
         }
     }
     
-    // Hay 4 casos: rango precio, rango fechas, de una sucursal, de una categoría
+    // Hay 4 casos: rango precio, rango fechas, de una sucursal, de una categorí
     @GetMapping("/consulta")
-    public Collection<Producto> sucursalesConProducto(@RequestBody List<String> params) {
+    public ResponseEntity<String> sucursalesConProducto(@RequestBody List<String> params) {
         try {
             if (params == null || params.isEmpty()) {
-                return Collections.emptyList();
+                return new ResponseEntity<>("No se proporcionaron parámetros", HttpStatus.BAD_REQUEST);
             }
-
+    
             String tipoConsulta = params.get(0);
-
+    
             switch (tipoConsulta.toLowerCase()) {
                 case "sucursal":
-                    if (params.size() == 2) {
-                        logger.info("Buscando productos por sucursal");
-                        Integer idsucursal = Integer.valueOf(params.get(1));
-                        return productoRepository.encontrarProductosPorSucursal(idsucursal);
+                    if (params.size() != 2) {
+                        return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por sucursal", HttpStatus.BAD_REQUEST);
                     }
-                    break;
+                    try {
+                        Integer idsucursal = Integer.valueOf(params.get(1));
+                        Collection<Producto> productos = productoRepository.encontrarProductosPorSucursal(idsucursal);
+                        if (productos.isEmpty()) {
+                            return new ResponseEntity<>("No se encontraron productos para la sucursal proporcionada", HttpStatus.NOT_FOUND);
+                        }
+                        return new ResponseEntity<>(formatProductos(productos), HttpStatus.OK);
+                    } catch (NumberFormatException e) {
+                        return new ResponseEntity<>("El ID de la sucursal debe ser un número", HttpStatus.BAD_REQUEST);
+                    }
                 case "precio":
-                    if (params.size() == 3) {
-                        logger.info("Buscando productos por precio");
+                    if (params.size() != 3) {
+                        return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por precio", HttpStatus.BAD_REQUEST);
+                    }
+                    try {
                         Integer min = Integer.valueOf(params.get(1));
                         Integer max = Integer.valueOf(params.get(2));
-                        return productoRepository.encontraProductosPorPrecio(min, max);
-                    }
-                    break;
-                case "fecha":
-                    if (params.size() == 3) {
-                        logger.info("Buscando productos por fecha");
-                        String fecha = params.get(1);
-                        String operador = params.get(2);
-                        if (operador.equals("mayor")) {
-                            return productoRepository.encontrarProductosPorFechaMAYOR(fecha);
-                        } else if (operador.equals("menor")) {
-                            return productoRepository.encontrarProductosPorFechaMENOR(fecha);
+                        Collection<Producto> productos = productoRepository.encontraProductosPorPrecio(min, max);
+                        if (productos.isEmpty()) {
+                            return new ResponseEntity<>("No se encontraron productos en el rango de precios proporcionado", HttpStatus.NOT_FOUND);
                         }
+                        return new ResponseEntity<>(formatProductos(productos), HttpStatus.OK);
+                    } catch (NumberFormatException e) {
+                        return new ResponseEntity<>("Los valores de precio deben ser números", HttpStatus.BAD_REQUEST);
                     }
-                    break;
+                case "fecha":
+                    if (params.size() != 3) {
+                        return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por fecha", HttpStatus.BAD_REQUEST);
+                    }
+                    String fecha = params.get(1);
+                    String operador = params.get(2);
+                    if (!operador.equals("mayor") && !operador.equals("menor")) {
+                        return new ResponseEntity<>("El operador de fecha debe ser 'mayor' o 'menor'", HttpStatus.BAD_REQUEST);
+                    }
+                    Collection<Producto> productos;
+                    if (operador.equals("mayor")) {
+                        productos = productoRepository.encontrarProductosPorFechaMAYOR(fecha);
+                    } else {
+                        productos = productoRepository.encontrarProductosPorFechaMENOR(fecha);
+                    }
+                    if (productos.isEmpty()) {
+                        return new ResponseEntity<>("No se encontraron productos para la fecha y operador proporcionados", HttpStatus.NOT_FOUND);
+                    }
+                    return new ResponseEntity<>(formatProductos(productos), HttpStatus.OK);
                 case "categoria":
-                    if (params.size() == 2) {
-                        logger.info("Buscando productos por categoria");
-                        Integer cat = Integer.valueOf(params.get(1));
-                        return productoRepository.encontrarProductosPorCategoria(cat);
+                    if (params.size() != 2) {
+                        return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por categoría", HttpStatus.BAD_REQUEST);
                     }
-                    break;
+                    int categoria = Integer.parseInt(params.get(1));
+                    Collection<Producto> productosPorCategoria = productoRepository.encontrarProductosPorCategoria(categoria);
+                    if (productosPorCategoria.isEmpty()) {
+                        return new ResponseEntity<>("No se encontraron productos para la categoría proporcionada", HttpStatus.NOT_FOUND);
+                    }
+                    return new ResponseEntity<>(formatProductos(productosPorCategoria), HttpStatus.OK);
                 default:
-                    return Collections.emptyList();
+                    return new ResponseEntity<>("Tipo de consulta no válido", HttpStatus.BAD_REQUEST);
             }
-
-            return Collections.emptyList();
         } catch (Exception e) {
-            e.printStackTrace();
-            return Collections.emptyList();
+            logger.error("Error al realizar la consulta de productos", e);
+            return new ResponseEntity<>("Error al realizar la consulta de productos", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    
+    private String formatProductos(Collection<Producto> productos) {
+        StringBuilder formattedProductos = new StringBuilder();
+        for (Producto producto : productos) {
+            formattedProductos.append(String.format(
+                "Código de barras: %d, Nombre: %s,  Precio de venta: %d, Presentación: %s, Unidad de medida: %s, Empacado: %s, Fecha de expiración: %s, Categoría: %s\n",
+                producto.getCodBarras(),
+                producto.getNombre(),
+                producto.getPrecioVenta(),
+                producto.getPresentacion(),
+                producto.getUnidadMedida(),
+                producto.getEspEmpacado(),
+                producto.getFechaExp() != null ? producto.getFechaExp().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : "N/A",
+                producto.getCategoria().getNombre()
+            ));
+        }
+        return formattedProductos.toString();
     }
         
 }

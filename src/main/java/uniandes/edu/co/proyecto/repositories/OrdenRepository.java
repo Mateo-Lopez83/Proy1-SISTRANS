@@ -15,7 +15,7 @@ import uniandes.edu.co.proyecto.modelo.Producto;
 @Repository
 public interface OrdenRepository extends JpaRepository<Orden, Integer> {
 
-    @Query(value = "SELECT * FROM ORDENES", nativeQuery = true)
+    @Query(value = "SELECT * FROM ORDENES ORDER BY ORDENES.ID DESC", nativeQuery = true)
     Collection<Orden> darOrdenes();
 
     @Query(value = "SELECT * FROM ORDENES WHERE ID = :idOrden", nativeQuery = true)
