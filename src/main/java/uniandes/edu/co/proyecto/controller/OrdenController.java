@@ -89,18 +89,6 @@ public class OrdenController {
             catch (Exception e) {
                 return new ResponseEntity<String>("No se halló la orden", HttpStatus.INTERNAL_SERVER_ERROR);
             }
-            
-            /* 
-            // Buscamos el id de dicha orden usando los datos de la orden
-            try{ 
-                Orden ordenCreada = ordenRepository.buscarOrden(orden.getFechaEntrega().toString(), orden.getEstado(), orden.getSucursalEnvio(), orden.getProveedor());
-                if (ordenCreada == null) {
-                    return new ResponseEntity<String>("No se halló la orden", HttpStatus.INTERNAL_SERVER_ERROR);
-                }
-            }
-            catch (Exception e) {
-                return new ResponseEntity<String>("No se halló la orden", HttpStatus.INTERNAL_SERVER_ERROR);
-            } */
 
             
             // Ahora se deben agregar los productos a la tabla orden_producto
@@ -150,7 +138,6 @@ public class OrdenController {
                );
            }
 
-
            // Mensaje de salida
             String responseMessage = String.format(
                 "Se ha creado la orden exitosamente, con los siguientes datos:\n" +
@@ -173,42 +160,6 @@ public class OrdenController {
             return new ResponseEntity<>("Error al crear la orden: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-/*
-    @PostMapping("/new/save")
-    public ResponseEntity<String> guardarOrden(@RequestBody Orden orden) {
-        try {
-            if (!"vigente".equalsIgnoreCase(orden.getEstado())) {
-                return new ResponseEntity<>("Estado de nueva orden debe ser 'Vigente'", HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-
-            ordenRepository.insertarOrden(
-                orden.getFechaEntrega().toString(),
-                orden.getEstado(),
-                orden.getSucursalEnvio(),
-                orden.getProveedor()
-            );
-
-            String responseMessage = String.format(
-                "Se ha creado la orden exitosamente, con los siguientes datos:\n" +
-                "fechaCreacion: %s\n" +
-                "fechaEntrega: %s\n" +
-                "estado: %s\n" +
-                "sucursalEnvio: %d\n" +
-                "proveedor: %d",
-                java.time.LocalDate.now().toString(), // Assuming CURRENT_DATE is the current date
-                orden.getFechaEntrega().toString(),
-                orden.getEstado(),
-                orden.getSucursalEnvio(),
-                orden.getProveedor()
-            );
-
-            return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Error al crear la orden: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-     */
 
     @PutMapping("/{id}/update")
     public ResponseEntity<String> actualizarOrden(@PathVariable("id") long id, @RequestBody Map<String, String> estadoMap) {
