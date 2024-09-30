@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import java.util.Collection;
+import java.time.LocalDate;
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.Categoria;
 import uniandes.edu.co.proyecto.modelo.Inventario;
 import uniandes.edu.co.proyecto.modelo.Orden;
@@ -79,12 +81,26 @@ public class OrdenController {
             logger.info("Orden creada con éxito");
             // Hasta aquí ya se creo una orden
 
-            try{ 
-
+            int id_buscado;
+            try{
+                id_buscado = ordenRepository.buscarUltimaOrden();
+                logger.info("ID de la orden creada: " + id_buscado);
             }
             catch (Exception e) {
-                return new ResponseEntity<String>("no se halló", HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<String>("No se halló la orden", HttpStatus.INTERNAL_SERVER_ERROR);
             }
+            
+            /* 
+            // Buscamos el id de dicha orden usando los datos de la orden
+            try{ 
+                Orden ordenCreada = ordenRepository.buscarOrden(orden.getFechaEntrega().toString(), orden.getEstado(), orden.getSucursalEnvio(), orden.getProveedor());
+                if (ordenCreada == null) {
+                    return new ResponseEntity<String>("No se halló la orden", HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            }
+            catch (Exception e) {
+                return new ResponseEntity<String>("No se halló la orden", HttpStatus.INTERNAL_SERVER_ERROR);
+            } */
 
             
             // Ahora se deben agregar los productos a la tabla orden_producto
@@ -113,7 +129,7 @@ public class OrdenController {
                     logger.info("Entro a");
 
                     orden_ProductoRepository.insertarProductoOrden(
-                        Integer.valueOf(16),
+                        id_buscado,
                         prod.getCodBarras(),
                         prod.getCantidad(),
                         prod.getPrecioBodega()
@@ -124,34 +140,32 @@ public class OrdenController {
             } catch (Exception e) {
                 return new ResponseEntity<>("Error al agregar productos a la orden: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
             }
-
-            // Construir la cadena con la información de los productos
-            StringBuilder productosInfo = new StringBuilder();
-            for (ProductoExtra prod : orden.getProductosExtra()) {
-                productosInfo.append(String.format(
-                    "idProducto: %d, cantidad: %d, precio: %.2f\n",
-                    prod.getCodBarras(),
-                    prod.getCantidad(),
-                    prod.getPrecioBodega()
-                ));
-            }
+             
+           // Construir la cadena con la información de los productos
+           String productosInfo = "";
+           for (ProductoExtra prod : orden.getProductosExtra()) {
+               productosInfo += String.format(
+                   "\tidProducto: %d, cantidad: %d, precio: %d\n",
+                   prod.getCodBarras(), prod.getCantidad(), prod.getPrecioBodega()
+               );
+           }
 
 
-            // Mensaje de salida
+           // Mensaje de salida
             String responseMessage = String.format(
                 "Se ha creado la orden exitosamente, con los siguientes datos:\n" +
-                "fechaCreacion: %s\n" +
-                "fechaEntrega: %s\n" +
-                "estado: %s\n" +
-                "sucursalEnvio: %d\n" +
-                "proveedor: %d\n" +
+                "FechaCreacion: %s\n" +
+                "FechaEntrega: %s\n" +
+                "Estado: %s\n" +
+                "SucursalEnvio: %d\n" +
+                "Proveedor: %d\n" +
                 "Productos:\n%s",
                 java.time.LocalDate.now().toString(), // Assuming CURRENT_DATE is the current date
                 orden.getFechaEntrega().toString(),
                 orden.getEstado(),
                 orden.getSucursalEnvio(),
                 orden.getProveedor(),
-                productosInfo.toString()
+                productosInfo
             );
 
             return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);

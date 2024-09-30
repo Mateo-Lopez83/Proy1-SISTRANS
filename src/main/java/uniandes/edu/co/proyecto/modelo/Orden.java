@@ -20,7 +20,7 @@ public class Orden {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    private Integer Id;
+    private int Id;
 
     @Column(name = "FECHA_ENTREGA")
     private LocalDate fechaEntrega;
@@ -54,7 +54,7 @@ public class Orden {
         ;
     }
 
-    public Integer getIdentificador() {
+    public int getIdentificador() {
         return Id;
     }
 
@@ -77,8 +77,8 @@ public class Orden {
         return Proveedor;
     }
 
-    public void setIdentificador(Integer identificador) {
-        Id = identificador;
+    public void setIdentificador(int identificador) {
+        this.Id = identificador;
     }
 
     public void setFechaEntrega(LocalDate fechaEntrega) {
