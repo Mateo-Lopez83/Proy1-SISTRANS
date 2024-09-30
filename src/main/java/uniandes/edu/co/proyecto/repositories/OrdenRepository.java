@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.Orden;
-import uniandes.edu.co.proyecto.modelo.Producto;
+
 
 @Repository
 public interface OrdenRepository extends JpaRepository<Orden, Integer> {

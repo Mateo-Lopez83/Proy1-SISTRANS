@@ -1,13 +1,12 @@
 package uniandes.edu.co.proyecto.controller;
 
 import java.util.Collection;
-import java.time.LocalDate;
+
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,12 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.transaction.Transactional;
-import uniandes.edu.co.proyecto.modelo.Categoria;
-import uniandes.edu.co.proyecto.modelo.Inventario;
 import uniandes.edu.co.proyecto.modelo.Orden;
-import uniandes.edu.co.proyecto.modelo.Orden_Producto;
-import uniandes.edu.co.proyecto.modelo.Producto;
+
 import uniandes.edu.co.proyecto.repositories.OrdenRepository;
 import uniandes.edu.co.proyecto.repositories.Orden_ProductoRepository;
 import uniandes.edu.co.proyecto.modelo.ProductoExtra;
@@ -29,9 +24,6 @@ import uniandes.edu.co.proyecto.repositories.ProductoRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
