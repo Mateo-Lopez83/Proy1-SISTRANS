@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,10 @@ import uniandes.edu.co.proyecto.repositories.InventarioRepository;
 @RestController
 @RequestMapping("/inventarios")
 public class InventarioController {
+    
+    private static final Logger logger = LoggerFactory.getLogger(OrdenController.class);
+
+
     @Autowired
     private InventarioRepository inventarioRepository;
 
@@ -109,7 +115,22 @@ public class InventarioController {
     public ResponseEntity<?> consultaRFC5() {
         try {
             List<Inventario> productoInfo = inventarioRepository.findOcupacionInventario();
+            List<Object[]> productoInfoProveedor = inventarioRepository.findOcupacionInventarioConProveedor();
+            
             StringBuilder responseBuilder = new StringBuilder();
+
+            for (Object[] i : productoInfoProveedor) {
+                String response = String.format(
+                    "Producto código: %s, Producto nombre: %s, Bodega Id: %s, Sucursal: %s, Cantidad Ocupada: %s, Proveedor: %s\n",
+                    i[0],
+                    i[3],
+                    i[1],
+                    i[4],
+                    i[2],
+                    i[5]
+                );
+                responseBuilder.append(response);
+            }
 
             for (Inventario i : productoInfo) {
                 String response = String.format(
@@ -119,10 +140,10 @@ public class InventarioController {
                     i.getInventarioPK().getBodega().getID(),
                     i.getInventarioPK().getBodega().getIdsucursal().getIdSucursal(),
                     i.getCantidadOcupada()
+                    
                 );
                 responseBuilder.append(response);
             }
-
             return new ResponseEntity<>(responseBuilder.toString(), HttpStatus.OK);
 
         }

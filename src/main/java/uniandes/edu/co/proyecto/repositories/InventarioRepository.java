@@ -37,13 +37,16 @@ public interface InventarioRepository extends JpaRepository<Inventario,Inventari
        nativeQuery = true)
     List<Object[]> findOcupacionByCodbarras(@Param("codbarrasList") List<Long> codbarrasList);
 
-/*
-    @Query(value = "SELECT INVENTARIOS.*, RECEPCION_PRODUCTO.PROVEEDOR " +
+
+    @Query(value = "SELECT INVENTARIOS.CODIGOBARRAS, INVENTARIOS.IDBODEGA, INVENTARIOS.CANTIDAD_OCUPADA, " +
+                   "PRODUCTOS.NOMBRE, BODEGAS.IDSUCURSAL, RECEPCION_PRODUCTO.PROVEEDOR " +
                    "FROM INVENTARIOS " +
-                   "INNER JOIN RECEPCION_PRODUCTO  ON INVENTARIOS.IDBODEGA = RECEPCION_PRODUCTO.BODEGA " +
+                   "INNER JOIN RECEPCION_PRODUCTO ON INVENTARIOS.IDBODEGA = RECEPCION_PRODUCTO.BODEGA " +
+                   "INNER JOIN PRODUCTOS ON PRODUCTOS.CODBARRAS = INVENTARIOS.CODIGOBARRAS " +
+                   "INNER JOIN BODEGAS ON BODEGAS.ID = INVENTARIOS.IDBODEGA " +
                    "WHERE INVENTARIOS.CANTIDAD_OCUPADA < INVENTARIOS.MINIMO_RECOMPRA " +
                    "AND INVENTARIOS.CODIGOBARRAS = RECEPCION_PRODUCTO.PRODUCTO", nativeQuery = true)
-    List<Inventario> findOcupacionInventario();*/
+    List<Object[]> findOcupacionInventarioConProveedor();
     
     @Query(value = "SELECT i " +
                    "FROM Inventario i " +
