@@ -6,9 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import uniandes.edu.co.proyecto.modelo.ProductoExtra;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
