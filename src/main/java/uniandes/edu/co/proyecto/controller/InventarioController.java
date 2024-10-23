@@ -76,18 +76,15 @@ public class InventarioController {
     @GetMapping("/consultaRC1")
     public ResponseEntity<?> consultaInventario(@RequestParam(required = true) List<Long> codbarras) {
         try {
-        // Log the parameter
+
         System.out.println("Codbarras List: " + codbarras);
         
-        // Fetch data using the repository method
         List<Object[]> productoInfo = inventarioRepository.findOcupacionByCodbarras(codbarras);
         
         List<ProductoOcupacionDTO> ocupaciones = new ArrayList<>();
         
-        // Check if productoInfo is not null and has values
         if (productoInfo != null && !productoInfo.isEmpty()) {
             for (Object[] row : productoInfo) {
-                // Create a new DTO instance for each row in the result
                 ProductoOcupacionDTO dto = new ProductoOcupacionDTO(
                     ((BigDecimal) row[0]).longValue(), // CODIGOBARRAS
                     ((String) row[1]),                 // NOMBRE

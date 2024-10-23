@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.repositories;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -39,4 +40,20 @@ public interface OrdenRepository extends JpaRepository<Orden, Integer> {
     @Transactional
     @Query(value = "UPDATE ORDENES SET ESTADO = :Estado WHERE ID = :idOrden", nativeQuery = true)
     void actualizarOrden(@Param("Estado") String Estado, @Param("idOrden") long idOrden);
+
+    
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE ORDENES SET ESTADO = 'entregada' WHERE ID = :idOrden", nativeQuery = true)
+    void entregarOrden(@Param("idOrden") long idOrden);
+
+    @Transactional
+    @Query(value = "SELECT PRODUCTOS.CODBARRAS, ORDEN_PRODUCTO.CANTIDAD_PRODUCTO, ORDEN_PRODUCTO.PRECIOBODEGA " +
+    "FROM ORDENES " +
+    "INNER JOIN ORDEN_PRODUCTO ON ORDEN_PRODUCTO.IDORDEN = ORDENES.ID " +
+    "INNER JOIN PROVEEDORES ON PROVEEDORES.NIT = ORDENES.NIT_PROVEEDOR " +
+    "INNER JOIN PRODUCTOS ON ORDEN_PRODUCTO.IDPRODUCTO = PRODUCTOS.CODBARRAS " +
+    "WHERE ORDENES.ID  = :idOrden", nativeQuery = true)
+    List<Object[]> obtenerinfoRF10Ingresos(@Param("idOrden") long idOrden);
+
 }

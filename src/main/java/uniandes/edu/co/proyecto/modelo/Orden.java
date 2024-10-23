@@ -8,7 +8,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import java.util.List;
 
 @Entity

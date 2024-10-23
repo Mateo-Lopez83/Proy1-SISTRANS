@@ -3,8 +3,11 @@ package uniandes.edu.co.proyecto.repositories;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.Inventario;
 import uniandes.edu.co.proyecto.modelo.InventarioPK;
 
@@ -50,6 +53,13 @@ public interface InventarioRepository extends JpaRepository<Inventario,Inventari
                    "FROM Inventario i " +
                    "WHERE i.cantidadOcupada < i.minimoRecompra")
     List<Inventario> findOcupacionInventario();
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO INVENTARIOS (CODIGOBARRAS, IDBODEGA, COSTO_GRUPO_PRODUCTO, CANTIDAD_OCUPADA, MINIMO_RECOMPRA, CAPACIDAD_MAX) " +
+               "SELECT :codbarras, :idbodega, :costogrupo, :cantidad, i.MINIMO_RECOMPRA, i.capacidad_max " +
+               "FROM INVENTARIOS i WHERE i.CODIGOBARRAS = :codbarras AND i.IDBODEGA = :idbodega",nativeQuery = true)
+    void ActualizarInventarios (@Param("codbarras") long codbarras,@Param("idbodega")long idbodega,@Param("costogrupo")long costogrupo,@Param("cantidad")long cantidad );
 
 
 
