@@ -28,16 +28,13 @@ public class IngresoService {
             ingresoRepository.insertarIngreso(idBodega, idOrden);
             List<Object[]> productosAfectados = ordenRepository.obtenerinfoRF10Ingresos(idOrden);
             if (productosAfectados != null && !productosAfectados.isEmpty()) {
-                System.out.println("entramos");
+             
                 for (Object[] row : productosAfectados) {
                     long codbarras = ((BigDecimal) row[0]).longValue();
                     long cantidad = ((BigDecimal) row[1]).longValue();
                     long costo = ((BigDecimal) row[2]).longValue();
-                    System.out.println("CODBARRAS: "+codbarras);
-                    System.out.println("IDBODEGA: "+idBodega);
-                    System.out.println("CANTIDAD: "+cantidad);
                     inventarioRepository.ActualizarInventarios(codbarras,idBodega, costo, cantidad);
-                    System.out.println("logrado 1");
+              
                 }
             }
             else{
