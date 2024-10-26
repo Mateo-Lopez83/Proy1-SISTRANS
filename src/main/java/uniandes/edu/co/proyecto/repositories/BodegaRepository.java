@@ -15,6 +15,15 @@ import uniandes.edu.co.proyecto.modelo.Bodega;
 
 
 public interface BodegaRepository extends JpaRepository<Bodega,Integer>{
+
+    public interface respuestaDocumento{
+        String getSucursal();
+        String getBodega();
+        Long getIdIngreso();
+        String getFecha();
+        String getNombreProvedor();
+    } 
+
     @Query(value ="SELECT * FROM BODEGAS", nativeQuery = true)
     Collection<Bodega> darBodegas();
 
@@ -46,6 +55,14 @@ public interface BodegaRepository extends JpaRepository<Bodega,Integer>{
         "GROUP BY PRODUCTOS.CODBARRAS, PRODUCTOS.NOMBRE, INVENTARIOS.MINIMO_RECOMPRA, INVENTARIOS.CAPACIDAD_MAX", nativeQuery = true)
         Collection<ProductoInventarioDTO> consultarInfoBodegaSucursal(@Param("id") Long id, @Param("idsucursal") Long idsucursal);
 
-    
+    //RFC 6   
+    @Query(value = "SELECT SUCURSALES.nombre as sucursal, BODEGAS.nombre as bodega, INGRESOPRODUCTO.idingreso as idIngreso, INGRESOPRODUCTO.fechaingreso as fecha, PROVEEDORES.nombre as nombreProvedor  \r\n" + //
+        "FROM BODEGAS \r\n" + //
+        "INNER JOIN SUCURSALES ON BODEGAS.IDSUCURSAL = SUCURSALES.IDSUCURSAL \r\n" + //
+        "INNER JOIN INGRESOPRODUCTO ON BODEGAS.ID = INGRESOPRODUCTO.BODEGA \r\n" + //
+        "INNER JOIN ORDENES ON INGRESOPRODUCTO.ORDENCOMPRA = ORDENES.ID \r\n" + //
+        "INNER JOIN PROVEEDORES ON ORDENES.NIT_PROVEEDOR = PROVEEDORES.NIT \r\n" + //
+        "WHERE INGRESOPRODUCTO.fechaingreso >= SYSDATE - 30 AND BODEGAS.ID = :id AND BODEGAS.IDSUCURSAL = :idsucursal", nativeQuery = true)
+        Collection<respuestaDocumento> consultarInfoBodega(@Param("id") Long id, @Param("idsucursal") Long idsucursal);
     
 } 

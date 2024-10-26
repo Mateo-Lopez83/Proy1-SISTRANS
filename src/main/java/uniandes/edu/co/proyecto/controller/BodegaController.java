@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.controller;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import uniandes.edu.DTOs.ProductoInventarioDTO;
 import uniandes.edu.co.proyecto.modelo.Bodega;
 import uniandes.edu.co.proyecto.repositories.BodegaRepository;
+import uniandes.edu.co.proyecto.repositories.BodegaRepository.respuestaDocumento;
+import uniandes.edu.co.proyecto.services.BodegaService;
 
 
 
@@ -77,6 +81,57 @@ public class BodegaController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-    
-    
+
+    @GetMapping("/bodegas/RFC6") 
+    public ResponseEntity<?> consultaBodegaRF6(@RequestBody List<String> params) {
+        if (params.size() != 2) {
+            return new ResponseEntity<>("Número incorrecto de parámetros para la consulta del documento", HttpStatus.BAD_REQUEST);
+        }
+        try {
+            Long id = Long.valueOf(params.get(0));
+            Long idsucursal = Long.valueOf(params.get(1));
+
+            Collection<respuestaDocumento> informacion = BodegaService.getDocumentoIngresoRC(id, idsucursal);
+            respuestaDocumento info = informacion.iterator().next();
+            Map<String, Object> response = new HashMap<>();
+            response.put("sucursal", info.getSucursal());
+            response.put("bodega", info.getBodega());
+            response.put("idIngreso", info.getIdIngreso());
+            response.put("fecha", info.getFecha());
+            response.put("nombreProvedor", info.getNombreProvedor());
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al consultar la información del documento", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @GetMapping("/bodegas/RFC7") 
+    public ResponseEntity<?> consultaBodegaRF7(@RequestBody List<String> params) {
+        if (params.size() != 2) {
+            return new ResponseEntity<>("Número incorrecto de parámetros para la consulta del documento", HttpStatus.BAD_REQUEST);
+        }
+        try {
+            Long id = Long.valueOf(params.get(0));
+            Long idsucursal = Long.valueOf(params.get(1));
+
+            Collection<respuestaDocumento> informacion = BodegaService.getDocumentoIngresoRC(id, idsucursal);
+            respuestaDocumento info = informacion.iterator().next();
+            Map<String, Object> response = new HashMap<>();
+            response.put("sucursal", info.getSucursal());
+            response.put("bodega", info.getBodega());
+            response.put("idIngreso", info.getIdIngreso());
+            response.put("fecha", info.getFecha());
+            response.put("nombreProvedor", info.getNombreProvedor());
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al consultar la información del documento", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
+
+
+
+
+            
+           
