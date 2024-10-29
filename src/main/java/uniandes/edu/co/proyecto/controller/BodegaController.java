@@ -29,6 +29,9 @@ public class BodegaController {
     @Autowired
     private BodegaRepository bodegaRepository;
 
+    @Autowired
+    private BodegaService bodegaService;
+
     @GetMapping("/bodegas")
     public Collection<Bodega> bodegas(){
         return bodegaRepository.darBodegas();
@@ -91,7 +94,7 @@ public class BodegaController {
             Long id = Long.valueOf(params.get(0));
             Long idsucursal = Long.valueOf(params.get(1));
 
-            Collection<respuestaDocumento> informacion = BodegaService.getDocumentoIngresoRC(id, idsucursal);
+            Collection<respuestaDocumento> informacion = bodegaService.getDocumentoIngresoS(id, idsucursal);
             respuestaDocumento info = informacion.iterator().next();
             Map<String, Object> response = new HashMap<>();
             response.put("sucursal", info.getSucursal());
@@ -115,7 +118,7 @@ public class BodegaController {
             Long id = Long.valueOf(params.get(0));
             Long idsucursal = Long.valueOf(params.get(1));
 
-            Collection<respuestaDocumento> informacion = BodegaService.getDocumentoIngresoRC(id, idsucursal);
+            Collection<respuestaDocumento> informacion = bodegaService.getDocumentoIngresoRC(id, idsucursal);
             respuestaDocumento info = informacion.iterator().next();
             Map<String, Object> response = new HashMap<>();
             response.put("sucursal", info.getSucursal());
