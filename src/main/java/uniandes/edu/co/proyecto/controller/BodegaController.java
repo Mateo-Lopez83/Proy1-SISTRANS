@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -91,25 +93,36 @@ public class BodegaController {
             return new ResponseEntity<>("Número incorrecto de parámetros para la consulta del documento", HttpStatus.BAD_REQUEST);
         }
         try {
-            Long id = Long.valueOf(params.get(0));
-            Long idsucursal = Long.valueOf(params.get(1));
+        Long id = Long.valueOf(params.get(0));
+        Long idsucursal = Long.valueOf(params.get(1));
 
-            Collection<respuestaDocumento> informacion = bodegaService.getDocumentoIngresoS(id, idsucursal);
-            respuestaDocumento info = informacion.iterator().next();
+        Collection<respuestaDocumento> informacion = bodegaService.getDocumentoIngresoS(id, idsucursal);
+
+        // Verificar cuántos objetos están llegando en la respuesta
+        int cantidadObjetos = informacion.size();
+        System.out.println("Cantidad de objetos en la respuesta: " + cantidadObjetos);
+
+        // Construir una lista de respuestas
+        List<Map<String, Object>> responseList = new ArrayList<>();
+        for (respuestaDocumento info : informacion) {
             Map<String, Object> response = new HashMap<>();
             response.put("sucursal", info.getSucursal());
             response.put("bodega", info.getBodega());
             response.put("idIngreso", info.getIdIngreso());
             response.put("fecha", info.getFecha());
             response.put("nombreProvedor", info.getNombreProvedor());
-            return ResponseEntity.ok(response);
+            responseList.add(response);
+        }
+
+        return ResponseEntity.ok(responseList);
         } catch (Exception e) {
             return new ResponseEntity<>("Error al consultar la información del documento", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
 
-    @GetMapping("/bodegas/RFC7") 
+    @GetMapping("/bodegas/RFC7")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> consultaBodegaRF7(@RequestBody List<String> params) {
         if (params.size() != 2) {
             return new ResponseEntity<>("Número incorrecto de parámetros para la consulta del documento", HttpStatus.BAD_REQUEST);
@@ -117,16 +130,26 @@ public class BodegaController {
         try {
             Long id = Long.valueOf(params.get(0));
             Long idsucursal = Long.valueOf(params.get(1));
-
+    
             Collection<respuestaDocumento> informacion = bodegaService.getDocumentoIngresoRC(id, idsucursal);
-            respuestaDocumento info = informacion.iterator().next();
-            Map<String, Object> response = new HashMap<>();
-            response.put("sucursal", info.getSucursal());
-            response.put("bodega", info.getBodega());
-            response.put("idIngreso", info.getIdIngreso());
-            response.put("fecha", info.getFecha());
-            response.put("nombreProvedor", info.getNombreProvedor());
-            return ResponseEntity.ok(response);
+    
+            // Verificar cuántos objetos están llegando en la respuesta
+            int cantidadObjetos = informacion.size();
+            System.out.println("Cantidad de objetos en la respuesta: " + cantidadObjetos);
+    
+            // Construir una lista de respuestas
+            List<Map<String, Object>> responseList = new ArrayList<>();
+            for (respuestaDocumento info : informacion) {
+                Map<String, Object> response = new HashMap<>();
+                response.put("sucursal", info.getSucursal());
+                response.put("bodega", info.getBodega());
+                response.put("idIngreso", info.getIdIngreso());
+                response.put("fecha", info.getFecha());
+                response.put("nombreProvedor", info.getNombreProvedor());
+                responseList.add(response);
+            }
+    
+            return ResponseEntity.ok(responseList);
         } catch (Exception e) {
             return new ResponseEntity<>("Error al consultar la información del documento", HttpStatus.INTERNAL_SERVER_ERROR);
         }
