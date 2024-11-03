@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.services;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -19,9 +21,14 @@ public class BodegaService {
     
     @Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
     public Collection<respuestaDocumento> getDocumentoIngresoS(long id, long idsucursal) throws Exception {
+        Date fechaActual = new Date(System.currentTimeMillis());
+        Date fechaLimite = new Date(fechaActual.getTime() - TimeUnit.DAYS.toMillis(30));
+        System.out.println("Fecha limite: " + fechaLimite);
         try {
+            Collection<respuestaDocumento> respuesta= bodegaRepository.consultarInfoBodega(id,idsucursal, fechaLimite);
             Thread.sleep(30000);
-            return bodegaRepository.consultarInfoBodega(id,idsucursal);
+            return respuesta;
+            
         } catch (InterruptedException e) {
             throw new Exception("Error en la espera", e);
         }
@@ -33,8 +40,10 @@ public class BodegaService {
     @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
     public Collection<respuestaDocumento> getDocumentoIngresoRC(long id, long idsucursal) throws Exception {
         try {
+            Date fechaActual = new Date(System.currentTimeMillis());
+            Date fechaLimite = new Date(fechaActual.getTime() - TimeUnit.DAYS.toMillis(30));
             Thread.sleep(30000);
-            return bodegaRepository.consultarInfoBodega(id,idsucursal);
+            return bodegaRepository.consultarInfoBodega(id,idsucursal,fechaLimite);
         } catch (InterruptedException e) {
             throw new Exception("Error en la espera", e);
         }
