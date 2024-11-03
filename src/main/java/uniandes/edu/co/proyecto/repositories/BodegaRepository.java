@@ -62,7 +62,7 @@ public interface BodegaRepository extends JpaRepository<Bodega,Integer>{
         "INNER JOIN INGRESOPRODUCTO ON BODEGAS.ID = INGRESOPRODUCTO.BODEGA \r\n" + //
         "INNER JOIN ORDENES ON INGRESOPRODUCTO.ORDENCOMPRA = ORDENES.ID \r\n" + //
         "INNER JOIN PROVEEDORES ON ORDENES.NIT_PROVEEDOR = PROVEEDORES.NIT \r\n" + //
-        "WHERE INGRESOPRODUCTO.fechaingreso >= :fechaLimite AND BODEGAS.ID = :id AND BODEGAS.IDSUCURSAL = :idsucursal", nativeQuery = true)
-        Collection<respuestaDocumento> consultarInfoBodega(@Param("id") Long id, @Param("idsucursal") Long idsucursal, @Param("fechaLimite") java.util.Date fechaLimite);
+        "WHERE INGRESOPRODUCTO.fechaingreso >= SYSDATE - 30 AND BODEGAS.ID = :id AND BODEGAS.IDSUCURSAL = :idsucursal", nativeQuery = true)
+        Collection<respuestaDocumento> consultarInfoBodega(@Param("id") Long id, @Param("idsucursal") Long idsucursal);
     
 } 

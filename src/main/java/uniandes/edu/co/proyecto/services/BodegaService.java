@@ -25,7 +25,7 @@ public class BodegaService {
         Date fechaLimite = new Date(fechaActual.getTime() - TimeUnit.DAYS.toMillis(30));
         System.out.println("Fecha limite: " + fechaLimite);
         try {
-            Collection<respuestaDocumento> respuesta= bodegaRepository.consultarInfoBodega(id,idsucursal, fechaLimite);
+            Collection<respuestaDocumento> respuesta= bodegaRepository.consultarInfoBodega(id,idsucursal);
             Thread.sleep(30000);
             return respuesta;
             
@@ -43,7 +43,7 @@ public class BodegaService {
             Date fechaActual = new Date(System.currentTimeMillis());
             Date fechaLimite = new Date(fechaActual.getTime() - TimeUnit.DAYS.toMillis(30));
             Thread.sleep(30000);
-            return bodegaRepository.consultarInfoBodega(id,idsucursal,fechaLimite);
+            return bodegaRepository.consultarInfoBodega(id,idsucursal);
         } catch (InterruptedException e) {
             throw new Exception("Error en la espera", e);
         }
