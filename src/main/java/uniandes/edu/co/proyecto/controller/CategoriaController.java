@@ -28,19 +28,34 @@ public class CategoriaController {
     public Collection<Categoria> categorias(){
         return categoriaRepository.darCategorias();
     }
+
     @GetMapping("/categorias/{id}")
     public ResponseEntity<Categoria> categoria(@PathVariable("id") long id) {
-    try {
-        Categoria categoria = categoriaRepository.darCategoria(id);  // Pass the 'id' from the URL
-        if (categoria != null) {
-            return new ResponseEntity<>(categoria, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);  // Return 404 if not found
+        try {
+            Categoria categoria = categoriaRepository.darCategoria(id);  // Pass the 'id' from the URL
+            if (categoria != null) {
+                return new ResponseEntity<>(categoria, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);  // Return 404 if not found
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);  // Handle exceptions
         }
-    } catch (Exception e) {
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);  // Handle exceptions
     }
-}
+
+    @GetMapping("/categorias/nom/{nombre}")
+    public ResponseEntity<Categoria> categoria(@PathVariable("nombre") String nombre) {
+        try {
+            Categoria categoria = categoriaRepository.darCategoriaNom(nombre);  // Pass the 'nombre' from the URL
+            if (categoria != null) {
+                return new ResponseEntity<>(categoria, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);  // Return 404 if not found
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);  // Handle exceptions
+        }
+    }
     
 
     @PostMapping("/categorias/new/save")

@@ -110,45 +110,42 @@ public class InventarioController {
     // (Cantidad_ocupada < Minimo_recompra en inventario)
     // Mostar producto.nom , producto.id , bodega.id (en que está bajo), bodega.sucursal, 
     // proveedor.nit (proveedores que se les haya comprado antes) , inventario.cantidad_ocupada
-    @GetMapping("/RFC5")
+        @GetMapping("/RFC5")
     public ResponseEntity<?> consultaRFC5() {
         try {
             List<Inventario> productoInfo = inventarioRepository.findOcupacionInventario();
             List<Object[]> productoInfoProveedor = inventarioRepository.findOcupacionInventarioConProveedor();
             
-            StringBuilder responseBuilder = new StringBuilder();
-
+            List<Map<String, Object>> responseList = new ArrayList<>();
+    
+            // Procesar productoInfoProveedor
             for (Object[] i : productoInfoProveedor) {
-                String response = String.format(
-                    "Producto código: %s, Producto nombre: %s, Bodega Id: %s, Sucursal: %s, Cantidad Ocupada: %s, Proveedor: %s\n",
-                    i[0],
-                    i[3],
-                    i[1],
-                    i[4],
-                    i[2],
-                    i[5]
-                );
-                responseBuilder.append(response);
+                Map<String, Object> response = new HashMap<>();
+                response.put("productoCodigo", ((BigDecimal) i[0]).longValue());
+                response.put("productoNombre", i[3]);
+                response.put("bodegaId", ((BigDecimal) i[1]).longValue());
+                response.put("sucursal", ((BigDecimal) i[4]).longValue());
+                response.put("cantidadOcupada", ((BigDecimal) i[2]).longValue());
+                response.put("proveedor", i[5]);
+                responseList.add(response);
             }
-
+            /* 
+            // Procesar productoInfo
             for (Inventario i : productoInfo) {
-                String response = String.format(
-                    "Producto código: %s, Producto nombre: %s, Bodega Id: %s, Sucursal: %s, Cantidad Ocupada: %s\n",
-                    i.getInventarioPK().getProducto().getCodBarras(),
-                    i.getInventarioPK().getProducto().getNombre(),
-                    i.getInventarioPK().getBodega().getID(),
-                    i.getInventarioPK().getBodega().getIdsucursal().getIdSucursal(),
-                    i.getCantidadOcupada()
-                    
-                );
-                responseBuilder.append(response);
-            }
-            return new ResponseEntity<>(responseBuilder.toString(), HttpStatus.OK);
-
-        }
-        catch (Exception e) {
-            e.printStackTrace(); 
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+                Map<String, Object> response = new HashMap<>();
+                response.put("productoCodigo", i.getInventarioPK().getProducto().getCodBarras());
+                response.put("productoNombre", i.getInventarioPK().getProducto().getNombre());
+                response.put("bodegaId", i.getInventarioPK().getBodega().getID());
+                response.put("sucursal", i.getInventarioPK().getBodega().getIdsucursal().getIdSucursal());
+                response.put("cantidadOcupada", i.getCantidadOcupada());
+                responseList.add(response);
+            }*/
+    
+            return ResponseEntity.ok(responseList);
+    
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Error al consultar el inventario", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

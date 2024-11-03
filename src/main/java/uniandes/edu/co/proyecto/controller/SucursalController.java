@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+
+import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.modelo.Sucursal;
 import uniandes.edu.co.proyecto.repositories.SucursalRepository;
 
@@ -42,17 +44,20 @@ public class SucursalController {
         
     }
     @GetMapping("/sucursales/consulta")
-    public Collection<Sucursal> sucursalesConProducto(
+    public ResponseEntity<?> sucursalesConProducto(
             @RequestParam(required = false) Integer CodBarras,
             @RequestParam(required = false) String nombre) {
         
         if (CodBarras != null && nombre != null) {
-            return sucursalRepository.darSucursalesConProducto(CodBarras, nombre);
+            Collection<Sucursal> sucursales = sucursalRepository.darSucursalesConProducto(CodBarras, nombre);
+            return new ResponseEntity<>(sucursales, HttpStatus.OK);
         } else if (CodBarras != null) {
-            return sucursalRepository.darSucursalesConProductoIdentificador(CodBarras); 
+            Collection<Sucursal> sucursales = sucursalRepository.darSucursalesConProductoIdentificador(CodBarras); 
+            return new ResponseEntity<>(sucursales, HttpStatus.OK);
         } else if (nombre != null) {
-            return sucursalRepository.darSucursalesConProductoNombre(nombre); 
-        } else return Collections.emptyList();
+            Collection<Sucursal> sucursales = sucursalRepository.darSucursalesConProductoNombre(nombre);
+            return new ResponseEntity<>(sucursales, HttpStatus.OK);
+        } else return new ResponseEntity<>(Collections.emptyList(), HttpStatus.OK);
     }
 
 }

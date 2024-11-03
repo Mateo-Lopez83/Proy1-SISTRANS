@@ -87,7 +87,7 @@ public class BodegaController {
         }
     }
 
-    @GetMapping("/bodegas/RFC6") 
+    @PostMapping("/bodegas/RFC6") 
     public ResponseEntity<?> consultaBodegaRF6(@RequestBody List<String> params) {
         if (params.size() != 2) {
             return new ResponseEntity<>("Número incorrecto de parámetros para la consulta del documento", HttpStatus.BAD_REQUEST);
@@ -121,7 +121,7 @@ public class BodegaController {
     }
 
 
-    @GetMapping("/bodegas/RFC7")
+    @PostMapping("/bodegas/RFC7")
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> consultaBodegaRF7(@RequestBody List<String> params) {
         if (params.size() != 2) {

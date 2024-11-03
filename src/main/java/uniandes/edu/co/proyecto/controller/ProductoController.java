@@ -129,82 +129,81 @@ public class ProductoController {
         }
     }
     
-    // Hay 4 casos: rango precio, rango fechas, de una sucursal, de una categorí
-    @GetMapping("/consulta")
-    public ResponseEntity<String> sucursalesConProducto(@RequestBody List<String> params) {
-        try {
-            if (params == null || params.isEmpty()) {
-                return new ResponseEntity<>("No se proporcionaron parámetros", HttpStatus.BAD_REQUEST);
-            }
-    
-            String tipoConsulta = params.get(0);
-    
-            switch (tipoConsulta.toLowerCase()) {
-                case "sucursal":
-                    if (params.size() != 2) {
-                        return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por sucursal", HttpStatus.BAD_REQUEST);
-                    }
-                    try {
-                        Integer idsucursal = Integer.valueOf(params.get(1));
-                        Collection<Producto> productos = productoRepository.encontrarProductosPorSucursal(idsucursal);
-                        if (productos.isEmpty()) {
-                            return new ResponseEntity<>("No se encontraron productos para la sucursal proporcionada", HttpStatus.NOT_FOUND);
-                        }
-                        return new ResponseEntity<>(formatProductos(productos), HttpStatus.OK);
-                    } catch (NumberFormatException e) {
-                        return new ResponseEntity<>("El ID de la sucursal debe ser un número", HttpStatus.BAD_REQUEST);
-                    }
-                case "precio":
-                    if (params.size() != 3) {
-                        return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por precio", HttpStatus.BAD_REQUEST);
-                    }
-                    try {
-                        Integer min = Integer.valueOf(params.get(1));
-                        Integer max = Integer.valueOf(params.get(2));
-                        Collection<Producto> productos = productoRepository.encontraProductosPorPrecio(min, max);
-                        if (productos.isEmpty()) {
-                            return new ResponseEntity<>("No se encontraron productos en el rango de precios proporcionado", HttpStatus.NOT_FOUND);
-                        }
-                        return new ResponseEntity<>(formatProductos(productos), HttpStatus.OK);
-                    } catch (NumberFormatException e) {
-                        return new ResponseEntity<>("Los valores de precio deben ser números", HttpStatus.BAD_REQUEST);
-                    }
-                case "fecha":
-                    if (params.size() != 3) {
-                        return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por fecha", HttpStatus.BAD_REQUEST);
-                    }
-                    String fecha = params.get(1);
-                    String operador = params.get(2);
-                    if (!operador.equals("mayor") && !operador.equals("menor")) {
-                        return new ResponseEntity<>("El operador de fecha debe ser 'mayor' o 'menor'", HttpStatus.BAD_REQUEST);
-                    }
-                    Collection<Producto> productos;
-                    if (operador.equals("mayor")) {
-                        productos = productoRepository.encontrarProductosPorFechaMAYOR(fecha);
-                    } else {
-                        productos = productoRepository.encontrarProductosPorFechaMENOR(fecha);
-                    }
-                    if (productos.isEmpty()) {
-                        return new ResponseEntity<>("No se encontraron productos para la fecha y operador proporcionados", HttpStatus.NOT_FOUND);
-                    }
-                    return new ResponseEntity<>(formatProductos(productos), HttpStatus.OK);
-                case "categoria":
-                    if (params.size() != 2) {
-                        return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por categoría", HttpStatus.BAD_REQUEST);
-                    }
-                    int categoria = Integer.parseInt(params.get(1));
-                    Collection<Producto> productosPorCategoria = productoRepository.encontrarProductosPorCategoria(categoria);
-                    if (productosPorCategoria.isEmpty()) {
-                        return new ResponseEntity<>("No se encontraron productos para la categoría proporcionada", HttpStatus.NOT_FOUND);
-                    }
-                    return new ResponseEntity<>(formatProductos(productosPorCategoria), HttpStatus.OK);
-                default:
-                    return new ResponseEntity<>("Tipo de consulta no válido", HttpStatus.BAD_REQUEST);
-            }
-        } catch (Exception e) {
-            logger.error("Error al realizar la consulta de productos", e);
-            return new ResponseEntity<>("Error al realizar la consulta de productos", HttpStatus.INTERNAL_SERVER_ERROR);
+    @PostMapping("/consulta")
+    public ResponseEntity<?> sucursalesConProducto(@RequestBody List<String> params) {
+    try {
+        if (params == null || params.isEmpty()) {
+            return new ResponseEntity<>("No se proporcionaron parámetros", HttpStatus.BAD_REQUEST);
         }
+
+        String tipoConsulta = params.get(0);
+
+        switch (tipoConsulta.toLowerCase()) {
+            case "sucursal":
+                if (params.size() != 2) {
+                    return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por sucursal", HttpStatus.BAD_REQUEST);
+                }
+                try {
+                    Integer idsucursal = Integer.valueOf(params.get(1));
+                    Collection<Producto> productos = productoRepository.encontrarProductosPorSucursal(idsucursal);
+                    if (productos.isEmpty()) {
+                        return new ResponseEntity<>("No se encontraron productos para la sucursal proporcionada", HttpStatus.NOT_FOUND);
+                    }
+                    return new ResponseEntity<>(productos, HttpStatus.OK);
+                } catch (NumberFormatException e) {
+                    return new ResponseEntity<>("El ID de la sucursal debe ser un número", HttpStatus.BAD_REQUEST);
+                }
+            case "precio":
+                if (params.size() != 3) {
+                    return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por precio", HttpStatus.BAD_REQUEST);
+                }
+                try {
+                    Integer min = Integer.valueOf(params.get(1));
+                    Integer max = Integer.valueOf(params.get(2));
+                    Collection<Producto> productos = productoRepository.encontraProductosPorPrecio(min, max);
+                    if (productos.isEmpty()) {
+                        return new ResponseEntity<>("No se encontraron productos en el rango de precios proporcionado", HttpStatus.NOT_FOUND);
+                    }
+                    return new ResponseEntity<>(productos, HttpStatus.OK);
+                } catch (NumberFormatException e) {
+                    return new ResponseEntity<>("Los valores de precio deben ser números", HttpStatus.BAD_REQUEST);
+                }
+            case "fecha":
+                if (params.size() != 3) {
+                    return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por fecha", HttpStatus.BAD_REQUEST);
+                }
+                String fecha = params.get(1);
+                String operador = params.get(2);
+                if (!operador.equals("mayor") && !operador.equals("menor")) {
+                    return new ResponseEntity<>("El operador de fecha debe ser 'mayor' o 'menor'", HttpStatus.BAD_REQUEST);
+                }
+                Collection<Producto> productos;
+                if (operador.equals("mayor")) {
+                    productos = productoRepository.encontrarProductosPorFechaMAYOR(fecha);
+                } else {
+                    productos = productoRepository.encontrarProductosPorFechaMENOR(fecha);
+                }
+                if (productos.isEmpty()) {
+                    return new ResponseEntity<>("No se encontraron productos para la fecha y operador proporcionados", HttpStatus.NOT_FOUND);
+                }
+                return new ResponseEntity<>(productos, HttpStatus.OK);
+            case "categoria":
+                if (params.size() != 2) {
+                    return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por categoría", HttpStatus.BAD_REQUEST);
+                }
+                int categoria = Integer.parseInt(params.get(1));
+                Collection<Producto> productosPorCategoria = productoRepository.encontrarProductosPorCategoria(categoria);
+                if (productosPorCategoria.isEmpty()) {
+                    return new ResponseEntity<>("No se encontraron productos para la categoría proporcionada", HttpStatus.NOT_FOUND);
+                }
+                return new ResponseEntity<>(productosPorCategoria, HttpStatus.OK);
+            default:
+                return new ResponseEntity<>("Tipo de consulta no válido", HttpStatus.BAD_REQUEST);
+        }
+    } catch (Exception e) {
+        logger.error("Error al realizar la consulta de productos", e);
+        return new ResponseEntity<>("Error al realizar la consulta de productos", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
     }
     
     private String formatProductos(Collection<Producto> productos) {

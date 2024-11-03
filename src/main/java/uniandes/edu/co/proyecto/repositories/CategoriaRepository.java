@@ -19,6 +19,9 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
     @Query(value = "SELECT * FROM CATEGORIAS WHERE codigo = :codigo", nativeQuery = true)
     Categoria darCategoria(@Param("codigo") long codigo);
 
+    @Query(value = "SELECT * FROM CATEGORIAS WHERE nombre = :nombre", nativeQuery = true)
+    Categoria darCategoriaNom(@Param("nombre") String nombre);
+
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO CATEGORIAS (nombre, codigo, descripcion, caracteristicas) VALUES (:nombre, categoria_sequence.nextVal, :descripcion, :caracteristicas)", nativeQuery = true)
