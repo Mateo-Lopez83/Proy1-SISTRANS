@@ -25,6 +25,7 @@ public class IngresoService {
     @Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
     public void ingresarIngreso(long idBodega, long idOrden ) throws Exception {
         try{
+            //Operación 1: Registrar el ingreso en la tabla INGRESOPRODUCTO
             ingresoRepository.insertarIngreso(idBodega, idOrden);
             List<Object[]> productosAfectados = ordenRepository.obtenerinfoRF10Ingresos(idOrden);
             if (productosAfectados != null && !productosAfectados.isEmpty()) {
@@ -33,6 +34,7 @@ public class IngresoService {
                     long codbarras = ((BigDecimal) row[0]).longValue();
                     long cantidad = ((BigDecimal) row[1]).longValue();
                     long costo = ((BigDecimal) row[2]).longValue();
+                    //Operación 2: Actualizar la información de los inventarios con los productos ingresados
                     inventarioRepository.ActualizarInventarios(codbarras,idBodega, costo, cantidad);
               
                 }
@@ -40,6 +42,7 @@ public class IngresoService {
             else{
                 System.out.println("hay algo re mal");
             }
+            //Operación 3: Actualizar el estado de la Orden por "ENTREGADO"
             ordenRepository.entregarOrden(idOrden);
 
         }
