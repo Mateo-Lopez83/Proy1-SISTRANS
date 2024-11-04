@@ -46,26 +46,12 @@ public class OrdenController {
 
 
     @GetMapping
-    public ResponseEntity<String> obtenerOrdenes() {
+    public ResponseEntity<?> obtenerOrdenes() {
         Collection<Orden> ordenes = ordenRepository.darOrdenes();
         if (ordenes.isEmpty()) {
             return new ResponseEntity<>("No hay órdenes disponibles", HttpStatus.NOT_FOUND);
         }
-
-        StringBuilder formattedOrdenes = new StringBuilder();
-        for (Orden orden : ordenes) {
-            formattedOrdenes.append(String.format(
-                "ID: %d\nFecha Creación: %s\nFecha Entrega: %s\nEstado: %s\nSucursal Envío: %d\nProveedor: %d\n\n",
-                orden.getIdentificador(),
-                orden.getFechaCreacion().toString(),
-                orden.getFechaEntrega().toString(),
-                orden.getEstado(),
-                orden.getSucursalEnvio(),
-                orden.getProveedor()
-            ));
-        }
-
-        return new ResponseEntity<>(formattedOrdenes.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(ordenes, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

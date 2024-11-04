@@ -38,17 +38,28 @@ public class BodegaController {
     public Collection<Bodega> bodegas(){
         return bodegaRepository.darBodegas();
     }
+
     @PostMapping("/bodegas/new/save")
     public ResponseEntity<String> ciudadGuardar(@RequestBody Bodega bodega) {
-        try{
+        try {
+            // Imprimir los valores recibidos
+
+            // Verificar que el valor de tamanio cumple con la restricción
+            if (bodega.getTAMANIO() <= 0) {
+                return new ResponseEntity<>("El tamaño de la bodega debe ser mayor que 0", HttpStatus.BAD_REQUEST);
+            }
+
+            // Guardar la nueva bodega en la base de datos
             bodegaRepository.insertarBodega(bodega.getNOMBRE(), bodega.getTAMANIO(), bodega.getIdsucursal().getIdSucursal());
-        return new ResponseEntity<>("bodega creada exitosamente", HttpStatus.CREATED);
-        }
-        catch(Exception e){
+            System.out.println("Bodega creada exitosamente con tamaño: " + bodega.getTAMANIO());
+            return new ResponseEntity<>("Bodega creada exitosamente", HttpStatus.CREATED);
+
+        } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>("Error al crear la bodega", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
     }
+
     @DeleteMapping("/bodegas/{id}/delete")
     public ResponseEntity<String> bodegaBorrar(@PathVariable("id") long id) {
         try {
