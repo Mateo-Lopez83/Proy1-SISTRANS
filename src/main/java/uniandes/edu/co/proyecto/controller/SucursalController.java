@@ -33,7 +33,7 @@ public class SucursalController {
     public ResponseEntity<String> sucursalGuardar(@RequestBody Sucursal sucursal) {
         try{
          
-            sucursalRepository.save(sucursal);
+            sucursalRepository.insertarSucursal(sucursal);
             return new ResponseEntity<>("Sucursal creada exitosamente", HttpStatus.CREATED);
         }
         catch(Exception e){
