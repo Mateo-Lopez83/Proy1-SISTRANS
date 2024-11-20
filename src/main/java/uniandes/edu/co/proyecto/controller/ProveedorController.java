@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.controller;
-
+/* 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,3 +63,4 @@ public class ProveedorController {
     
     
 }
+ */

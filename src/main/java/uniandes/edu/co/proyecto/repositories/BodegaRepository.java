@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.repositories;
-
+/* 
 import java.util.Collection;
 
 
@@ -43,7 +43,7 @@ public interface BodegaRepository extends MongoRepository<Bodega,Integer>{
     @Query(value="{_id:?0}")
     @Update("{$set:{nombre:?1,tamanio:?2}}")
     void actualizarBodega(int id, String nombre, int tamanio);
-    /*
+    
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM BODEGAS WHERE id = :id", nativeQuery = true)
@@ -67,5 +67,6 @@ public interface BodegaRepository extends MongoRepository<Bodega,Integer>{
         "INNER JOIN PROVEEDORES ON ORDENES.NIT_PROVEEDOR = PROVEEDORES.NIT \r\n" + //
         "WHERE INGRESOPRODUCTO.fechaingreso >= SYSDATE - 30 AND BODEGAS.ID = :id AND BODEGAS.IDSUCURSAL = :idsucursal", nativeQuery = true)
         Collection<respuestaDocumento> consultarInfoBodega(@Param("id") Long id, @Param("idsucursal") Long idsucursal);
-    */
+    
 } 
+ */

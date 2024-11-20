@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.repositories;
-
+/* 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -91,3 +91,4 @@ public interface ProductoRepository extends JpaRepository<Producto,Integer>{
     @Query(value = "SELECT * FROM PRODUCTOS" , nativeQuery = true)
     Collection<Producto> encontrarProductos();
 }
+ */

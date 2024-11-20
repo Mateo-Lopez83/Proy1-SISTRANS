@@ -1,4 +1,29 @@
 package uniandes.edu.co.proyecto.repositories;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
+import uniandes.edu.co.proyecto.modelo.Sucursal;
+
+public interface SucursalRepository extends MongoRepository<Sucursal,Integer>{
+
+    @Query(value = "{}")
+    List<Sucursal> darSucursales();
+
+    default void insertarSucursal (Sucursal sucursal){
+        save(sucursal);
+    }
+
+}
+
+
+
+
+
+
+/* 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -66,3 +91,4 @@ public interface SucursalRepository extends JpaRepository<Sucursal, Integer>{
 
     
 }
+*/

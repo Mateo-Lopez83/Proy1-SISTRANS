@@ -1,14 +1,13 @@
 package uniandes.edu.co.proyecto.controller;
 
 import java.util.Collection;
-import java.util.Collections;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.modelo.Sucursal;
 import uniandes.edu.co.proyecto.repositories.SucursalRepository;
 
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -30,6 +29,20 @@ public class SucursalController {
     public Collection<Sucursal> sucursales(){
         return sucursalRepository.darSucursales();
     }
+    @PostMapping("/sucursales/new/save")
+    public ResponseEntity<String> sucursalGuardar(@RequestBody Sucursal sucursal) {
+        try{
+            System.out.println("Nombre:"+sucursal.getNombre());
+            System.out.println("Direccion:"+sucursal.getDireccion());
+            sucursalRepository.save(sucursal);
+            return new ResponseEntity<>("Sucursal creada exitosamente", HttpStatus.CREATED);
+        }
+        catch(Exception e){
+            e.printStackTrace(); 
+            return new ResponseEntity<>("Error al crear la sucursal", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
     /*
     @PostMapping("/sucursales/new/save")
     public ResponseEntity<String> sucursalGuardar(@RequestBody Sucursal sucursal) {
@@ -42,7 +55,7 @@ public class SucursalController {
             return new ResponseEntity<>("Error al crear la sucursal", HttpStatus.INTERNAL_SERVER_ERROR);
         }
      
-    }*/
+    }
     @GetMapping("/sucursales/consulta")
     public ResponseEntity<?> sucursalesConProducto(
             @RequestParam(required = false) Integer CodBarras,
@@ -58,7 +71,7 @@ public class SucursalController {
             Collection<Sucursal> sucursales = sucursalRepository.darSucursalesConProductoNombre(nombre);
             return new ResponseEntity<>(sucursales, HttpStatus.OK);
         } else return new ResponseEntity<>(Collections.emptyList(), HttpStatus.OK);
-    }
+    }*/
 
 }
     

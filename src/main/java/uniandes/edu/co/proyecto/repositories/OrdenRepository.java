@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.repositories;
-
+/* 
 import java.util.Collection;
 import java.util.List;
 
@@ -57,3 +57,4 @@ public interface OrdenRepository extends JpaRepository<Orden, Integer> {
     List<Object[]> obtenerinfoRF10Ingresos(@Param("idOrden") long idOrden);
 
 }
+ */

@@ -17,13 +17,13 @@ public class Orden {
     @Field("IDPROVEEDOR")
     private int Proveedor;
 
-    @Field("NOMBRE")
+    @Field("FECHAENTREGA")
     private LocalDate fechaEntrega;
 
-    @Field("NOMBRE")
+    @Field("FECHACREACION")
     private LocalDate fechaCreacion;
 
-    @Field("NOMBRE")
+    @Field("ESTADO")
     private String Estado;
 
     @Field("TELEFONO")

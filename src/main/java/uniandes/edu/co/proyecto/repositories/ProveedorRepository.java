@@ -1,4 +1,5 @@
 package uniandes.edu.co.proyecto.repositories;
+/* 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -36,3 +37,4 @@ public interface ProveedorRepository extends JpaRepository<Proveedor, Integer>{
 } 
     
 
+ */

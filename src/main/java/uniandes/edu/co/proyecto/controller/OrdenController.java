@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.controller;
-
+/* 
 import java.util.Collection;
 
 
@@ -61,8 +61,8 @@ public class OrdenController {
             return new ResponseEntity<>("La orden con ese ID no existe", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(orden, HttpStatus.OK);
-    }
-    /*
+    } 
+    
     @PostMapping("/new/save")
     public ResponseEntity<String> guardarOrden(@RequestBody Orden orden) {
         try {
@@ -158,7 +158,7 @@ public class OrdenController {
             return new ResponseEntity<>("Error al crear la orden: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
- */
+ 
     @PutMapping("/{id}/update")
     public ResponseEntity<String> actualizarOrden(@PathVariable("id") long id, @RequestBody Map<String, String> estadoMap) {
         try {
@@ -189,5 +189,6 @@ public class OrdenController {
     }
 }
 
+*/
 
 

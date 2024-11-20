@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.repositories;
-
+/* 
 import uniandes.edu.co.proyecto.modelo.Categoria;
 
 import java.util.Collection;
@@ -35,3 +35,4 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
 
 
 }
+ */

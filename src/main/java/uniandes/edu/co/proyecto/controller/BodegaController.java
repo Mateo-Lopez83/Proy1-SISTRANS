@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.controller;
-
+/* 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ public class BodegaController {
 
 
     
-    /*
+    
     @Autowired
     private BodegaRepository bodegaRepository;
 
@@ -169,10 +169,10 @@ public class BodegaController {
             return new ResponseEntity<>("Error al consultar la información del documento", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-        */
+        
     
 }
-
+ */
 
 
 
