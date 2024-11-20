@@ -32,8 +32,7 @@ public class SucursalController {
     @PostMapping("/sucursales/new/save")
     public ResponseEntity<String> sucursalGuardar(@RequestBody Sucursal sucursal) {
         try{
-            System.out.println("Nombre:"+sucursal.getNombre());
-            System.out.println("Direccion:"+sucursal.getDireccion());
+         
             sucursalRepository.save(sucursal);
             return new ResponseEntity<>("Sucursal creada exitosamente", HttpStatus.CREATED);
         }
