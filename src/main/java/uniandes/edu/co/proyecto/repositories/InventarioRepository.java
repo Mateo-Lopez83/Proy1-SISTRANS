@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.repositories;
-
+/* 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -63,4 +63,4 @@ public interface InventarioRepository extends JpaRepository<Inventario,Inventari
 
 
 
-} 
+} */

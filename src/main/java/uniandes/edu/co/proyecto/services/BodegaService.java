@@ -18,7 +18,7 @@ public class BodegaService {
     public BodegaService(BodegaRepository bodegaRepository) {
         this.bodegaRepository = bodegaRepository;
     }
-    
+    /*
     @Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
     public Collection<respuestaDocumento> getDocumentoIngresoS(long id, long idsucursal) throws Exception {
         try {
@@ -33,7 +33,7 @@ public class BodegaService {
             throw new Exception("Error en la consulta. Se hizo Rollback", ex);
         }
     }
-
+    
     @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
     public Collection<respuestaDocumento> getDocumentoIngresoRC(long id, long idsucursal) throws Exception {
         try {
@@ -46,6 +46,7 @@ public class BodegaService {
             throw new Exception("Error en la consulta. Se hizo Rollback", ex);
         }
     }
+    */
     
     
 }

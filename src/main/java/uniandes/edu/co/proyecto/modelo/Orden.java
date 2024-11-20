@@ -1,40 +1,42 @@
 package uniandes.edu.co.proyecto.modelo;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "ordenes")
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document(collection = "ORDENCOMPRA")
 public class Orden {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    private int Id;
+    private int id;
+    @Field("IDSUCURSAL")
+    private int sucursalEnvio;
 
-    @Column(name = "FECHA_ENTREGA")
+    @Field("IDPROVEEDOR")
+    private int Proveedor;
+
+    @Field("NOMBRE")
     private LocalDate fechaEntrega;
 
-    @Column(name = "FECHA_CREACION")
+    @Field("NOMBRE")
     private LocalDate fechaCreacion;
 
-    @Column(name = "ESTADO")
+    @Field("NOMBRE")
     private String Estado;
 
-    @Column(name = "SUCURSAL_ENVIO")
-    private Integer sucursalEnvio;
+    @Field("TELEFONO")
+    private String telefono;
 
-    @Column(name = "NIT_PROVEEDOR")
-    private Integer Proveedor;
+    //TODO: cambiar esto a una lista de DetalleProductos
+    @Field("DETALLEPRODUCTO")
+    private List<Producto> productos;
+
     
-    @Transient
-    private List<ProductoExtra> productosExtra = new ArrayList<ProductoExtra>();
+    //girl what the HELL IS THIS
+    //@Transient
+    //private List<ProductoExtra> productosExtra = new ArrayList<ProductoExtra>();
 
     public Orden(LocalDate fechaEntrega, LocalDate fechaCreacion, 
                 String Estado, Integer sucursalEnvio, 
@@ -51,7 +53,7 @@ public class Orden {
     }
 
     public int getIdentificador() {
-        return Id;
+        return id;
     }
 
     public LocalDate getFechaEntrega() {
@@ -74,7 +76,7 @@ public class Orden {
     }
 
     public void setIdentificador(int identificador) {
-        this.Id = identificador;
+        this.id = identificador;
     }
 
     public void setFechaEntrega(LocalDate fechaEntrega) {
@@ -97,8 +99,8 @@ public class Orden {
         Proveedor = proveedor;
     }
 
-    public List<ProductoExtra> getProductosExtra() {
+    /*public List<ProductoExtra> getProductosExtra() {
         return productosExtra;
-    }
+    }*/
     
 }

@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.controller;
-
+/* 
 import org.springframework.web.bind.annotation.RestController;
 import uniandes.edu.co.proyecto.services.IngresoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,3 +36,4 @@ public class IngresoController {
     }
     
 
+*/

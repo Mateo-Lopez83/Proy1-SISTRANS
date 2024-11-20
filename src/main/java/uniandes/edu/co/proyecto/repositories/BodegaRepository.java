@@ -3,18 +3,15 @@ package uniandes.edu.co.proyecto.repositories;
 import java.util.Collection;
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.mongodb.repository.Update;
 
-import uniandes.edu.DTOs.ProductoInventarioDTO;
 import uniandes.edu.co.proyecto.modelo.Bodega;
 
 
 
-public interface BodegaRepository extends JpaRepository<Bodega,Integer>{
+public interface BodegaRepository extends MongoRepository<Bodega,Integer>{
 
     public interface respuestaDocumento{
         String getSucursal();
@@ -24,23 +21,29 @@ public interface BodegaRepository extends JpaRepository<Bodega,Integer>{
         String getNombreProvedor();
     } 
 
-    @Query(value ="SELECT * FROM BODEGAS", nativeQuery = true)
+    //@Query(value ="SELECT * FROM BODEGAS", nativeQuery = true)
+    @Query(value="{}")
     Collection<Bodega> darBodegas();
 
-    @Query(value = "SELECT * FROM BODEGAS WHERE ID = :idBodega", nativeQuery = true)
-    Bodega darBodega(@Param("id") long idBodega);
+    //@Query(value = "SELECT * FROM BODEGAS WHERE ID = :idBodega", nativeQuery = true)
+    @Query(value="{_id:?0}")
+    Bodega darBodega(int idBodega);
 
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT INTO BODEGAS (id,nombre,tamanio,idsucursal) VALUES (bodega_sequence.nextVal,:nombre,:tamanio,:idsucursal)", nativeQuery = true)
-    void insertarBodega(@Param("nombre") String nombre,@Param("tamanio") Integer tamanio,@Param("idsucursal") Integer idsucursal);
+    //@Modifying
+    //@Transactional
+    //@Query(value = "INSERT INTO BODEGAS (id,nombre,tamanio,idsucursal) VALUES (bodega_sequence.nextVal,:nombre,:tamanio,:idsucursal)", nativeQuery = true)
+    //void insertarBodega(@Param("nombre") String nombre,@Param("tamanio") Integer tamanio,@Param("idsucursal") Integer idsucursal);
+    default void insertarBodega(Bodega bodega){
+        save(bodega);
+    }
 
-
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE BODEGA SET nombre = :nombre WHERE idciudad = :idciudad", nativeQuery = true)
-    void actualizarBodega(@Param("idciudad") long idciudad, @Param("nombre") String nombre);
-
+    //@Modifying
+    //@Transactional
+    //@Query(value = "UPDATE BODEGA SET nombre = :nombre WHERE idciudad = :idciudad", nativeQuery = true)
+    @Query(value="{_id:?0}")
+    @Update("{$set:{nombre:?1,tamanio:?2}}")
+    void actualizarBodega(int id, String nombre, int tamanio);
+    /*
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM BODEGAS WHERE id = :id", nativeQuery = true)
@@ -64,5 +67,5 @@ public interface BodegaRepository extends JpaRepository<Bodega,Integer>{
         "INNER JOIN PROVEEDORES ON ORDENES.NIT_PROVEEDOR = PROVEEDORES.NIT \r\n" + //
         "WHERE INGRESOPRODUCTO.fechaingreso >= SYSDATE - 30 AND BODEGAS.ID = :id AND BODEGAS.IDSUCURSAL = :idsucursal", nativeQuery = true)
         Collection<respuestaDocumento> consultarInfoBodega(@Param("id") Long id, @Param("idsucursal") Long idsucursal);
-    
+    */
 } 

@@ -1,6 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
-import java.io.Serializable;
 
+/* 
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 public class InventarioPK implements Serializable{
@@ -39,3 +39,4 @@ public class InventarioPK implements Serializable{
     
     
 }
+*/

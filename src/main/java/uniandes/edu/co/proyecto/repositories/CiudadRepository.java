@@ -1,4 +1,5 @@
 package uniandes.edu.co.proyecto.repositories;
+/* 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -34,3 +35,4 @@ public interface CiudadRepository extends JpaRepository<Ciudad, Integer>{
     void eliminarCiudad(@Param("idciudad") long idciudad);
     
 }
+*/

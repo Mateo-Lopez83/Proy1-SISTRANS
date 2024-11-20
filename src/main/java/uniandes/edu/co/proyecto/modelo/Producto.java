@@ -1,52 +1,36 @@
 package uniandes.edu.co.proyecto.modelo;
 
-import java.io.Serializable;
+
 import java.time.LocalDate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
-
-
-@Entity
-@Table(name = "PRODUCTOS")
-public class Producto implements Serializable {
-
+@Document(collection = "PRODUCTOS")
+public class Producto {
+   
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "CODBARRAS")
+    private int id;
+    @Field("CODBARRAS")
     private Integer CodBarras;
-
-    @Column(name = "NOMBRE")
+    @Field("NOMBRE")
     private String nombre;
-
-    @Column(name = "PRECIOVENTA")
+    @Field("PRECIOVENTA")
     private int precioVenta;
-
-    @Column(name = "PRESENTACION")
+    @Field("PRESENTACION")
     private String presentacion;
-
-    @Column(name = "UNIDAD_MEDIDA")
+    @Field("UNIDAD_MEDIDA")
     private String unidadMedida;
-
-    @Column(name = "ESP_EMPACADO")
+    @Field("ESP_EMPACADO")
     private String espEmpacado;
-
-    @Column(name = "FECHA_EXP")
+    @Field("FECHA_EXP")
     private LocalDate fechaExp;
-
-    @ManyToOne
-    @JoinColumn(name = "CATEGORIA", referencedColumnName = "CODIGO")
-    private Categoria categoria;
+    @Field("CATEGORIA")
+    private int categoria;
 
     public Producto(String nombre, int precioVenta, String presentacion, String unidadMedida, String espEmpacado,
-                    LocalDate fechaExp, Categoria categoria) {
+                    LocalDate fechaExp, int categoria) {
         this.nombre = nombre;
         this.precioVenta = precioVenta;
         this.presentacion = presentacion;
@@ -57,7 +41,7 @@ public class Producto implements Serializable {
     }
 
     // Si no tiene fecha de expiracion
-    public Producto(String nombre, int precioVenta, String presentacion, String unidadMedida, String espEmpacado, Categoria categoria) {
+    public Producto(String nombre, int precioVenta, String presentacion, String unidadMedida, String espEmpacado, int categoria) {
         this.nombre = nombre;
         this.precioVenta = precioVenta;
         this.presentacion = presentacion;
@@ -125,11 +109,11 @@ public class Producto implements Serializable {
         this.fechaExp = fechaExp;
     }
 
-    public Categoria getCategoria() {
+    public int getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
 }

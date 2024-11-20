@@ -5,7 +5,7 @@ import java.util.List;
 
 
 import org.slf4j.LoggerFactory;
-import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +60,7 @@ public class ProductoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener el producto");
         }
     }
-
+    /* 
     @PostMapping("/new/save")
     public ResponseEntity<String> guardarProducto(@RequestBody Producto producto) {
         try {
@@ -83,7 +83,7 @@ public class ProductoController {
         } catch (Exception e) {
             return new ResponseEntity<>("Error al crear el producto", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
+    }*/
 
     @PutMapping("/{id}/update")
     public ResponseEntity<String> actualizarProducto(@PathVariable("id") long id, @RequestBody Producto producto) {
@@ -205,7 +205,7 @@ public class ProductoController {
         return new ResponseEntity<>("Error al realizar la consulta de productos", HttpStatus.INTERNAL_SERVER_ERROR);
     }
     }
-    
+    /* 
     private String formatProductos(Collection<Producto> productos) {
         StringBuilder formattedProductos = new StringBuilder();
         for (Producto producto : productos) {
@@ -222,7 +222,7 @@ public class ProductoController {
             ));
         }
         return formattedProductos.toString();
-    }
+    }*/
         
 }
 

@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.controller;
-
+/* 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -139,8 +139,7 @@ public class InventarioController {
                 response.put("sucursal", i.getInventarioPK().getBodega().getIdsucursal().getIdSucursal());
                 response.put("cantidadOcupada", i.getCantidadOcupada());
                 responseList.add(response);
-            }*/
-    
+            }
             return ResponseEntity.ok(responseList);
     
         } catch (Exception e) {
@@ -149,3 +148,4 @@ public class InventarioController {
         }
     }
 }
+*/

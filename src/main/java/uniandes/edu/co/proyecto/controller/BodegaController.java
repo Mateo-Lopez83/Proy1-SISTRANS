@@ -28,6 +28,10 @@ import uniandes.edu.co.proyecto.services.BodegaService;
 
 @RestController
 public class BodegaController {
+
+
+    
+    /*
     @Autowired
     private BodegaRepository bodegaRepository;
 
@@ -165,6 +169,8 @@ public class BodegaController {
             return new ResponseEntity<>("Error al consultar la información del documento", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+        */
+    
 }
 
 

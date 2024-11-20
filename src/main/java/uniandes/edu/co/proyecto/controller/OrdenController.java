@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import uniandes.edu.co.proyecto.modelo.Orden;
 
 import uniandes.edu.co.proyecto.repositories.OrdenRepository;
-import uniandes.edu.co.proyecto.repositories.Orden_ProductoRepository;
+
 import uniandes.edu.co.proyecto.modelo.ProductoExtra;
 import uniandes.edu.co.proyecto.repositories.ProductoRepository;
 
@@ -38,8 +38,8 @@ public class OrdenController {
     @Autowired
     private OrdenRepository ordenRepository;
 
-    @Autowired
-    private Orden_ProductoRepository orden_ProductoRepository;
+    //@Autowired
+    //private Orden_ProductoRepository orden_ProductoRepository;
 
     @Autowired
     private ProductoRepository productoRepository;
@@ -62,7 +62,7 @@ public class OrdenController {
         }
         return new ResponseEntity<>(orden, HttpStatus.OK);
     }
-
+    /*
     @PostMapping("/new/save")
     public ResponseEntity<String> guardarOrden(@RequestBody Orden orden) {
         try {
@@ -158,7 +158,7 @@ public class OrdenController {
             return new ResponseEntity<>("Error al crear la orden: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+ */
     @PutMapping("/{id}/update")
     public ResponseEntity<String> actualizarOrden(@PathVariable("id") long id, @RequestBody Map<String, String> estadoMap) {
         try {

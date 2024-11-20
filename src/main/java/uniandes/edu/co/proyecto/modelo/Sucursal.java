@@ -1,78 +1,89 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "SUCURSALES")
+@Document(collection = "SUCURSALES")
 public class Sucursal {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idsucursal", columnDefinition = "NUMBER")
-    private Integer idSucursal;
-    private String nombre;
-    private String direccion;
-    private String telefono;
-    @ManyToOne
-    @JoinColumn(name = "ciudad_asociada", referencedColumnName = "IDCIUDAD")
-    private Ciudad ciudad_Asociada;
+    private int id;
+    private String NOMBRE;
+    private String DIRECCION;
+    private String CIUDAD;
+    private String TELEFONO;
+    private List<Integer> BODEGA;
+    private List <Producto> INVENTARIOS;
+    public String getCIUDAD() {
+        return CIUDAD;
+    }
 
-    public Sucursal(String nombre, String direccion, String telefono, Ciudad ciudad_Asociada) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.ciudad_Asociada = ciudad_Asociada;
+    public void setCIUDAD(String cIUDAD) {
+        CIUDAD = cIUDAD;
+    }
+
+    public List<Integer> getBODEGA() {
+        return BODEGA;
+    }
+
+    public void setBODEGA(List<Integer> bODEGA) {
+        BODEGA = bODEGA;
+    }
+
+    public List<Producto> getINVENTARIOS() {
+        return INVENTARIOS;
+    }
+
+    public void setINVENTARIOS(List<Producto> iNVENTARIOS) {
+        INVENTARIOS = iNVENTARIOS;
+    }
+
+   
+
+    
+
+    public Sucursal(String NOMBRE, String DIRECCION, String TELEFONO, String ciudad_Asociada) {
+        this.NOMBRE = NOMBRE;
+        this.DIRECCION = DIRECCION;
+        this.TELEFONO = TELEFONO;
     }
 
     public Sucursal() {
     ;}
 
     public Integer getIdSucursal() {
-        return idSucursal;
+        return id;
     }
 
     public String getNombre() {
-        return nombre;
+        return NOMBRE;
     }
 
     public String getDireccion() {
-        return direccion;
+        return DIRECCION;
     }
 
     public String getTelefono() {
-        return telefono;
+        return TELEFONO;
     }
 
-    public Ciudad getCiudad_Asociada() {
-        return ciudad_Asociada;
-    }
 
     public void setIdSucursal(Integer idSucursal) {
-        this.idSucursal = idSucursal;
+        this.id = idSucursal;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String NOMBRE) {
+        this.NOMBRE = NOMBRE;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccion(String DIRECCION) {
+        this.DIRECCION = DIRECCION;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public void setCiudad_Asociada(Ciudad ciudad_Asociada) {
-        this.ciudad_Asociada = ciudad_Asociada;
+    public void setTelefono(String TELEFONO) {
+        this.TELEFONO = TELEFONO;
     }
 
     

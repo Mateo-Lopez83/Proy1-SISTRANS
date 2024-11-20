@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.repositories;
-
+/*
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,7 +15,7 @@ public interface IngresoRepository extends JpaRepository<Ingreso,Integer>{
     void insertarIngreso(@Param("bodega") long bodega, @Param("orden") long orden);
 
     
-    /*@Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     @Query(value = "SELECT INGRESOPRODUCTO.*, ORDENES.SUCURSAL_ENVIO, PROVEEDORES.NIT,PROVEEDORES.nombre as nombre_proveedor"+
                 ",PRODUCTOS.NOMBRE as nombre_producto, ORDEN_PRODUCTO.CANTIDAD_PRODUCTO, ORDEN_PRODUCTO.PRECIOBODEGA" + 
                 "FROM INGRESOPRODUCTO" + //
@@ -34,8 +34,8 @@ public interface IngresoRepository extends JpaRepository<Ingreso,Integer>{
                 "INNER JOIN PROVEEDORES ON PROVEEDORES.NIT = ORDENES.NIT_PROVEEDOR " + 
                 "INNER JOIN PRODUCTOS ON ORDEN_PRODUCTO.IDPRODUCTO = PRODUCTOS.CODBARRAS" + 
                 "WHERE INGRESOPRODUCTO.IDINGRESO = :idIngreso;")
-    List<Object[]> obtenerinfoRF10Ingresos(@Param("idIngreso") long idIngreso);*/
+    List<Object[]> obtenerinfoRF10Ingresos(@Param("idIngreso") long idIngreso);
 
 
     
-} 
+}  */

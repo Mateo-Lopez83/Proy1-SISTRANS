@@ -1,41 +1,21 @@
 package uniandes.edu.co.proyecto.modelo;
-import java.io.Serializable;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-
-
-@Entity
-@Table(name = "BODEGAS")
-public class Bodega implements Serializable{
+@Document(collection = "BODEGAS")
+public class Bodega{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(name = "id", columnDefinition = "NUMBER")
     private int id;
-
-    //@Column(name = "nombre", columnDefinition = "VARCHAR2(255)")
-    private String nombre;
-
-    //@Column(name = "tamanio", columnDefinition = "NUMBER")
-    private int tamanio;
-
-    @ManyToOne
-    @JoinColumn(name = "IDSUCURSAL", referencedColumnName = "IDSUCURSAL")
-    private Sucursal idsucursal;
-
+    private String NOMBRE;
+    private int TAMANIO;
     public Bodega() {;
     }
 
     public Bodega(String nombre, Integer tamanio, Sucursal Sucursal_Asociada) {
-        this.nombre = nombre;
-        this.tamanio = tamanio;
-        this.idsucursal = Sucursal_Asociada;
+        this.NOMBRE = nombre;
+        this.TAMANIO = tamanio;
     }
 
     
@@ -49,29 +29,19 @@ public class Bodega implements Serializable{
     }
 
     public String getNOMBRE() {
-        return nombre;
+        return NOMBRE;
     }
 
     public void setNOMBRE(String nOMBRE) {
-        nombre = nOMBRE;
+        NOMBRE = nOMBRE;
     }
 
     public Integer getTAMANIO() {
-        return tamanio;
+        return TAMANIO;
     }
 
     public void setTAMANIO(Integer tAMANIO) {
-        tamanio = tAMANIO;
+        TAMANIO = tAMANIO;
     }
-
-    public Sucursal getIdsucursal() {
-        return idsucursal;
-    }
-
-    public void setIdsucursal(Sucursal idsucursal) {
-        this.idsucursal = idsucursal;
-    }
-    
-    
     
 }

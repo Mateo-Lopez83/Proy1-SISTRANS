@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.repositories;
-
+/* 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,3 +31,4 @@ public interface Orden_ProductoRepository extends JpaRepository<Orden_Producto, 
     @Query(value = "UPDATE ORDENES SET ESTADO = :Estado WHERE ID = :idOrden", nativeQuery = true)
     void actualizarOrden(@Param("Estado") String Estado, @Param("idOrden") long idOrden);
 }
+*/

@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.services;
-
+/*
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -52,3 +52,4 @@ public class IngresoService {
     }
     
 }
+ */

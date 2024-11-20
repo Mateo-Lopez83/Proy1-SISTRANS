@@ -1,20 +1,29 @@
 package uniandes.edu.co.proyecto.modelo;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-@Entity
-@Table(name = "proveedores")
+@Document(collection = "PROVEEDORES")
 public class Proveedor {
 
     @Id
-    private Integer NIT;
+    private int id;
+    @Field("NIT")
+    private int NIT;
+    @Field("NOMBRE")
     private String nombre;
+    @Field("DIRECCION")
     private String direccion;
-    //@Column(name = "nombrecontacto")
+    
+    @Field("NOMBRECONTACTO")
     private String nombrecontacto;
+    @Field("TELCONTACTO")
     private String telcontacto;
+    //TODO: crear una nueva clase para guardar los elementos de la lista llamad Recepcion
+    @Field("RECEPCIONPRODUCTO")
+    private List<Producto> recepcion_producto;
 
     public Proveedor(Integer NIT, String nombre, String direccion, String nombreContacto, String telefonoContacto) {
         this.NIT = NIT;

@@ -30,7 +30,7 @@ public class SucursalController {
     public Collection<Sucursal> sucursales(){
         return sucursalRepository.darSucursales();
     }
-
+    /*
     @PostMapping("/sucursales/new/save")
     public ResponseEntity<String> sucursalGuardar(@RequestBody Sucursal sucursal) {
         try{
@@ -41,8 +41,8 @@ public class SucursalController {
             e.printStackTrace(); 
             return new ResponseEntity<>("Error al crear la sucursal", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
-    }
+     
+    }*/
     @GetMapping("/sucursales/consulta")
     public ResponseEntity<?> sucursalesConProducto(
             @RequestParam(required = false) Integer CodBarras,

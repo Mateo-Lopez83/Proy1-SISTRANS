@@ -1,6 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
-
+/* 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -72,4 +72,4 @@ public class Orden_Producto {
     public int hashCode() {
         return orden_ProductoPK != null ? orden_ProductoPK.hashCode() : 0;
     }
-}
+}*/

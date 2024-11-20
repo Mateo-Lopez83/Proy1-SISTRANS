@@ -1,21 +1,22 @@
 package uniandes.edu.co.proyecto.modelo;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "categorias")
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document(collection = "CATEGORIAS")
 public class Categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer codigo;
+    private int id;
+    
+    @Field("NOMBRE")
     private String nombre;
+    @Field("DESCRIPCION")
     private String descripcion;
+    @Field("CARACTERISTICAS")
     private String caracteristicas;
 
     public Categoria(String nombre,  String descripcion, String Caracteristicas) {
@@ -27,10 +28,7 @@ public class Categoria {
     public Categoria() {
     ;}
 
-    public Integer getCodigo() {
-        return codigo;
-    }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -43,9 +41,6 @@ public class Categoria {
         return caracteristicas;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -53,6 +48,14 @@ public class Categoria {
 
     public void setdescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setCaracteristicas_almacenamiento(String Caracteristicas) {
