@@ -20,4 +20,11 @@ public class SucursalRepositoryCustom {
         Update update = new Update().push("BODEGA", idBodega);
         mongoTemplate.updateFirst(query, update, Sucursal.class);
     }
+    
+    public void eliminarBodegaSucursal(int idSucursal, int idBodega) {
+        Query query = new Query(Criteria.where("_id").is(idSucursal));
+        Update update = new Update().pull("BODEGA", idBodega);
+        mongoTemplate.updateFirst(query, update, Sucursal.class);
+    }
+    
 }

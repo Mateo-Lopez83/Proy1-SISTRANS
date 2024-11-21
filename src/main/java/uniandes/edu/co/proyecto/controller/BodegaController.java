@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,6 +42,25 @@ public class BodegaController {
             return new ResponseEntity<>("Error al guardar el id de la bodega en sucursal", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    //TODO:arreglar para que no necesite el id de la sucursal sino que lo encuentre 
+    @DeleteMapping("bodegas/{idsucursal}/{idBodega}/delete")
+    public ResponseEntity<String> bodegasEliminar(@PathVariable("idsucursal") long idsucursal, @PathVariable("idBodega") long idBodega) {
+        try{
+            bodegaRepository.eliminarBodegaporId((int) idBodega);
+            
+        }catch(Exception e){
+            e.printStackTrace(); 
+            return new ResponseEntity<>("Error al eliminar la bodega", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        try{
+            sucursalRepositoryCustom.eliminarBodegaSucursal((int) idsucursal, (int)idBodega);
+            return new ResponseEntity<>("Ambos pasos eliminados exitosamente", HttpStatus.CREATED);
+        }catch(Exception e){
+            e.printStackTrace(); 
+            return new ResponseEntity<>("Error al eliminar el id de la bodega en sucursal", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
 
     
