@@ -2,14 +2,26 @@ package uniandes.edu.co.proyecto.modelo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Document(collection = "BODEGAS")
 public class Bodega{
     @Id
+    @JsonProperty("_id") 
     private int id;
+
+    @Field("NOMBRE")
+    @JsonProperty("NOMBRE")
     private String NOMBRE;
+    
+    @Field("TAMANIO")
+    @JsonProperty("TAMANIO")
     private int TAMANIO;
+
+
     public Bodega() {;
     }
 

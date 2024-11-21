@@ -15,8 +15,10 @@ public interface SucursalRepository extends MongoRepository<Sucursal,Integer>{
     default void insertarSucursal (Sucursal sucursal){
         save(sucursal);
     }
+    
 
 }
+
 
 
 

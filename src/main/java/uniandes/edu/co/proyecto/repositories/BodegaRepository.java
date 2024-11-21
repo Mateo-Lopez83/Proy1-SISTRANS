@@ -1,4 +1,30 @@
 package uniandes.edu.co.proyecto.repositories;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
+import uniandes.edu.co.proyecto.modelo.Bodega;
+
+
+public interface BodegaRepository extends MongoRepository<Bodega,Integer>{
+
+
+    @Query(value = "{}")
+    List<Bodega> darBodegas();
+
+    default void insertarBodega (Bodega bodega){
+        save(bodega);
+    }
+
+    @Query(value = "{_id:?0}", delete = true)
+    void eliminarBodegaporId(int id);
+
+
+}
+
+
 /* 
 import java.util.Collection;
 
