@@ -39,7 +39,7 @@ public ResponseEntity<String> actualizarBar(@PathVariable("id") int id, @Request
         return new ResponseEntity<>("proveedor actualizado exitosamente", HttpStatus.OK);
 
     }catch(Exception e){
-        return new ResponseEntity<>("Error al actualizar el bar:"+ e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>("Error al actualizar el proveedor:"+ e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
