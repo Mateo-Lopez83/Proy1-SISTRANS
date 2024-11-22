@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CategoriaController {
 
     @Autowired
-    private CategoriaRepository proveedorRepository;
+    private CategoriaRepository categoriaRepository;
 
     @PostMapping("/new/save")
     public ResponseEntity<String> crearCategoria(@RequestBody Categoria categoria) {
         try{
-            proveedorRepository.save(categoria);
+            categoriaRepository.save(categoria);
             return new ResponseEntity<>("Categoria creado exitosamente", HttpStatus.CREATED);
         } catch( Exception e) {;
             return new ResponseEntity<>("Error al crear la categoria: "+ e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -38,7 +38,7 @@ public class CategoriaController {
     @GetMapping("/id/{id}")
     public ResponseEntity<List<Categoria>> obtenerCategoriasPorId(@PathVariable("id") int id) {
         try{
-            List<Categoria> categorias = proveedorRepository.darCategoria(id);
+            List<Categoria> categorias = categoriaRepository.darCategoria(id);
             if (categorias != null) {
                 return new ResponseEntity<>(categorias, HttpStatus.OK);
             } else {
@@ -52,7 +52,7 @@ public class CategoriaController {
     @GetMapping("/nombre/{nombre}")
     public ResponseEntity<List<Categoria>> obtenerCategoriasPorNombre(@PathVariable("nombre") String nombre) {
         try{
-            List<Categoria> categorias = proveedorRepository.darCategoriaNom(nombre);
+            List<Categoria> categorias = categoriaRepository.darCategoriaNom(nombre);
             if (categorias != null) {
                 return new ResponseEntity<>(categorias, HttpStatus.OK);
             } else {

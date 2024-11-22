@@ -7,26 +7,45 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Document(collection = "PRODUCTOS")
 public class Producto {
    
     @Id
+    @JsonProperty("_id")
     private int id;
+
     @Field("CODBARRAS")
+    @JsonProperty("CODBARRAS")
     private Integer CodBarras;
+
     @Field("NOMBRE")
+    @JsonProperty("NOMBRE")
     private String nombre;
+
     @Field("PRECIOVENTA")
+    @JsonProperty("PRECIOVENTA")
     private int precioVenta;
+
     @Field("PRESENTACION")
+    @JsonProperty("PRESENTACION")
     private String presentacion;
+
     @Field("UNIDAD_MEDIDA")
+    @JsonProperty("UNIDAD_MEDIDA")
     private String unidadMedida;
+
     @Field("ESP_EMPACADO")
+    @JsonProperty("ESP_EMPACADO")
     private String espEmpacado;
+
     @Field("FECHA_EXP")
+    @JsonProperty("FECHA_EXP")
     private LocalDate fechaExp;
+
     @Field("CATEGORIA")
+    @JsonProperty("CATEGORIA")
     private int categoria;
 
     public Producto(String nombre, int precioVenta, String presentacion, String unidadMedida, String espEmpacado,

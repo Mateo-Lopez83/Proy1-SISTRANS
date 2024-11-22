@@ -1,4 +1,36 @@
 package uniandes.edu.co.proyecto.repositories;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.mongodb.repository.Update;
+
+import uniandes.edu.co.proyecto.modelo.Categoria;
+import uniandes.edu.co.proyecto.modelo.Producto;
+
+public interface ProductoRepository extends MongoRepository<Producto,Integer>{ 
+    
+    default void insertarProveedor(Producto producto){
+        save(producto);
+    }
+
+    @Query("{_id: ?0}")
+    List<Producto> darProducto(int id);
+
+    @Query("{nombre: ?0}")
+    List<Producto> darProductoNom(String nombre);
+
+    @Query("{_id: ?0}")
+    @Update("{$set: {nombre: ?1, precioVenta: ?2, presentacion: ?3, unidadMedida: ?4, espEmpacado: ?5, fechaExp: ?6, categoria: ?7} }")
+    void actualizarProducto(int id, String nombre, int precioVenta, String presentacion, String unidadMedida, String espEmpacado, LocalDate fechaExp, int categoria);
+
+
+
+}
+
+
 /* 
 import java.util.Collection;
 

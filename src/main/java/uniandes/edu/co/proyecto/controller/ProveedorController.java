@@ -32,7 +32,7 @@ public class ProveedorController {
     }
 
 @PostMapping("/{id}/edit/save")
-public ResponseEntity<String> actualizarBar(@PathVariable("id") int id, @RequestBody Proveedor proveedor) {
+public ResponseEntity<String> actualizarProveedor(@PathVariable("id") int id, @RequestBody Proveedor proveedor) {
     try{
         proveedorRepository.actualizarProveedor(id, proveedor.getNIT(), proveedor.getNombre(), proveedor.getDireccion(), proveedor.getNombreContacto(), proveedor.getTelefonoContacto(), proveedor.getRecepcion_producto());
         return new ResponseEntity<>("proveedor actualizado exitosamente", HttpStatus.OK);

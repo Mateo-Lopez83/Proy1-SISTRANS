@@ -1,4 +1,81 @@
 package uniandes.edu.co.proyecto.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import uniandes.edu.co.proyecto.modelo.Categoria;
+import uniandes.edu.co.proyecto.modelo.Producto;
+import uniandes.edu.co.proyecto.repositories.ProductoRepository;
+
+@RestController
+@RequestMapping("/productos")
+public class ProductoController {
+
+    @Autowired
+    private ProductoRepository productoRepository;
+
+    @PostMapping("/new/save")
+    public ResponseEntity<String> crearProducto(@RequestBody Producto producto) {
+        try{
+            productoRepository.save(producto);
+            return new ResponseEntity<>("Producto creado exitosamente", HttpStatus.CREATED);
+        } catch( Exception e) {;
+            return new ResponseEntity<>("Error al crear el producto: "+ e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<List<Producto>> obtenerProductosPorId(@PathVariable("id") int id) {
+        try{
+            List<Producto> productos = productoRepository.darProducto(id);
+            if (productos != null) {
+                return new ResponseEntity<>(productos, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch( Exception e) {;
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<List<Producto>> obtenerProductosPorNombre(@PathVariable("nombre") String nombre) {
+        try{
+            List<Producto> productos = productoRepository.darProductoNom(nombre);
+            if (productos != null) {
+                return new ResponseEntity<>(productos, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch( Exception e) {;
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/{id}/edit/save")
+    public ResponseEntity<String> actualizarProducto(@PathVariable("id") int id, @RequestBody Producto producto) {
+        try{
+            productoRepository.actualizarProducto(id, producto.getNombre(), producto.getPrecioVenta(), producto.getPresentacion(), producto.getUnidadMedida(), producto.getEspEmpacado(), producto.getFechaExp(), producto.getCategoria());
+            return new ResponseEntity<>("Producto actualizado exitosamente", HttpStatus.OK);
+
+        }catch(Exception e){
+            return new ResponseEntity<>("Error al actualizar el producto:"+ e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    
+
+}
 /* 
 import java.util.Collection;
 import java.util.List;
