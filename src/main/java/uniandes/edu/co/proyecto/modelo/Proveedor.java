@@ -33,7 +33,7 @@ public class Proveedor {
 
     @Field("TELCONTACTO")
     @JsonProperty("TELCONTACTO")
-    private String telcontacto;
+    private int telcontacto;
 
 
     //TODO: crear una nueva clase para guardar los elementos de la lista llamad Recepcion
@@ -53,6 +53,10 @@ public class Proveedor {
         @Field("IDORDEN")
         @JsonProperty("IDORDEN")
         private int idOrden;
+
+        @Field("IDBODEGA")
+        @JsonProperty("IDBODEGA")
+        private int idBodega;
 
         @Field("CANTIDADENTREGADA")
         @JsonProperty("CANTIDADENTREGADA")
@@ -86,6 +90,14 @@ public class Proveedor {
             this.idOrden = idOrden;
         }
 
+        public Integer getIdBodega() {
+            return idBodega;
+        }
+
+        public void setIdBodega(Integer idBodega) {
+            this.idBodega = idBodega;
+        }
+
         public Integer getCantidadEntregada() {
             return cantidadEntregada;
         }
@@ -116,7 +128,7 @@ public class Proveedor {
 
 
 
-    public Proveedor(Integer NIT, String nombre, String direccion, String nombreContacto, String telefonoContacto, List<RECEPCIONPRODUCTO> recepcion_producto) {
+    public Proveedor(Integer NIT, String nombre, String direccion, String nombreContacto, int telefonoContacto, List<RECEPCIONPRODUCTO> recepcion_producto) {
         this.NIT = NIT;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -145,7 +157,7 @@ public class Proveedor {
         return nombrecontacto;
     }
 
-    public String getTelefonoContacto() {
+    public int getTelefonoContacto() {
         return telcontacto;
     }
 
@@ -165,7 +177,7 @@ public class Proveedor {
         this.nombrecontacto = nombreContacto;
     }
 
-    public void setTelefonoContacto(String telefonoContacto) {
+    public void setTelefonoContacto(int telefonoContacto) {
         this.telcontacto = telefonoContacto;
     }
 

@@ -17,7 +17,7 @@ public interface ProveedorRepository extends MongoRepository<Proveedor,Integer>{
 
     @Query("{_id: ?0}")
     @Update("{$set: {NIT: ?1, nombre: ?2, direccion: ?3, nombreContacto: ?4, telefonoContacto: ?5, recepcion_producto: ?6} }")
-    void actualizarProveedor(int id, Integer NIT, String nombre, String direccion, String nombreContacto, String telefonoContacto, List<RECEPCIONPRODUCTO> recepcion_producto);
+    void actualizarProveedor(int id, Integer NIT, String nombre, String direccion, String nombreContacto, int telefonoContacto, List<RECEPCIONPRODUCTO> recepcion_producto);
 
 }
 
