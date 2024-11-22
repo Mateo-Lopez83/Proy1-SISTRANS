@@ -1,4 +1,71 @@
 package uniandes.edu.co.proyecto.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import uniandes.edu.co.proyecto.modelo.Categoria;
+import uniandes.edu.co.proyecto.repositories.CategoriaRepository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+@RestController
+@RequestMapping("/categorias")
+public class CategoriaController {
+
+    @Autowired
+    private CategoriaRepository proveedorRepository;
+
+    @PostMapping("/new/save")
+    public ResponseEntity<String> crearCategoria(@RequestBody Categoria categoria) {
+        try{
+            proveedorRepository.save(categoria);
+            return new ResponseEntity<>("Categoria creado exitosamente", HttpStatus.CREATED);
+        } catch( Exception e) {;
+            return new ResponseEntity<>("Error al crear la categoria: "+ e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<List<Categoria>> obtenerCategoriasPorId(@PathVariable("id") int id) {
+        try{
+            List<Categoria> categorias = proveedorRepository.darCategoria(id);
+            if (categorias != null) {
+                return new ResponseEntity<>(categorias, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch( Exception e) {;
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<List<Categoria>> obtenerCategoriasPorNombre(@PathVariable("nombre") String nombre) {
+        try{
+            List<Categoria> categorias = proveedorRepository.darCategoriaNom(nombre);
+            if (categorias != null) {
+                return new ResponseEntity<>(categorias, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch( Exception e) {;
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+
+}
+
 /* 
 import java.util.Collection;
 

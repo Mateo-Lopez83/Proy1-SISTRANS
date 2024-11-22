@@ -1,4 +1,25 @@
 package uniandes.edu.co.proyecto.repositories;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
+import uniandes.edu.co.proyecto.modelo.Categoria;
+
+public interface CategoriaRepository extends MongoRepository<Categoria,Integer>{ 
+    
+    default void insertarProveedor(Categoria categoria){
+        save(categoria);
+    }
+    
+    @Query("{_id: ?0}")
+    List<Categoria> darCategoria(int id);
+
+    @Query("{nombre: ?0}")
+    List<Categoria> darCategoriaNom(String nombre);
+}
+
 /* 
 import uniandes.edu.co.proyecto.modelo.Categoria;
 
