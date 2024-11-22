@@ -5,32 +5,124 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Document(collection = "PROVEEDORES")
 public class Proveedor {
 
     @Id
+    @JsonProperty("_id") 
     private int id;
+
+    
     @Field("NIT")
+    @JsonProperty("NIT")
     private int NIT;
+
     @Field("NOMBRE")
+    @JsonProperty("NOMBRE")
     private String nombre;
+
     @Field("DIRECCION")
+    @JsonProperty("DIRECCION")
     private String direccion;
     
     @Field("NOMBRECONTACTO")
+    @JsonProperty("NOMBRECONTACTO")
     private String nombrecontacto;
+
     @Field("TELCONTACTO")
+    @JsonProperty("TELCONTACTO")
     private String telcontacto;
+
+
     //TODO: crear una nueva clase para guardar los elementos de la lista llamad Recepcion
     @Field("RECEPCIONPRODUCTO")
-    private List<Producto> recepcion_producto;
+    @JsonProperty("RECEPCIONPRODUCTO")
+    private List<RECEPCIONPRODUCTO> recepcion_producto;
 
-    public Proveedor(Integer NIT, String nombre, String direccion, String nombreContacto, String telefonoContacto) {
+    public static class RECEPCIONPRODUCTO{
+        @Id
+        @JsonProperty("_id")
+        private int id;
+
+        @Field("IDPRODUCTO")
+        @JsonProperty("IDPRODUCTO")
+        private int idProducto;
+
+        @Field("IDORDEN")
+        @JsonProperty("IDORDEN")
+        private int idOrden;
+
+        @Field("CANTIDADENTREGADA")
+        @JsonProperty("CANTIDADENTREGADA")
+        private int cantidadEntregada;
+
+        @Field("COSTOGRUPO")
+        @JsonProperty("COSTOGRUPO")
+        private int costoGrupo;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Integer getIdProducto() {
+            return idProducto;
+        }
+
+        public void setIdProducto(Integer idProducto) {
+            this.idProducto = idProducto;
+        }
+
+        public Integer getIdOrden() {
+            return idOrden;
+        }
+
+        public void setIdOrden(Integer idOrden) {
+            this.idOrden = idOrden;
+        }
+
+        public Integer getCantidadEntregada() {
+            return cantidadEntregada;
+        }
+
+        public void setCantidadEntregada(Integer cantidadEntregada) {
+            this.cantidadEntregada = cantidadEntregada;
+        }
+
+        public Integer getCostoGrupo() {
+            return costoGrupo;
+        }
+
+        public void setCostoGrupo(Integer costoGrupo) {
+            this.costoGrupo = costoGrupo;
+        }
+
+        
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+
+
+
+    public Proveedor(Integer NIT, String nombre, String direccion, String nombreContacto, String telefonoContacto, List<RECEPCIONPRODUCTO> recepcion_producto) {
         this.NIT = NIT;
         this.nombre = nombre;
         this.direccion = direccion;
         this.nombrecontacto = nombreContacto;
         this.telcontacto = telefonoContacto;
+        this.recepcion_producto = recepcion_producto;
     }
 
     public Proveedor() {
@@ -75,6 +167,14 @@ public class Proveedor {
 
     public void setTelefonoContacto(String telefonoContacto) {
         this.telcontacto = telefonoContacto;
+    }
+
+    public List<RECEPCIONPRODUCTO> getRecepcion_producto() {
+        return recepcion_producto;
+    }
+
+    public void setRecepcion_producto(List<RECEPCIONPRODUCTO> recepcion_producto) {
+        this.recepcion_producto = recepcion_producto;
     }
 
     
