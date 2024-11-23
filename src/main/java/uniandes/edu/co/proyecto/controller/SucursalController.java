@@ -1,8 +1,9 @@
 package uniandes.edu.co.proyecto.controller;
 
 import java.util.Collection;
+import java.util.List;
 
-
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import uniandes.edu.co.proyecto.modelo.Sucursal;
 import uniandes.edu.co.proyecto.repositories.SucursalRepository;
+import uniandes.edu.co.proyecto.repositories.SucursalRepositoryCustom;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -24,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class SucursalController {
     @Autowired
     private SucursalRepository sucursalRepository;
+    @Autowired
+    private SucursalRepositoryCustom sucursalRepositoryCustom;
 
     @GetMapping("/sucursales")
     public Collection<Sucursal> sucursales(){
@@ -39,6 +44,18 @@ public class SucursalController {
         catch(Exception e){
             e.printStackTrace(); 
             return new ResponseEntity<>("Error al crear la sucursal", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @GetMapping("/sucursales/RFC2/{idsucursal}")
+    public ResponseEntity<List<Document>> consultaProductosSucursal(@PathVariable("idsucursal") long idsucursal){
+        try{
+         
+            List<Document> resultados = sucursalRepositoryCustom.obtenerInfoProductosSucursal((int)idsucursal);
+            return ResponseEntity.ok(resultados);
+        }
+        catch(Exception e){
+            e.printStackTrace(); 
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
     
