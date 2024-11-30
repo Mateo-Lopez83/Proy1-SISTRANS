@@ -27,6 +27,22 @@ public interface ProductoRepository extends MongoRepository<Producto,Integer>{
     void actualizarProducto(int id, String nombre, int precioVenta, String presentacion, String unidadMedida, String espEmpacado, LocalDate fechaExp, int categoria);
 
 
+    // Del RF1
+    @Query("{PRECIOVENTA: {$gte: ?0, $lte: ?1}}")
+    List<Producto> encontraProductosPorPrecio(int min, int max);
+
+    @Query("{CATEGORIA: ?0}")
+    List<Producto> encontrarProductosPorCategoria(int cat);
+
+    @Query("{FECHA_EXP: {$gt: ?0}}")
+    List<Producto> encontrarProductosPorFechaMAYOR(LocalDate fecha);
+
+    @Query("{FECHA_EXP: {$lt: ?0}}")
+    List<Producto> encontrarProductosPorFechaMENOR(LocalDate fecha);
+
+    @Query("{CODBARRAS: { $in: ?0 }}")
+    List<Producto> findProductosByCodigosBarras(List<Integer> codigosBarras);
+
 
 }
 

@@ -1,6 +1,11 @@
 package uniandes.edu.co.proyecto.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import uniandes.edu.co.proyecto.modelo.Categoria;
 import uniandes.edu.co.proyecto.modelo.Producto;
+import uniandes.edu.co.proyecto.modelo.Sucursal;
+import uniandes.edu.co.proyecto.modelo.Sucursal.Inventario;
 import uniandes.edu.co.proyecto.repositories.ProductoRepository;
+import uniandes.edu.co.proyecto.repositories.SucursalRepository;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -24,6 +33,9 @@ public class ProductoController {
 
     @Autowired
     private ProductoRepository productoRepository;
+
+    @Autowired
+    private SucursalRepository sucursalRepository;
 
     @PostMapping("/new/save")
     public ResponseEntity<String> crearProducto(@RequestBody Producto producto) {
@@ -77,9 +89,90 @@ public class ProductoController {
     }
 
 
-    @GetMapping("/RFC2")
-    public String getMethodName(@RequestParam String param) {
-        return new String();
+    @PostMapping("/RFC1")
+    public ResponseEntity<?> sucursalesConProducto(@RequestBody List<String> params) {
+    try {
+        if (params == null || params.isEmpty()) {
+            return new ResponseEntity<>("No se proporcionaron parámetros", HttpStatus.BAD_REQUEST);
+        }
+
+        String tipoConsulta = params.get(0);
+
+        switch (tipoConsulta.toLowerCase()) {
+            case "sucursal":
+                if (params.size() != 2) {
+                    return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por sucursal", HttpStatus.BAD_REQUEST);
+                }
+                try {
+
+                    int sucursalId = Integer.parseInt(params.get(1));
+                    Sucursal sucursal = sucursalRepository.darSucursal(sucursalId);
+                    if (sucursal == null) {
+                        return new ResponseEntity<>("No se encontró la sucursal proporcionada", HttpStatus.NOT_FOUND);
+                    }
+                    List<Integer> codigos = new ArrayList<>();
+                    for (Inventario inventario : sucursal.getInventarios()) {
+                        codigos.add(inventario.getCodigoBarras());
+                    }
+                    System.out.println(codigos);
+                    
+                    List<Producto> productos = productoRepository.findProductosByCodigosBarras(codigos);
+                    if (productos.isEmpty()) {
+                        return new ResponseEntity<>("No se encontraron productos para la sucursal proporcionada", HttpStatus.NOT_FOUND);
+                    }
+                    return new ResponseEntity<>(productos, HttpStatus.OK);
+                } catch (NumberFormatException e) {
+                    return new ResponseEntity<>("El ID de la sucursal debe ser un número", HttpStatus.BAD_REQUEST);
+                }
+            case "precio":
+                if (params.size() != 3) {
+                    return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por precio", HttpStatus.BAD_REQUEST);
+                }
+                try {
+                    Integer min = Integer.valueOf(params.get(1));
+                    Integer max = Integer.valueOf(params.get(2));
+                    Collection<Producto> productos = productoRepository.encontraProductosPorPrecio(min, max);
+                    if (productos.isEmpty()) {
+                        return new ResponseEntity<>("No se encontraron productos en el rango de precios proporcionado", HttpStatus.NOT_FOUND);
+                    }
+                    return new ResponseEntity<>(productos, HttpStatus.OK);
+                } catch (NumberFormatException e) {
+                    return new ResponseEntity<>("Los valores de precio deben ser números", HttpStatus.BAD_REQUEST);
+                }
+            case "fecha":
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate fecha = LocalDate.parse(params.get(1), formatter);
+                String operador = params.get(2);
+                if (!operador.equals("mayor") && !operador.equals("menor")) {
+                    return new ResponseEntity<>("El operador de fecha debe ser 'mayor' o 'menor'", HttpStatus.BAD_REQUEST);
+                }
+                Collection<Producto> productos;
+                if (operador.equals("mayor")) {
+                    productos = productoRepository.encontrarProductosPorFechaMAYOR(fecha);
+                } else if (operador.equals("menor")) {
+                    productos = productoRepository.encontrarProductosPorFechaMENOR(fecha);
+                }
+                else {return new ResponseEntity<>("Debe ingresar 'mayor' o 'menor' ", HttpStatus.BAD_REQUEST);}
+                if (productos.isEmpty()) {
+                    return new ResponseEntity<>("No se encontraron productos para la fecha y operador proporcionados", HttpStatus.NOT_FOUND);
+                }
+                return new ResponseEntity<>(productos, HttpStatus.OK);
+            case "categoria":
+                if (params.size() != 2) {
+                    return new ResponseEntity<>("Número incorrecto de parámetros para la consulta por categoría", HttpStatus.BAD_REQUEST);
+                }
+                int categoria = Integer.parseInt(params.get(1));
+                Collection<Producto> productosPorCategoria = productoRepository.encontrarProductosPorCategoria(categoria);
+                if (productosPorCategoria.isEmpty()) {
+                    return new ResponseEntity<>("No se encontraron productos para la categoría proporcionada", HttpStatus.NOT_FOUND);
+                }
+                return new ResponseEntity<>(productosPorCategoria, HttpStatus.OK);
+            default:
+                return new ResponseEntity<>("Tipo de consulta no válido", HttpStatus.BAD_REQUEST);
+        }
+    } catch (Exception e) {
+        return new ResponseEntity<>("Error al realizar la consulta de productos", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
     }
     
     

@@ -12,6 +12,9 @@ public interface SucursalRepository extends MongoRepository<Sucursal,Integer>{
     @Query(value = "{}")
     List<Sucursal> darSucursales();
 
+    @Query(value = "{_id: ?0}")
+    Sucursal darSucursal(int id);
+
     default void insertarSucursal (Sucursal sucursal){
         save(sucursal);
     }

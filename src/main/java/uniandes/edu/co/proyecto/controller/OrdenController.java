@@ -58,7 +58,9 @@ public class OrdenController {
             LocalDateTime fechaCreacion = LocalDateTime.now();
             orden.setFechaCreacion(fechaCreacion.toLocalDate());
 
-            
+            if (!"vigente".equals(orden.getEstado())) {
+                return new ResponseEntity<>("Estado de nueva orden debe ser 'vigente'", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
 
             ordenRepository.insertarOrden(orden);
             return new ResponseEntity<>("Orden creada exitosamente", HttpStatus.CREATED);
