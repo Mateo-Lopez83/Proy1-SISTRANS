@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import uniandes.edu.co.proyecto.modelo.Categoria;
 import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.repositories.ProductoRepository;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/productos")
@@ -73,6 +75,13 @@ public class ProductoController {
         }
 
     }
+
+
+    @GetMapping("/RFC2")
+    public String getMethodName(@RequestParam String param) {
+        return new String();
+    }
+    
     
 
 }

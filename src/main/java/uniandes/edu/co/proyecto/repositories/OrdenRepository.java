@@ -1,4 +1,46 @@
 package uniandes.edu.co.proyecto.repositories;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
+import uniandes.edu.co.proyecto.modelo.Orden;
+import uniandes.edu.co.proyecto.modelo.Sucursal;
+
+
+public interface OrdenRepository extends MongoRepository<Orden,Integer>{
+
+    // Todas las ordenes
+    @Query(value = "{}")
+    List<Orden> darOrdenes();
+
+    // Orden por id
+    @Query(value = "{_id: ?0}")
+    Orden darOrden(int id);
+
+    default void insertarOrden (Orden orden){
+        save(orden);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 import java.util.Collection;
 import java.util.List;

@@ -1,4 +1,80 @@
 package uniandes.edu.co.proyecto.controller;
+
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
+
+import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+
+import uniandes.edu.co.proyecto.modelo.Orden;
+import uniandes.edu.co.proyecto.repositories.OrdenRepository;
+//import uniandes.edu.co.proyecto.repositories.OrdenRepositoryCustom;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+@RestController
+@RequestMapping("/ordenes")
+@CrossOrigin(origins = "http://localhost:3000")
+public class OrdenController {
+
+    @Autowired
+    private OrdenRepository ordenRepository;
+    
+    //@Autowired
+    //private OrdenRepositoryCustom ordenRepositoryCustom;
+
+    @GetMapping
+    public ResponseEntity<?> obtenerOrdenes() {
+        Collection<Orden> ordenes = ordenRepository.darOrdenes();
+        if (ordenes.isEmpty()) {
+            return new ResponseEntity<>("No hay órdenes disponibles", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(ordenes, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerOrden(@PathVariable("id") int id) {
+        Orden orden = ordenRepository.darOrden(id);
+        if (orden == null) {
+            return new ResponseEntity<>("La orden con ese ID no existe", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(orden, HttpStatus.OK);
+    } 
+
+
+    @PostMapping("/new/save")
+    public ResponseEntity<String> OrdenGuardar(@RequestBody Orden orden) {
+        try{
+
+            // Asignar la fecha de creación a la fecha actual
+            LocalDateTime fechaCreacion = LocalDateTime.now();
+            orden.setFechaCreacion(fechaCreacion.toLocalDate());
+
+            
+
+            ordenRepository.insertarOrden(orden);
+            return new ResponseEntity<>("Orden creada exitosamente", HttpStatus.CREATED);
+        }
+        catch(Exception e){
+            e.printStackTrace(); 
+            return new ResponseEntity<>("Error al crear la orden", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+
+
+}
+
+
+
 /* 
 import java.util.Collection;
 

@@ -4,18 +4,21 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "ORDENCOMPRA")
 public class Orden {
     @Id
+    @JsonProperty("_id")
     private int id;
+
     @Field("IDSUCURSAL")
     private int sucursalEnvio;
 
     @Field("IDPROVEEDOR")
-    private int Proveedor;
+    private int proveedor;
 
     @Field("FECHAENTREGA")
     private LocalDate fechaEntrega;
@@ -24,28 +27,60 @@ public class Orden {
     private LocalDate fechaCreacion;
 
     @Field("ESTADO")
-    private String Estado;
+    private String estado;
 
-    @Field("TELEFONO")
-    private String telefono;
-
-    //TODO: cambiar esto a una lista de DetalleProductos
     @Field("DETALLEPRODUCTO")
-    private List<Producto> productos;
+    private List<ProductoExtra> productosExtra;
 
+    public static class ProductoExtra {
+        
+        @Id
+        @JsonProperty("_id")
+        private int id;
+
+        @Field("CODIGOBARRASPROD")
+        private int codigoBarras;
+
+        @Field("CANTIDAD_PEDIDA")
+        private int cantidad;
+
+        @Field("PRECIOBODEGA")
+        private int precioBodega;
+
+
+        public int getCodigoBarras() {
+            return codigoBarras;
+        }
+
+        public void setCodigoBarras(int codigoBarras) {
+            this.codigoBarras = codigoBarras;
+        }
+
+        public int getCantidad() {
+            return cantidad;
+        }
+
+        public void setCantidad(int cantidad) {
+            this.cantidad = cantidad;
+        }
+
+        public int getPrecioBodega() {
+            return precioBodega;
+        }
+
+        public void setPrecioBodega(int precioBodega) {
+            this.precioBodega = precioBodega;
+        }
+    }
     
-    //girl what the HELL IS THIS
-    //@Transient
-    //private List<ProductoExtra> productosExtra = new ArrayList<ProductoExtra>();
-
-    public Orden(LocalDate fechaEntrega, LocalDate fechaCreacion, 
-                String Estado, Integer sucursalEnvio, 
-                Integer Proveedor) {
+    public Orden(LocalDate fechaEntrega, LocalDate fechaCreacion, String estado, Integer sucursalEnvio, 
+                int proveedor, List<ProductoExtra> productosExtra) {
+        this.sucursalEnvio = sucursalEnvio;
+        this.proveedor = proveedor;
         this.fechaEntrega = fechaEntrega;
         this.fechaCreacion = fechaCreacion;
-        this.Estado = Estado;
-        this.sucursalEnvio = sucursalEnvio;
-        this.Proveedor = Proveedor;
+        this.estado = estado;
+        this.productosExtra = productosExtra;
     }
 
     public Orden() {
@@ -64,7 +99,7 @@ public class Orden {
     }
 
     public String getEstado() {
-        return Estado;
+        return estado;
     }
 
     public Integer getSucursalEnvio() {
@@ -72,12 +107,9 @@ public class Orden {
     }
 
     public Integer getProveedor() {
-        return Proveedor;
+        return proveedor;
     }
 
-    public void setIdentificador(int identificador) {
-        this.id = identificador;
-    }
 
     public void setFechaEntrega(LocalDate fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
@@ -88,7 +120,7 @@ public class Orden {
     }
 
     public void setEstado(String estado) {
-        Estado = estado;
+        this.estado = estado;
     }
 
     public void setSucursalEnvio(Integer sucursalEnvio) {
@@ -96,11 +128,15 @@ public class Orden {
     }
 
     public void setProveedor(Integer proveedor) {
-        Proveedor = proveedor;
+        this.proveedor = proveedor;
     }
 
-    /*public List<ProductoExtra> getProductosExtra() {
+    public List<ProductoExtra> getProductosExtra() {
         return productosExtra;
-    }*/
-    
+    }
+
+    public void setProductosExtra(List<ProductoExtra> productosExtra) {
+        this.productosExtra = productosExtra;
+    }
+
 }
