@@ -113,9 +113,7 @@ public class ProductoController {
                     List<Integer> codigos = new ArrayList<>();
                     for (Inventario inventario : sucursal.getInventarios()) {
                         codigos.add(inventario.getCodigoBarras());
-                    }
-                    System.out.println(codigos);
-                    
+                    }                    
                     List<Producto> productos = productoRepository.findProductosByCodigosBarras(codigos);
                     if (productos.isEmpty()) {
                         return new ResponseEntity<>("No se encontraron productos para la sucursal proporcionada", HttpStatus.NOT_FOUND);
