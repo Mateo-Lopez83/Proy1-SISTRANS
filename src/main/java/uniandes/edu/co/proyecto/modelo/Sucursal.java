@@ -116,10 +116,6 @@ public class Sucursal {
         bodega = bODEGA;
     }
 
-    public List<Inventario> getinventarios() {
-        return inventarios;
-    }
-
     public void setinventarios(List<Inventario> iNVENTARIOS) {
         inventarios = iNVENTARIOS;
     }
@@ -170,7 +166,9 @@ public class Sucursal {
         this.telefono = telefono;
     }
 
-   
+    public List<Inventario> getInventarios() {
+        return inventarios;
+    }
 
     
 }
