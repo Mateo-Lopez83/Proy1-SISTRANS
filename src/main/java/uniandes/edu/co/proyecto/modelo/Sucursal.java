@@ -170,9 +170,7 @@ public class Sucursal {
         this.telefono = telefono;
     }
 
-    public List<Inventario> getInventarios() {
-        return inventarios;
-    }
+   
 
     
 }
