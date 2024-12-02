@@ -1,0 +1,902 @@
+[
+    {
+        "_id": 1,
+        "NIT": 1,
+        "NOMBRE": "Proveedor 1",
+        "NOMBRECONTACTO": "Contacto 1",
+        "TELCONTACTO": 1000000001,
+        "DIRECCION": "Avenida 1, Ciudad 1",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 9,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 330,
+                "COSTOGRUPO": 4999
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 46,
+                "IDBODEGA": 3,
+                "CANTIDADENTREGADA": 92,
+                "COSTOGRUPO": 1027
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 10,
+                "IDBODEGA": 2,
+                "CANTIDADENTREGADA": 284,
+                "COSTOGRUPO": 4626
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 21,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 470,
+                "COSTOGRUPO": 3276
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 29,
+                "IDBODEGA": 3,
+                "CANTIDADENTREGADA": 268,
+                "COSTOGRUPO": 2372
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 8,
+                "IDBODEGA": 9,
+                "CANTIDADENTREGADA": 251,
+                "COSTOGRUPO": 4777
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 17,
+                "IDBODEGA": 7,
+                "CANTIDADENTREGADA": 94,
+                "COSTOGRUPO": 3424
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 36,
+                "IDBODEGA": 9,
+                "CANTIDADENTREGADA": 464,
+                "COSTOGRUPO": 3288
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 45,
+                "IDBODEGA": 5,
+                "CANTIDADENTREGADA": 380,
+                "COSTOGRUPO": 3272
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 19,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 474,
+                "COSTOGRUPO": 4769
+            }
+        ]
+    },
+    {
+        "_id": 2,
+        "NIT": 2,
+        "NOMBRE": "Proveedor 2",
+        "NOMBRECONTACTO": "Contacto 2",
+        "TELCONTACTO": 1000000002,
+        "DIRECCION": "Avenida 2, Ciudad 2",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 40,
+                "IDBODEGA": 3,
+                "CANTIDADENTREGADA": 109,
+                "COSTOGRUPO": 3291
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 22,
+                "IDBODEGA": 3,
+                "CANTIDADENTREGADA": 17,
+                "COSTOGRUPO": 3834
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 47,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 242,
+                "COSTOGRUPO": 1778
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 25,
+                "IDBODEGA": 3,
+                "CANTIDADENTREGADA": 26,
+                "COSTOGRUPO": 2127
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 40,
+                "IDBODEGA": 6,
+                "CANTIDADENTREGADA": 469,
+                "COSTOGRUPO": 860
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 26,
+                "IDBODEGA": 2,
+                "CANTIDADENTREGADA": 127,
+                "COSTOGRUPO": 2411
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 30,
+                "IDBODEGA": 4,
+                "CANTIDADENTREGADA": 384,
+                "COSTOGRUPO": 3193
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 23,
+                "IDBODEGA": 6,
+                "CANTIDADENTREGADA": 483,
+                "COSTOGRUPO": 1688
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 50,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 26,
+                "COSTOGRUPO": 1442
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 40,
+                "IDBODEGA": 2,
+                "CANTIDADENTREGADA": 456,
+                "COSTOGRUPO": 2840
+            }
+        ]
+    },
+    {
+        "_id": 3,
+        "NIT": 3,
+        "NOMBRE": "Proveedor 3",
+        "NOMBRECONTACTO": "Contacto 3",
+        "TELCONTACTO": 1000000003,
+        "DIRECCION": "Avenida 3, Ciudad 3",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 26,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 236,
+                "COSTOGRUPO": 3065
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 35,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 389,
+                "COSTOGRUPO": 4452
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 33,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 261,
+                "COSTOGRUPO": 1848
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 8,
+                "IDBODEGA": 3,
+                "CANTIDADENTREGADA": 116,
+                "COSTOGRUPO": 4008
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 48,
+                "IDBODEGA": 6,
+                "CANTIDADENTREGADA": 102,
+                "COSTOGRUPO": 1981
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 40,
+                "IDBODEGA": 2,
+                "CANTIDADENTREGADA": 55,
+                "COSTOGRUPO": 866
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 34,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 331,
+                "COSTOGRUPO": 4856
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 16,
+                "IDBODEGA": 6,
+                "CANTIDADENTREGADA": 72,
+                "COSTOGRUPO": 4869
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 44,
+                "IDBODEGA": 3,
+                "CANTIDADENTREGADA": 365,
+                "COSTOGRUPO": 869
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 23,
+                "IDBODEGA": 5,
+                "CANTIDADENTREGADA": 233,
+                "COSTOGRUPO": 1330
+            }
+        ]
+    },
+    {
+        "_id": 4,
+        "NIT": 4,
+        "NOMBRE": "Proveedor 4",
+        "NOMBRECONTACTO": "Contacto 4",
+        "TELCONTACTO": 1000000004,
+        "DIRECCION": "Avenida 4, Ciudad 4",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 47,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 427,
+                "COSTOGRUPO": 530
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 23,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 340,
+                "COSTOGRUPO": 3764
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 11,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 415,
+                "COSTOGRUPO": 1134
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 6,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 41,
+                "COSTOGRUPO": 995
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 14,
+                "IDBODEGA": 6,
+                "CANTIDADENTREGADA": 22,
+                "COSTOGRUPO": 3305
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 37,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 82,
+                "COSTOGRUPO": 2598
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 39,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 99,
+                "COSTOGRUPO": 3673
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 8,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 10,
+                "COSTOGRUPO": 1501
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 23,
+                "IDBODEGA": 9,
+                "CANTIDADENTREGADA": 39,
+                "COSTOGRUPO": 2677
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 39,
+                "IDBODEGA": 2,
+                "CANTIDADENTREGADA": 391,
+                "COSTOGRUPO": 2604
+            }
+        ]
+    },
+    {
+        "_id": 5,
+        "NIT": 5,
+        "NOMBRE": "Proveedor 5",
+        "NOMBRECONTACTO": "Contacto 5",
+        "TELCONTACTO": 1000000005,
+        "DIRECCION": "Avenida 5, Ciudad 5",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 37,
+                "IDBODEGA": 5,
+                "CANTIDADENTREGADA": 308,
+                "COSTOGRUPO": 3276
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 47,
+                "IDBODEGA": 6,
+                "CANTIDADENTREGADA": 425,
+                "COSTOGRUPO": 3000
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 31,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 432,
+                "COSTOGRUPO": 3339
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 12,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 178,
+                "COSTOGRUPO": 223
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 7,
+                "IDBODEGA": 7,
+                "CANTIDADENTREGADA": 345,
+                "COSTOGRUPO": 4632
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 38,
+                "IDBODEGA": 2,
+                "CANTIDADENTREGADA": 184,
+                "COSTOGRUPO": 4870
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 40,
+                "IDBODEGA": 2,
+                "CANTIDADENTREGADA": 477,
+                "COSTOGRUPO": 981
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 43,
+                "IDBODEGA": 3,
+                "CANTIDADENTREGADA": 224,
+                "COSTOGRUPO": 736
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 2,
+                "IDBODEGA": 6,
+                "CANTIDADENTREGADA": 186,
+                "COSTOGRUPO": 3005
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 16,
+                "IDBODEGA": 4,
+                "CANTIDADENTREGADA": 219,
+                "COSTOGRUPO": 2393
+            }
+        ]
+    },
+    {
+        "_id": 6,
+        "NIT": 6,
+        "NOMBRE": "Proveedor 6",
+        "NOMBRECONTACTO": "Contacto 6",
+        "TELCONTACTO": 1000000006,
+        "DIRECCION": "Avenida 6, Ciudad 6",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 31,
+                "IDBODEGA": 5,
+                "CANTIDADENTREGADA": 364,
+                "COSTOGRUPO": 3610
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 3,
+                "IDBODEGA": 9,
+                "CANTIDADENTREGADA": 147,
+                "COSTOGRUPO": 4503
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 9,
+                "IDBODEGA": 6,
+                "CANTIDADENTREGADA": 62,
+                "COSTOGRUPO": 4809
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 10,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 194,
+                "COSTOGRUPO": 1512
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 30,
+                "IDBODEGA": 9,
+                "CANTIDADENTREGADA": 158,
+                "COSTOGRUPO": 4677
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 20,
+                "IDBODEGA": 4,
+                "CANTIDADENTREGADA": 49,
+                "COSTOGRUPO": 3108
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 37,
+                "IDBODEGA": 4,
+                "CANTIDADENTREGADA": 404,
+                "COSTOGRUPO": 3075
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 5,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 310,
+                "COSTOGRUPO": 2889
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 20,
+                "IDBODEGA": 5,
+                "CANTIDADENTREGADA": 103,
+                "COSTOGRUPO": 3766
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 4,
+                "IDBODEGA": 5,
+                "CANTIDADENTREGADA": 130,
+                "COSTOGRUPO": 2806
+            }
+        ]
+    },
+    {
+        "_id": 7,
+        "NIT": 7,
+        "NOMBRE": "Proveedor 7",
+        "NOMBRECONTACTO": "Contacto 7",
+        "TELCONTACTO": 1000000007,
+        "DIRECCION": "Avenida 7, Ciudad 7",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 38,
+                "IDBODEGA": 3,
+                "CANTIDADENTREGADA": 239,
+                "COSTOGRUPO": 3800
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 31,
+                "IDBODEGA": 7,
+                "CANTIDADENTREGADA": 204,
+                "COSTOGRUPO": 1954
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 40,
+                "IDBODEGA": 4,
+                "CANTIDADENTREGADA": 438,
+                "COSTOGRUPO": 363
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 38,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 378,
+                "COSTOGRUPO": 1536
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 6,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 385,
+                "COSTOGRUPO": 3459
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 15,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 244,
+                "COSTOGRUPO": 2220
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 20,
+                "IDBODEGA": 5,
+                "CANTIDADENTREGADA": 11,
+                "COSTOGRUPO": 3845
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 46,
+                "IDBODEGA": 4,
+                "CANTIDADENTREGADA": 425,
+                "COSTOGRUPO": 3251
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 5,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 103,
+                "COSTOGRUPO": 4369
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 15,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 378,
+                "COSTOGRUPO": 4521
+            }
+        ]
+    },
+    {
+        "_id": 8,
+        "NIT": 8,
+        "NOMBRE": "Proveedor 8",
+        "NOMBRECONTACTO": "Contacto 8",
+        "TELCONTACTO": 1000000008,
+        "DIRECCION": "Avenida 8, Ciudad 8",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 5,
+                "IDBODEGA": 5,
+                "CANTIDADENTREGADA": 75,
+                "COSTOGRUPO": 706
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 30,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 382,
+                "COSTOGRUPO": 4018
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 29,
+                "IDBODEGA": 5,
+                "CANTIDADENTREGADA": 42,
+                "COSTOGRUPO": 2056
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 36,
+                "IDBODEGA": 9,
+                "CANTIDADENTREGADA": 253,
+                "COSTOGRUPO": 2428
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 32,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 255,
+                "COSTOGRUPO": 728
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 30,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 307,
+                "COSTOGRUPO": 229
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 19,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 265,
+                "COSTOGRUPO": 2301
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 46,
+                "IDBODEGA": 7,
+                "CANTIDADENTREGADA": 121,
+                "COSTOGRUPO": 2371
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 38,
+                "IDBODEGA": 4,
+                "CANTIDADENTREGADA": 181,
+                "COSTOGRUPO": 2849
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 7,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 368,
+                "COSTOGRUPO": 2645
+            }
+        ]
+    },
+    {
+        "_id": 9,
+        "NIT": 9,
+        "NOMBRE": "Proveedor 9",
+        "NOMBRECONTACTO": "Contacto 9",
+        "TELCONTACTO": 1000000009,
+        "DIRECCION": "Avenida 9, Ciudad 9",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 13,
+                "IDBODEGA": 7,
+                "CANTIDADENTREGADA": 173,
+                "COSTOGRUPO": 2742
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 6,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 390,
+                "COSTOGRUPO": 1697
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 20,
+                "IDBODEGA": 4,
+                "CANTIDADENTREGADA": 137,
+                "COSTOGRUPO": 386
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 34,
+                "IDBODEGA": 9,
+                "CANTIDADENTREGADA": 404,
+                "COSTOGRUPO": 3903
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 19,
+                "IDBODEGA": 4,
+                "CANTIDADENTREGADA": 250,
+                "COSTOGRUPO": 2659
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 11,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 37,
+                "COSTOGRUPO": 2440
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 16,
+                "IDBODEGA": 7,
+                "CANTIDADENTREGADA": 355,
+                "COSTOGRUPO": 3897
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 16,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 469,
+                "COSTOGRUPO": 1230
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 37,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 305,
+                "COSTOGRUPO": 1914
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 13,
+                "IDBODEGA": 7,
+                "CANTIDADENTREGADA": 97,
+                "COSTOGRUPO": 3404
+            }
+        ]
+    },
+    {
+        "_id": 10,
+        "NIT": 10,
+        "NOMBRE": "Proveedor 10",
+        "NOMBRECONTACTO": "Contacto 10",
+        "TELCONTACTO": 1000000010,
+        "DIRECCION": "Avenida 10, Ciudad 10",
+        "RECEPCIONPRODUCTO": [
+            {
+                "_id": 1,
+                "IDPRODUCTO": 1,
+                "IDORDEN": 15,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 363,
+                "COSTOGRUPO": 4259
+            },
+            {
+                "_id": 2,
+                "IDPRODUCTO": 2,
+                "IDORDEN": 38,
+                "IDBODEGA": 9,
+                "CANTIDADENTREGADA": 138,
+                "COSTOGRUPO": 2704
+            },
+            {
+                "_id": 3,
+                "IDPRODUCTO": 3,
+                "IDORDEN": 30,
+                "IDBODEGA": 1,
+                "CANTIDADENTREGADA": 264,
+                "COSTOGRUPO": 305
+            },
+            {
+                "_id": 4,
+                "IDPRODUCTO": 4,
+                "IDORDEN": 48,
+                "IDBODEGA": 6,
+                "CANTIDADENTREGADA": 65,
+                "COSTOGRUPO": 2834
+            },
+            {
+                "_id": 5,
+                "IDPRODUCTO": 5,
+                "IDORDEN": 8,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 466,
+                "COSTOGRUPO": 3878
+            },
+            {
+                "_id": 6,
+                "IDPRODUCTO": 6,
+                "IDORDEN": 14,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 469,
+                "COSTOGRUPO": 2733
+            },
+            {
+                "_id": 7,
+                "IDPRODUCTO": 7,
+                "IDORDEN": 10,
+                "IDBODEGA": 7,
+                "CANTIDADENTREGADA": 291,
+                "COSTOGRUPO": 1537
+            },
+            {
+                "_id": 8,
+                "IDPRODUCTO": 8,
+                "IDORDEN": 30,
+                "IDBODEGA": 10,
+                "CANTIDADENTREGADA": 354,
+                "COSTOGRUPO": 1228
+            },
+            {
+                "_id": 9,
+                "IDPRODUCTO": 9,
+                "IDORDEN": 11,
+                "IDBODEGA": 2,
+                "CANTIDADENTREGADA": 90,
+                "COSTOGRUPO": 3129
+            },
+            {
+                "_id": 10,
+                "IDPRODUCTO": 10,
+                "IDORDEN": 44,
+                "IDBODEGA": 8,
+                "CANTIDADENTREGADA": 384,
+                "COSTOGRUPO": 4976
+            }
+        ]
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "_id": 1,
+        "NOMBRE": "perecedero",
+        "DESCRIPCION": "Con fecha de caducidad",
+        "CARACTERISTICAS": "Vence pronto"
+    },
+    {
+        "_id": 2,
+        "NOMBRE": "herramientas",
+        "DESCRIPCION": "Herramientas para construccion",
+        "CARACTERISTICAS": "Pesados"
+    },
+    {
+        "_id": 3,
+        "NOMBRE": "noperecedero",
+        "DESCRIPCION": "Enlatados",
+        "CARACTERISTICAS": "Pueden tener mercurio"
+    },
+    {
+        "_id": 4,
+        "NOMBRE": "congelados",
+        "DESCRIPCION": "Frios frios",
+        "CARACTERISTICAS": "No apto para consumo (en caso de ser alergico al frio)"
+    },
+    {
+        "_id": 5,
+        "NOMBRE": "aseo",
+        "DESCRIPCION": "Para limpiar",
+        "CARACTERISTICAS": "Toxicos usualmente"
+    },
+    {
+        "_id": 6,
+        "NOMBRE": "prendas",
+        "DESCRIPCION": "Es ropa",
+        "CARACTERISTICAS": "Para vestir"
+    },
+    {
+        "_id": 7,
+        "NOMBRE": "muebles",
+        "DESCRIPCION": "Para el hogar",
+        "CARACTERISTICAS": "Usualmente se venden en tiendas de muebles"
+    },
+    {
+        "_id": 8,
+        "NOMBRE": "electrodomesticos",
+        "DESCRIPCION": "Electronicos y otros",
+        "CARACTERISTICAS": "Necesitan electricidad"
+    }
+]

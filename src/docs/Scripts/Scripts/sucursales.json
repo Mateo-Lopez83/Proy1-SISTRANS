@@ -1,0 +1,942 @@
+[
+    {
+        "_id": 1,
+        "NOMBRE": "Sucursal 1",
+        "DIRECCION": "Calle 1 #123, Zona 1",
+        "CIUDAD": "Ciudad 1",
+        "TELEFONO": 1000000001,
+        "BODEGA": [
+            2,
+            5,
+            7
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 4,
+                "COSTO_GRUPO_PRODUCTO": 201,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 7,
+                "COSTO_GRUPO_PRODUCTO": 401,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 10,
+                "COSTO_GRUPO_PRODUCTO": 601,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 13,
+                "COSTO_GRUPO_PRODUCTO": 801,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 16,
+                "COSTO_GRUPO_PRODUCTO": 1001,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 19,
+                "COSTO_GRUPO_PRODUCTO": 1201,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 22,
+                "COSTO_GRUPO_PRODUCTO": 1401,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 25,
+                "COSTO_GRUPO_PRODUCTO": 1601,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 28,
+                "COSTO_GRUPO_PRODUCTO": 1801,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 31,
+                "COSTO_GRUPO_PRODUCTO": 2001,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    },
+    {
+        "_id": 2,
+        "NOMBRE": "Sucursal 2",
+        "DIRECCION": "Calle 2 #123, Zona 2",
+        "CIUDAD": "Ciudad 2",
+        "TELEFONO": 1000000002,
+        "BODEGA": [
+            3,
+            6,
+            8
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 7,
+                "COSTO_GRUPO_PRODUCTO": 401,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 13,
+                "COSTO_GRUPO_PRODUCTO": 801,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 19,
+                "COSTO_GRUPO_PRODUCTO": 1201,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 25,
+                "COSTO_GRUPO_PRODUCTO": 1601,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 31,
+                "COSTO_GRUPO_PRODUCTO": 2001,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 37,
+                "COSTO_GRUPO_PRODUCTO": 2401,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 43,
+                "COSTO_GRUPO_PRODUCTO": 2801,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 49,
+                "COSTO_GRUPO_PRODUCTO": 3201,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 55,
+                "COSTO_GRUPO_PRODUCTO": 3601,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 61,
+                "COSTO_GRUPO_PRODUCTO": 4001,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    },
+    {
+        "_id": 3,
+        "NOMBRE": "Sucursal 3",
+        "DIRECCION": "Calle 3 #123, Zona 3",
+        "CIUDAD": "Ciudad 3",
+        "TELEFONO": 1000000003,
+        "BODEGA": [
+            4,
+            7,
+            9
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 10,
+                "COSTO_GRUPO_PRODUCTO": 601,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 19,
+                "COSTO_GRUPO_PRODUCTO": 1201,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 28,
+                "COSTO_GRUPO_PRODUCTO": 1801,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 37,
+                "COSTO_GRUPO_PRODUCTO": 2401,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 46,
+                "COSTO_GRUPO_PRODUCTO": 3001,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 55,
+                "COSTO_GRUPO_PRODUCTO": 3601,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 64,
+                "COSTO_GRUPO_PRODUCTO": 4201,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 73,
+                "COSTO_GRUPO_PRODUCTO": 4801,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 82,
+                "COSTO_GRUPO_PRODUCTO": 401,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 91,
+                "COSTO_GRUPO_PRODUCTO": 1001,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    },
+    {
+        "_id": 4,
+        "NOMBRE": "Sucursal 4",
+        "DIRECCION": "Calle 4 #123, Zona 4",
+        "CIUDAD": "Ciudad 4",
+        "TELEFONO": 1000000004,
+        "BODEGA": [
+            5,
+            8,
+            10
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 13,
+                "COSTO_GRUPO_PRODUCTO": 801,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 25,
+                "COSTO_GRUPO_PRODUCTO": 1601,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 37,
+                "COSTO_GRUPO_PRODUCTO": 2401,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 49,
+                "COSTO_GRUPO_PRODUCTO": 3201,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 61,
+                "COSTO_GRUPO_PRODUCTO": 4001,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 73,
+                "COSTO_GRUPO_PRODUCTO": 4801,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 85,
+                "COSTO_GRUPO_PRODUCTO": 601,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 97,
+                "COSTO_GRUPO_PRODUCTO": 1401,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 109,
+                "COSTO_GRUPO_PRODUCTO": 2201,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 121,
+                "COSTO_GRUPO_PRODUCTO": 3001,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    },
+    {
+        "_id": 5,
+        "NOMBRE": "Sucursal 5",
+        "DIRECCION": "Calle 5 #123, Zona 5",
+        "CIUDAD": "Ciudad 5",
+        "TELEFONO": 1000000005,
+        "BODEGA": [
+            6,
+            9,
+            1
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 16,
+                "COSTO_GRUPO_PRODUCTO": 1001,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 31,
+                "COSTO_GRUPO_PRODUCTO": 2001,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 46,
+                "COSTO_GRUPO_PRODUCTO": 3001,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 61,
+                "COSTO_GRUPO_PRODUCTO": 4001,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 76,
+                "COSTO_GRUPO_PRODUCTO": 1,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 91,
+                "COSTO_GRUPO_PRODUCTO": 1001,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 106,
+                "COSTO_GRUPO_PRODUCTO": 2001,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 121,
+                "COSTO_GRUPO_PRODUCTO": 3001,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 136,
+                "COSTO_GRUPO_PRODUCTO": 4001,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 151,
+                "COSTO_GRUPO_PRODUCTO": 1,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    },
+    {
+        "_id": 6,
+        "NOMBRE": "Sucursal 6",
+        "DIRECCION": "Calle 6 #123, Zona 6",
+        "CIUDAD": "Ciudad 6",
+        "TELEFONO": 1000000006,
+        "BODEGA": [
+            7,
+            10,
+            2
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 19,
+                "COSTO_GRUPO_PRODUCTO": 1201,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 37,
+                "COSTO_GRUPO_PRODUCTO": 2401,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 55,
+                "COSTO_GRUPO_PRODUCTO": 3601,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 73,
+                "COSTO_GRUPO_PRODUCTO": 4801,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 91,
+                "COSTO_GRUPO_PRODUCTO": 1001,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 109,
+                "COSTO_GRUPO_PRODUCTO": 2201,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 127,
+                "COSTO_GRUPO_PRODUCTO": 3401,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 145,
+                "COSTO_GRUPO_PRODUCTO": 4601,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 163,
+                "COSTO_GRUPO_PRODUCTO": 801,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 181,
+                "COSTO_GRUPO_PRODUCTO": 2001,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    },
+    {
+        "_id": 7,
+        "NOMBRE": "Sucursal 7",
+        "DIRECCION": "Calle 7 #123, Zona 7",
+        "CIUDAD": "Ciudad 7",
+        "TELEFONO": 1000000007,
+        "BODEGA": [
+            8,
+            1,
+            3
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 22,
+                "COSTO_GRUPO_PRODUCTO": 1401,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 43,
+                "COSTO_GRUPO_PRODUCTO": 2801,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 64,
+                "COSTO_GRUPO_PRODUCTO": 4201,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 85,
+                "COSTO_GRUPO_PRODUCTO": 601,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 106,
+                "COSTO_GRUPO_PRODUCTO": 2001,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 127,
+                "COSTO_GRUPO_PRODUCTO": 3401,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 148,
+                "COSTO_GRUPO_PRODUCTO": 4801,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 169,
+                "COSTO_GRUPO_PRODUCTO": 1201,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 190,
+                "COSTO_GRUPO_PRODUCTO": 2601,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 211,
+                "COSTO_GRUPO_PRODUCTO": 4001,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    },
+    {
+        "_id": 8,
+        "NOMBRE": "Sucursal 8",
+        "DIRECCION": "Calle 8 #123, Zona 8",
+        "CIUDAD": "Ciudad 8",
+        "TELEFONO": 1000000008,
+        "BODEGA": [
+            9,
+            2,
+            4
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 25,
+                "COSTO_GRUPO_PRODUCTO": 1601,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 49,
+                "COSTO_GRUPO_PRODUCTO": 3201,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 73,
+                "COSTO_GRUPO_PRODUCTO": 4801,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 97,
+                "COSTO_GRUPO_PRODUCTO": 1401,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 121,
+                "COSTO_GRUPO_PRODUCTO": 3001,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 145,
+                "COSTO_GRUPO_PRODUCTO": 4601,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 169,
+                "COSTO_GRUPO_PRODUCTO": 1201,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 193,
+                "COSTO_GRUPO_PRODUCTO": 2801,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 217,
+                "COSTO_GRUPO_PRODUCTO": 4401,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 241,
+                "COSTO_GRUPO_PRODUCTO": 1001,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    },
+    {
+        "_id": 9,
+        "NOMBRE": "Sucursal 9",
+        "DIRECCION": "Calle 9 #123, Zona 9",
+        "CIUDAD": "Ciudad 9",
+        "TELEFONO": 1000000009,
+        "BODEGA": [
+            10,
+            3,
+            5
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 28,
+                "COSTO_GRUPO_PRODUCTO": 1801,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 55,
+                "COSTO_GRUPO_PRODUCTO": 3601,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 82,
+                "COSTO_GRUPO_PRODUCTO": 401,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 109,
+                "COSTO_GRUPO_PRODUCTO": 2201,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 136,
+                "COSTO_GRUPO_PRODUCTO": 4001,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 163,
+                "COSTO_GRUPO_PRODUCTO": 801,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 190,
+                "COSTO_GRUPO_PRODUCTO": 2601,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 217,
+                "COSTO_GRUPO_PRODUCTO": 4401,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 244,
+                "COSTO_GRUPO_PRODUCTO": 1201,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 271,
+                "COSTO_GRUPO_PRODUCTO": 3001,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    },
+    {
+        "_id": 10,
+        "NOMBRE": "Sucursal 10",
+        "DIRECCION": "Calle 10 #123, Zona 10",
+        "CIUDAD": "Ciudad 10",
+        "TELEFONO": 1000000010,
+        "BODEGA": [
+            1,
+            4,
+            6
+        ],
+        "INVENTARIOS": [
+            {
+                "_id": 1,
+                "CODIDIGOBARRAS": 1,
+                "IDBODEGA": 2,
+                "CANTIDAD_OCUPADA": 31,
+                "COSTO_GRUPO_PRODUCTO": 2001,
+                "MINIMO_RECOMPRA": 6
+            },
+            {
+                "_id": 2,
+                "CODIDIGOBARRAS": 2,
+                "IDBODEGA": 3,
+                "CANTIDAD_OCUPADA": 61,
+                "COSTO_GRUPO_PRODUCTO": 4001,
+                "MINIMO_RECOMPRA": 11
+            },
+            {
+                "_id": 3,
+                "CODIDIGOBARRAS": 3,
+                "IDBODEGA": 4,
+                "CANTIDAD_OCUPADA": 91,
+                "COSTO_GRUPO_PRODUCTO": 1001,
+                "MINIMO_RECOMPRA": 16
+            },
+            {
+                "_id": 4,
+                "CODIDIGOBARRAS": 4,
+                "IDBODEGA": 5,
+                "CANTIDAD_OCUPADA": 121,
+                "COSTO_GRUPO_PRODUCTO": 3001,
+                "MINIMO_RECOMPRA": 21
+            },
+            {
+                "_id": 5,
+                "CODIDIGOBARRAS": 5,
+                "IDBODEGA": 6,
+                "CANTIDAD_OCUPADA": 151,
+                "COSTO_GRUPO_PRODUCTO": 1,
+                "MINIMO_RECOMPRA": 26
+            },
+            {
+                "_id": 6,
+                "CODIDIGOBARRAS": 6,
+                "IDBODEGA": 7,
+                "CANTIDAD_OCUPADA": 181,
+                "COSTO_GRUPO_PRODUCTO": 2001,
+                "MINIMO_RECOMPRA": 31
+            },
+            {
+                "_id": 7,
+                "CODIDIGOBARRAS": 7,
+                "IDBODEGA": 8,
+                "CANTIDAD_OCUPADA": 211,
+                "COSTO_GRUPO_PRODUCTO": 4001,
+                "MINIMO_RECOMPRA": 36
+            },
+            {
+                "_id": 8,
+                "CODIDIGOBARRAS": 8,
+                "IDBODEGA": 9,
+                "CANTIDAD_OCUPADA": 241,
+                "COSTO_GRUPO_PRODUCTO": 1001,
+                "MINIMO_RECOMPRA": 41
+            },
+            {
+                "_id": 9,
+                "CODIDIGOBARRAS": 9,
+                "IDBODEGA": 10,
+                "CANTIDAD_OCUPADA": 271,
+                "COSTO_GRUPO_PRODUCTO": 3001,
+                "MINIMO_RECOMPRA": 46
+            },
+            {
+                "_id": 10,
+                "CODIDIGOBARRAS": 10,
+                "IDBODEGA": 1,
+                "CANTIDAD_OCUPADA": 301,
+                "COSTO_GRUPO_PRODUCTO": 1,
+                "MINIMO_RECOMPRA": 1
+            }
+        ]
+    }
+]

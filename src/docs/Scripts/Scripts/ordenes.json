@@ -1,0 +1,702 @@
+[
+    {
+        "_id": 1,
+        "IDSUCURSAL": 7,
+        "IDPROVEEDOR": 7,
+        "FECHAENTREGA": new Date("2023-10-02T00:00:00"),
+        "FECHACREACION": new Date("2023-09-27T00:00:00"),
+        "ESTADO": "ENTREGADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 9,
+                "CANTIDAD_PEDIDA": 182,
+                "PRECIOBODEGA": 2152
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 27,
+                "CANTIDAD_PEDIDA": 252,
+                "PRECIOBODEGA": 3273
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 29,
+                "CANTIDAD_PEDIDA": 22,
+                "PRECIOBODEGA": 1278
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 1,
+                "CANTIDAD_PEDIDA": 90,
+                "PRECIOBODEGA": 3948
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 4,
+                "CANTIDAD_PEDIDA": 320,
+                "PRECIOBODEGA": 2811
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 30,
+                "CANTIDAD_PEDIDA": 348,
+                "PRECIOBODEGA": 4289
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 24,
+                "CANTIDAD_PEDIDA": 44,
+                "PRECIOBODEGA": 2595
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 6,
+                "CANTIDAD_PEDIDA": 134,
+                "PRECIOBODEGA": 1697
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 15,
+                "CANTIDAD_PEDIDA": 331,
+                "PRECIOBODEGA": 673
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 15,
+                "CANTIDAD_PEDIDA": 296,
+                "PRECIOBODEGA": 2147
+            }
+        ]
+    },
+    {
+        "_id": 2,
+        "IDSUCURSAL": 7,
+        "IDPROVEEDOR": 10,
+        "FECHAENTREGA": new Date("2023-08-26T00:00:00"),
+        "FECHACREACION": new Date("2023-08-19T00:00:00"),
+        "ESTADO": "ENTREGADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 20,
+                "CANTIDAD_PEDIDA": 451,
+                "PRECIOBODEGA": 3868
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 8,
+                "CANTIDAD_PEDIDA": 478,
+                "PRECIOBODEGA": 2896
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 27,
+                "CANTIDAD_PEDIDA": 171,
+                "PRECIOBODEGA": 2772
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 14,
+                "CANTIDAD_PEDIDA": 100,
+                "PRECIOBODEGA": 150
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 16,
+                "CANTIDAD_PEDIDA": 267,
+                "PRECIOBODEGA": 3996
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 2,
+                "CANTIDAD_PEDIDA": 254,
+                "PRECIOBODEGA": 3712
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 25,
+                "CANTIDAD_PEDIDA": 20,
+                "PRECIOBODEGA": 2970
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 18,
+                "CANTIDAD_PEDIDA": 110,
+                "PRECIOBODEGA": 126
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 26,
+                "CANTIDAD_PEDIDA": 71,
+                "PRECIOBODEGA": 4409
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 22,
+                "CANTIDAD_PEDIDA": 347,
+                "PRECIOBODEGA": 4525
+            }
+        ]
+    },
+    {
+        "_id": 3,
+        "IDSUCURSAL": 7,
+        "IDPROVEEDOR": 3,
+        "FECHAENTREGA": new Date("2023-05-08T00:00:00"),
+        "FECHACREACION": new Date("2023-04-28T00:00:00"),
+        "ESTADO": "ENTREGADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 15,
+                "CANTIDAD_PEDIDA": 367,
+                "PRECIOBODEGA": 2384
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 24,
+                "CANTIDAD_PEDIDA": 446,
+                "PRECIOBODEGA": 3248
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 16,
+                "CANTIDAD_PEDIDA": 67,
+                "PRECIOBODEGA": 2398
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 26,
+                "CANTIDAD_PEDIDA": 261,
+                "PRECIOBODEGA": 760
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 29,
+                "CANTIDAD_PEDIDA": 402,
+                "PRECIOBODEGA": 2329
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 3,
+                "CANTIDAD_PEDIDA": 70,
+                "PRECIOBODEGA": 3873
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 8,
+                "CANTIDAD_PEDIDA": 385,
+                "PRECIOBODEGA": 1909
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 25,
+                "CANTIDAD_PEDIDA": 16,
+                "PRECIOBODEGA": 1676
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 5,
+                "CANTIDAD_PEDIDA": 155,
+                "PRECIOBODEGA": 3052
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 30,
+                "CANTIDAD_PEDIDA": 39,
+                "PRECIOBODEGA": 4773
+            }
+        ]
+    },
+    {
+        "_id": 4,
+        "IDSUCURSAL": 8,
+        "IDPROVEEDOR": 4,
+        "FECHAENTREGA": new Date("2023-11-02T00:00:00"),
+        "FECHACREACION": new Date("2023-10-09T00:00:00"),
+        "ESTADO": "ENTREGADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 9,
+                "CANTIDAD_PEDIDA": 29,
+                "PRECIOBODEGA": 3012
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 10,
+                "CANTIDAD_PEDIDA": 46,
+                "PRECIOBODEGA": 2717
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 24,
+                "CANTIDAD_PEDIDA": 500,
+                "PRECIOBODEGA": 1644
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 29,
+                "CANTIDAD_PEDIDA": 108,
+                "PRECIOBODEGA": 109
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 11,
+                "CANTIDAD_PEDIDA": 160,
+                "PRECIOBODEGA": 2220
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 8,
+                "CANTIDAD_PEDIDA": 345,
+                "PRECIOBODEGA": 3606
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 2,
+                "CANTIDAD_PEDIDA": 202,
+                "PRECIOBODEGA": 1158
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 26,
+                "CANTIDAD_PEDIDA": 369,
+                "PRECIOBODEGA": 2394
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 8,
+                "CANTIDAD_PEDIDA": 461,
+                "PRECIOBODEGA": 2779
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 21,
+                "CANTIDAD_PEDIDA": 168,
+                "PRECIOBODEGA": 4761
+            }
+        ]
+    },
+    {
+        "_id": 5,
+        "IDSUCURSAL": 6,
+        "IDPROVEEDOR": 7,
+        "FECHAENTREGA": new Date("2023-06-24T00:00:00"),
+        "FECHACREACION": new Date("2023-05-25T00:00:00"),
+        "ESTADO": "CANCELADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 9,
+                "CANTIDAD_PEDIDA": 51,
+                "PRECIOBODEGA": 296
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 22,
+                "CANTIDAD_PEDIDA": 225,
+                "PRECIOBODEGA": 2743
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 16,
+                "CANTIDAD_PEDIDA": 286,
+                "PRECIOBODEGA": 584
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 29,
+                "CANTIDAD_PEDIDA": 239,
+                "PRECIOBODEGA": 2418
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 28,
+                "CANTIDAD_PEDIDA": 306,
+                "PRECIOBODEGA": 4678
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 21,
+                "CANTIDAD_PEDIDA": 356,
+                "PRECIOBODEGA": 4726
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 14,
+                "CANTIDAD_PEDIDA": 241,
+                "PRECIOBODEGA": 2882
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 23,
+                "CANTIDAD_PEDIDA": 55,
+                "PRECIOBODEGA": 4523
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 3,
+                "CANTIDAD_PEDIDA": 403,
+                "PRECIOBODEGA": 909
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 11,
+                "CANTIDAD_PEDIDA": 160,
+                "PRECIOBODEGA": 606
+            }
+        ]
+    },
+    {
+        "_id": 6,
+        "IDSUCURSAL": 1,
+        "IDPROVEEDOR": 4,
+        "FECHAENTREGA": new Date("2024-01-11T00:00:00"),
+        "FECHACREACION": new Date("2023-12-19T00:00:00"),
+        "ESTADO": "ENTREGADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 7,
+                "CANTIDAD_PEDIDA": 381,
+                "PRECIOBODEGA": 4456
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 10,
+                "CANTIDAD_PEDIDA": 372,
+                "PRECIOBODEGA": 4223
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 4,
+                "CANTIDAD_PEDIDA": 464,
+                "PRECIOBODEGA": 3893
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 23,
+                "CANTIDAD_PEDIDA": 307,
+                "PRECIOBODEGA": 2915
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 10,
+                "CANTIDAD_PEDIDA": 145,
+                "PRECIOBODEGA": 2379
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 13,
+                "CANTIDAD_PEDIDA": 500,
+                "PRECIOBODEGA": 3480
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 16,
+                "CANTIDAD_PEDIDA": 280,
+                "PRECIOBODEGA": 3551
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 11,
+                "CANTIDAD_PEDIDA": 405,
+                "PRECIOBODEGA": 549
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 10,
+                "CANTIDAD_PEDIDA": 375,
+                "PRECIOBODEGA": 4747
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 4,
+                "CANTIDAD_PEDIDA": 204,
+                "PRECIOBODEGA": 3993
+            }
+        ]
+    },
+    {
+        "_id": 7,
+        "IDSUCURSAL": 3,
+        "IDPROVEEDOR": 5,
+        "FECHAENTREGA": new Date("2023-07-04T00:00:00"),
+        "FECHACREACION": new Date("2023-06-24T00:00:00"),
+        "ESTADO": "ENTREGADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 3,
+                "CANTIDAD_PEDIDA": 44,
+                "PRECIOBODEGA": 3965
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 5,
+                "CANTIDAD_PEDIDA": 177,
+                "PRECIOBODEGA": 2460
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 4,
+                "CANTIDAD_PEDIDA": 404,
+                "PRECIOBODEGA": 910
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 26,
+                "CANTIDAD_PEDIDA": 464,
+                "PRECIOBODEGA": 567
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 28,
+                "CANTIDAD_PEDIDA": 192,
+                "PRECIOBODEGA": 4191
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 27,
+                "CANTIDAD_PEDIDA": 31,
+                "PRECIOBODEGA": 2750
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 17,
+                "CANTIDAD_PEDIDA": 258,
+                "PRECIOBODEGA": 1425
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 18,
+                "CANTIDAD_PEDIDA": 404,
+                "PRECIOBODEGA": 109
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 20,
+                "CANTIDAD_PEDIDA": 393,
+                "PRECIOBODEGA": 3771
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 17,
+                "CANTIDAD_PEDIDA": 390,
+                "PRECIOBODEGA": 1430
+            }
+        ]
+    },
+    {
+        "_id": 8,
+        "IDSUCURSAL": 10,
+        "IDPROVEEDOR": 9,
+        "FECHAENTREGA": new Date("2023-03-28T00:00:00"),
+        "FECHACREACION": new Date("2023-03-23T00:00:00"),
+        "ESTADO": "CANCELADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 10,
+                "CANTIDAD_PEDIDA": 290,
+                "PRECIOBODEGA": 4754
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 4,
+                "CANTIDAD_PEDIDA": 203,
+                "PRECIOBODEGA": 4305
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 24,
+                "CANTIDAD_PEDIDA": 88,
+                "PRECIOBODEGA": 3679
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 9,
+                "CANTIDAD_PEDIDA": 335,
+                "PRECIOBODEGA": 2192
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 9,
+                "CANTIDAD_PEDIDA": 55,
+                "PRECIOBODEGA": 3774
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 19,
+                "CANTIDAD_PEDIDA": 311,
+                "PRECIOBODEGA": 1325
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 11,
+                "CANTIDAD_PEDIDA": 246,
+                "PRECIOBODEGA": 772
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 27,
+                "CANTIDAD_PEDIDA": 91,
+                "PRECIOBODEGA": 2550
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 19,
+                "CANTIDAD_PEDIDA": 140,
+                "PRECIOBODEGA": 4340
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 7,
+                "CANTIDAD_PEDIDA": 436,
+                "PRECIOBODEGA": 4661
+            }
+        ]
+    },
+    {
+        "_id": 9,
+        "IDSUCURSAL": 3,
+        "IDPROVEEDOR": 10,
+        "FECHAENTREGA": new Date("2023-11-15T00:00:00"),
+        "FECHACREACION": new Date("2023-10-18T00:00:00"),
+        "ESTADO": "CANCELADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 22,
+                "CANTIDAD_PEDIDA": 186,
+                "PRECIOBODEGA": 472
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 15,
+                "CANTIDAD_PEDIDA": 85,
+                "PRECIOBODEGA": 3204
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 18,
+                "CANTIDAD_PEDIDA": 310,
+                "PRECIOBODEGA": 1947
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 16,
+                "CANTIDAD_PEDIDA": 457,
+                "PRECIOBODEGA": 178
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 29,
+                "CANTIDAD_PEDIDA": 212,
+                "PRECIOBODEGA": 848
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 20,
+                "CANTIDAD_PEDIDA": 171,
+                "PRECIOBODEGA": 254
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 26,
+                "CANTIDAD_PEDIDA": 58,
+                "PRECIOBODEGA": 159
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 14,
+                "CANTIDAD_PEDIDA": 380,
+                "PRECIOBODEGA": 1165
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 5,
+                "CANTIDAD_PEDIDA": 212,
+                "PRECIOBODEGA": 845
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 22,
+                "CANTIDAD_PEDIDA": 52,
+                "PRECIOBODEGA": 4074
+            }
+        ]
+    },
+    {
+        "_id": 10,
+        "IDSUCURSAL": 9,
+        "IDPROVEEDOR": 6,
+        "FECHAENTREGA": new Date("2023-08-19T00:00:00"),
+        "FECHACREACION": new Date("2023-08-18T00:00:00"),
+        "ESTADO": "CANCELADO",
+        "DETALLEPRODUCTO": [
+            {
+                "_id": 1,
+                "CODIGOBARRASPROD": 20,
+                "CANTIDAD_PEDIDA": 25,
+                "PRECIOBODEGA": 1999
+            },
+            {
+                "_id": 2,
+                "CODIGOBARRASPROD": 17,
+                "CANTIDAD_PEDIDA": 209,
+                "PRECIOBODEGA": 3576
+            },
+            {
+                "_id": 3,
+                "CODIGOBARRASPROD": 21,
+                "CANTIDAD_PEDIDA": 30,
+                "PRECIOBODEGA": 2295
+            },
+            {
+                "_id": 4,
+                "CODIGOBARRASPROD": 22,
+                "CANTIDAD_PEDIDA": 156,
+                "PRECIOBODEGA": 2473
+            },
+            {
+                "_id": 5,
+                "CODIGOBARRASPROD": 30,
+                "CANTIDAD_PEDIDA": 339,
+                "PRECIOBODEGA": 3776
+            },
+            {
+                "_id": 6,
+                "CODIGOBARRASPROD": 4,
+                "CANTIDAD_PEDIDA": 35,
+                "PRECIOBODEGA": 3061
+            },
+            {
+                "_id": 7,
+                "CODIGOBARRASPROD": 20,
+                "CANTIDAD_PEDIDA": 209,
+                "PRECIOBODEGA": 855
+            },
+            {
+                "_id": 8,
+                "CODIGOBARRASPROD": 18,
+                "CANTIDAD_PEDIDA": 415,
+                "PRECIOBODEGA": 1840
+            },
+            {
+                "_id": 9,
+                "CODIGOBARRASPROD": 28,
+                "CANTIDAD_PEDIDA": 455,
+                "PRECIOBODEGA": 4860
+            },
+            {
+                "_id": 10,
+                "CODIGOBARRASPROD": 23,
+                "CANTIDAD_PEDIDA": 15,
+                "PRECIOBODEGA": 1935
+            }
+        ]
+    }
+]
